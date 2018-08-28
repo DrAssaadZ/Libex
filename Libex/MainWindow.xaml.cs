@@ -24,5 +24,36 @@ namespace Libex
         {
             InitializeComponent();
         }
+
+        //color zone mouse down drag and move
+        private void ColorZone_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        // open menu click event
+        private void openMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            closeMenuBtn.IsChecked = true;
+        }
+
+        //close menu click event
+        private void closeMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            openMenuBtn.IsChecked = false;
+        }
+
+        //exit application button click
+        private void exitAppBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        //max application button click
+        private void maxAppBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Maximized;
+
+        }
     }
 }

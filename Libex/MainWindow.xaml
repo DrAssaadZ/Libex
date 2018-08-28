@@ -5,11 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Libex"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Libex" Height="450" Width="800">
-    <Grid>
-        <Button Width="100" Content="Cancel">
-            
-        </Button>
-    </Grid>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"           
+        Title="Libex" Height="850" Width="1400" MinWidth="1000" MaxHeight="1080" MaxWidth="1920" MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" >
+
+
+
+    <!--removing the border on the window when resizing-->
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+
+    <!--left menu drawer host-->
+    <materialDesign:DrawerHost HorizontalAlignment="Left" >
+        <materialDesign:DrawerHost.LeftDrawerContent>
+            <StackPanel Orientation="Vertical" Width="200">
+                <ToggleButton x:Name="closeMenuBtn" Click="closeMenuBtn_Click" HorizontalAlignment="Right" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="x:Static Dock.Left" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"/>
+                <ListView>
+                    <StackPanel Orientation="Horizontal" Background="Yellow" Height="50">
+                        <TextBlock Text="DASHBOARD"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="DASHBOARD"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="DASHBOARD"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="DASHBOARD"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="DASHBOARD"/>
+                    </StackPanel>
+                </ListView>
+
+            </StackPanel>
+        </materialDesign:DrawerHost.LeftDrawerContent>
+
+        <!--main grid-->
+        <Grid Width="1400">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <materialDesign:ColorZone Mode="PrimaryMid" MouseDown="ColorZone_MouseDown" Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton x:Name="openMenuBtn"  Click="openMenuBtn_Click" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" CommandParameter="x:Static Dock.Left" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="maxAppBtn" Click="maxAppBtn_Click" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <materialDesign:PackIcon  Kind="WindowMaximize" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
+                        </Button>
+                        <Button x:Name="exitAppBtn" Click="exitAppBtn_Click" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <materialDesign:PackIcon  Kind="FileExcelBox" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:ColorZone>
+            <Button></Button>
+
+        </Grid>
+    </materialDesign:DrawerHost>
 </Window>
