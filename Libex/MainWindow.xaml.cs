@@ -25,12 +25,7 @@ namespace Libex
             InitializeComponent();
         }
 
-        //color zone mouse down drag and move
-        private void ColorZone_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-
+        
         // open menu click event
         private void openMenuBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -52,8 +47,37 @@ namespace Libex
         //max application button click
         private void maxAppBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Maximized;
+            if (this.WindowState == WindowState.Maximized )
+            {
+                maxAppBtn.ToolTip = "Maximize";
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                maxAppBtn.ToolTip = "Minimize";
+                this.WindowState = WindowState.Maximized;
+            }
+           
 
+        }
+
+        //turns the open menu button unchecked 
+        private void DrawerHost_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            openMenuBtn.IsChecked = false;
+        }
+
+        
+        //left mouse clicked on the top color zone event
+        private void ColorZone_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        
+        //minimize button click event
+        private void minAppBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

@@ -16,52 +16,79 @@
     </WindowChrome.WindowChrome>
 
     <!--left menu drawer host-->
-    <materialDesign:DrawerHost HorizontalAlignment="Left" >
+    <materialDesign:DrawerHost MouseDown="DrawerHost_MouseDown">
         <materialDesign:DrawerHost.LeftDrawerContent>
             <StackPanel Orientation="Vertical" Width="200">
                 <ToggleButton x:Name="closeMenuBtn" Click="closeMenuBtn_Click" HorizontalAlignment="Right" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="x:Static Dock.Left" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"/>
-                <ListView>
-                    <StackPanel Orientation="Horizontal" Background="Yellow" Height="50">
-                        <TextBlock Text="DASHBOARD"/>
+                <ListView Margin="0 50 0 0">
+                    <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="DASHBOARD" FontSize="22"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="DASHBOARD"/>
+                    <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="DASHBOARD" FontSize="22"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="DASHBOARD"/>
+                    <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="DASHBOARD" FontSize="22"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="DASHBOARD"/>
+                    <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="DASHBOARD" FontSize="22"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="DASHBOARD"/>
+                    <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="DASHBOARD" FontSize="22"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="DASHBOARD" FontSize="22"/>
+                    </StackPanel>
+                    <Separator Width="150"/>
                 </ListView>
 
             </StackPanel>
         </materialDesign:DrawerHost.LeftDrawerContent>
 
         <!--main grid-->
-        <Grid Width="1400">
+        <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="36"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <materialDesign:ColorZone Mode="PrimaryMid" MouseDown="ColorZone_MouseDown" Grid.Row="0">
-                <StackPanel Orientation="Horizontal">
-                    <ToggleButton x:Name="openMenuBtn"  Click="openMenuBtn_Click" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" CommandParameter="x:Static Dock.Left" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button x:Name="maxAppBtn" Click="maxAppBtn_Click" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
-                            <materialDesign:PackIcon  Kind="WindowMaximize" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
+            
+                <materialDesign:ColorZone Mode="PrimaryMid"  Grid.Row="0"  MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton x:Name="openMenuBtn" VerticalAlignment="Center" Margin="5 0 0 0" Grid.Column="0" HorizontalAlignment="Left" ToolTip="Open Menu" Click="openMenuBtn_Click" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" CommandParameter="x:Static Dock.Left" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0 0 5 0">
+                        <Button x:Name="minAppBtn"  Margin="1.5" Click="minAppBtn_Click" ToolTip="Minimize to taskbar" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <materialDesign:PackIcon  Kind="WindowMinimize" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
                         </Button>
-                        <Button x:Name="exitAppBtn" Click="exitAppBtn_Click" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <Button x:Name="maxAppBtn" Click="maxAppBtn_Click" Margin="1.5"  ToolTip="Maximize" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <materialDesign:PackIcon  Kind="WindowMaximize"  Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
+                        </Button>
+                        <Button x:Name="exitAppBtn" Click="exitAppBtn_Click" Margin="1.5"  ToolTip="Exit" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
                             <materialDesign:PackIcon  Kind="FileExcelBox" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
                         </Button>
                     </StackPanel>
-                </StackPanel>
+                </Grid>
             </materialDesign:ColorZone>
-            <Button></Button>
+            
+            <StackPanel Orientation="Horizontal" Background="Yellow" Grid.Row="1">
+                
+                    
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Background="red" Grid.Row="2">
 
+            </StackPanel>
         </Grid>
     </materialDesign:DrawerHost>
 </Window>
