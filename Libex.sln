@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libex", "Libex\Libex.csproj", "{D919DEFF-C5DC-4F9C-AAEE-8E4B0470FCAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D919DEFF-C5DC-4F9C-AAEE-8E4B0470FCAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D919DEFF-C5DC-4F9C-AAEE-8E4B0470FCAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D919DEFF-C5DC-4F9C-AAEE-8E4B0470FCAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D919DEFF-C5DC-4F9C-AAEE-8E4B0470FCAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3884126E-6E1E-4E14-B21D-81339F3FDF64}
+	EndGlobalSection
+EndGlobal
