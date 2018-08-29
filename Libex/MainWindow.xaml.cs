@@ -14,17 +14,19 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Libex
-{
+{   
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
-        }
 
+        }
+        
         
         // open menu click event
         private void openMenuBtn_Click(object sender, RoutedEventArgs e)
@@ -78,6 +80,35 @@ namespace Libex
         private void minAppBtn_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+
+
+
+        private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+            AddResourceDictionary("Resources/TealAmberTheme.xaml");
+            
+        }
+
+        private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+            AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
+        }
+
+
+        private void blueAmberBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+            AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+        }
+
+        public void AddResourceDictionary(string source)
+        {
+            ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
+            this.Resources.MergedDictionaries.Add(resourceDictionary);
         }
     }
 }
