@@ -14,11 +14,13 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" />
     </WindowChrome.WindowChrome>
+    
+    
 
     <!--left menu drawer host-->
     <materialDesign:DrawerHost MouseDown="DrawerHost_MouseDown">
         <materialDesign:DrawerHost.LeftDrawerContent>
-            <StackPanel Orientation="Vertical" Width="200">
+            <StackPanel Orientation="Vertical" Width="250" Background="{DynamicResource PrimaryHueDarkBrush}">
                 <ToggleButton x:Name="closeMenuBtn" Click="closeMenuBtn_Click" HorizontalAlignment="Right" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="x:Static Dock.Left" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"/>
                 <ListView Margin="0 50 0 0">
                     <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
@@ -27,23 +29,31 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
                         <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
-                        <TextBlock Text="DASHBOARD" FontSize="22"/>
+                        <TextBlock Text="STATISTICS" FontSize="22"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
                         <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
-                        <TextBlock Text="DASHBOARD" FontSize="22"/>
+                        <TextBlock Text="CLIENTS" FontSize="22"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
                         <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
-                        <TextBlock Text="DASHBOARD" FontSize="22"/>
+                        <TextBlock Text="BOOKS" FontSize="22"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
                         <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
-                        <TextBlock Text="DASHBOARD" FontSize="22"/>
+                        <TextBlock Text="COMMANDS" FontSize="22"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
                         <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
-                        <TextBlock Text="DASHBOARD" FontSize="22"/>
+                        <TextBlock Text="RETURNED BOOKS" FontSize="22"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="SELLS/RENTS" FontSize="22"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Height="30" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Home" Height="30" Width="30" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <TextBlock Text="SETTINGS" FontSize="22"/>
                     </StackPanel>
                     <Separator Width="150"/>
                 </ListView>
@@ -55,12 +65,12 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="36"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             
-                <materialDesign:ColorZone Mode="PrimaryMid"  Grid.Row="0"  MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
+                <materialDesign:ColorZone Mode="PrimaryDark"  Grid.Row="0"  MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -81,13 +91,19 @@
                 </Grid>
             </materialDesign:ColorZone>
             
-            <StackPanel Orientation="Horizontal" Background="Yellow" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Background="{DynamicResource PrimaryHueMidBrush}" Grid.Row="1">
                 
                     
                 
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Background="red" Grid.Row="2">
-
+            <StackPanel Orientation="Horizontal" Background="{DynamicResource SecondaryAccentBrush}" Grid.Row="2">
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" >
+                <Button Content="Blue Amber" x:Name="blueAmberBtn" Click="blueAmberBtn_Click"/>
+                <Button Content="Teal Amber" x:Name="tealAmberBtn" Click="tealAmberBtn_Click"/>
+                <Button Content="Blue grey Amber" x:Name="blueGreyBtn" Click="blueGreyBtn_Click"/>
+                
             </StackPanel>
         </Grid>
     </materialDesign:DrawerHost>
