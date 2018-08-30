@@ -89,39 +89,40 @@ namespace Libex
             this.WindowState = WindowState.Minimized;
         }
 
-        private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Resources.MergedDictionaries.Clear();
-            AddResourceDictionary("Resources/TealAmberTheme.xaml");            
-        }
+        //private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Resources.MergedDictionaries.Clear();
+        //    AddResourceDictionary("Resources/TealAmberTheme.xaml");            
+        //}
 
-        private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Resources.MergedDictionaries.Clear();
-            AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
-        }
+        //private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Resources.MergedDictionaries.Clear();
+        //    AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
+        //}
 
 
-        private void blueAmberBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Resources.MergedDictionaries.Clear();
-            AddResourceDictionary("Resources/BlueAmberTheme.xaml");
-        }
+        //private void blueAmberBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Resources.MergedDictionaries.Clear();
+        //    AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+        //}
 
-        public void AddResourceDictionary(string source)
-        {
-            ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
-            this.Resources.MergedDictionaries.Add(resourceDictionary);
-        }
+        //public void AddResourceDictionary(string source)
+        //{
+        //    ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
+        //    this.Resources.MergedDictionaries.Add(resourceDictionary);
+        //}
 
-        private void usercontrolShowBtn_Click(object sender, RoutedEventArgs e)
-        {
-            userControlGrid.Children.Clear();
-            TestUserControl UC1 = new TestUserControl();
-            userControlGrid.Children.Add(UC1);
-            UC1.Visibility = System.Windows.Visibility.Visible;
-        }
-        //public TabControl tbControl;
+        //private void usercontrolShowBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    userControlGrid.Children.Clear();
+        //    TestUserControl UC1 = new TestUserControl();
+        //    userControlGrid.Children.Add(UC1);
+        //    UC1.Visibility = System.Windows.Visibility.Visible;
+        //}
+        
+        //adding the tab created from the user control to the tabControl in the main window
         private void myTab_Loaded(object sender, RoutedEventArgs e)
         {
             GlobalVariables.tbControl = (sender as TabControl);
@@ -130,8 +131,72 @@ namespace Libex
         //method that shows which menu item is selected
         private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //the selected item
             int listItemSelectedIndex = MenuList.SelectedIndex;
             MoveCursorMenu(listItemSelectedIndex);
+            
+            //changing the user controls on list item clicks
+            switch (listItemSelectedIndex)
+            {
+                case 0:
+                    gridMenu.Children.Clear();
+                    gridMenu.Children.Add(new DashBoardUserControl());
+                    //close automaticly the list menu after chosing an item
+                    closeMenuBtn.Command.Execute(closeMenuBtn.Command);
+                    openMenuBtn.IsChecked = false;
+                    break;
+                case 1:
+                    gridMenu.Children.Clear();
+                    gridMenu.Children.Add(new statisticsUserControl());
+                    //close automaticly the list menu after chosing an item
+                    closeMenuBtn.Command.Execute(closeMenuBtn.Command);
+                    openMenuBtn.IsChecked = false;
+                    break;
+                case 2:
+                    gridMenu.Children.Clear();
+                    gridMenu.Children.Add(new bookUserControl());
+                    //close automaticly the list menu after chosing an item
+                    closeMenuBtn.Command.Execute(closeMenuBtn.Command);
+                    openMenuBtn.IsChecked = false;
+                    break;
+                case 3:
+                    gridMenu.Children.Clear();
+                    gridMenu.Children.Add(new DashBoardUserControl());
+                    //close automaticly the list menu after chosing an item
+                    closeMenuBtn.Command.Execute(closeMenuBtn.Command);
+                    openMenuBtn.IsChecked = false;
+                    break;
+                case 4:
+                    gridMenu.Children.Clear();
+                    gridMenu.Children.Add(new DashBoardUserControl());
+                    //close automaticly the list menu after chosing an item
+                    closeMenuBtn.Command.Execute(closeMenuBtn.Command);
+                    openMenuBtn.IsChecked = false;
+                    break;
+                case 5:
+                    gridMenu.Children.Clear();
+                    gridMenu.Children.Add(new DashBoardUserControl());
+                    //close automaticly the list menu after chosing an item
+                    closeMenuBtn.Command.Execute(closeMenuBtn.Command);
+                    openMenuBtn.IsChecked = false;
+                    break;
+                case 6:
+                    gridMenu.Children.Clear();
+                    gridMenu.Children.Add(new DashBoardUserControl());
+                    //close automaticly the list menu after chosing an item
+                    closeMenuBtn.Command.Execute(closeMenuBtn.Command);
+                    openMenuBtn.IsChecked = false;
+                    break;
+                case 7:
+                    gridMenu.Children.Clear();
+                    gridMenu.Children.Add(new DashBoardUserControl());
+                    //close automaticly the list menu after chosing an item
+                    closeMenuBtn.Command.Execute(closeMenuBtn.Command);
+                    openMenuBtn.IsChecked = false;
+                    break;
+                default:
+                    break;
+            }
         }
 
         //method that moves the cursor on the menu based on selection 
@@ -140,6 +205,7 @@ namespace Libex
             //transitioningContentSlide.OnApplyTemplate();
             MenuCursor.Margin = new Thickness(0, (117.5 + (50 * listItemSelectedIndex)), 0, 0);
         }
+
 
         
     }
