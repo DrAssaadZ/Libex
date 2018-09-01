@@ -17,6 +17,7 @@
         <StackPanel Margin="20 0 0 0" HorizontalAlignment="Center" Orientation="Vertical">
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Padding="0 0 0 0" Height="50" Width="50">
                 <materialDesign:PackIcon Kind="GoogleAnalytics" Height="50" Width="50"></materialDesign:PackIcon>
+                    
             </Button>
             <TextBlock Foreground="white" Text="Books Analytics" TextAlignment="Center"></TextBlock>
         </StackPanel>

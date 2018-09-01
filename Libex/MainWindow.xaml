@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Libex"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"           
-        Title="Libex" Height="700" Width="1000" MinWidth="1000" MaxHeight="1080" MaxWidth="1920" MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" >
+        Title="Libex" Height="700"  Width="1000" SizeChanged="Window_SizeChanged" MinWidth="1000" MaxHeight="1080" MaxWidth="1920" MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" >
 
 
 
@@ -148,12 +148,27 @@
                         </Grid.RowDefinitions>
                     </Grid>
                 </TabControl>-->
-
-                <dragablz:TabablzControl Width="1000">
+                
+                
+                    <dragablz:TabablzControl  ShowDefaultCloseButton="True"  x:Name="tabControlDragable" >
+                    <TabItem Header="Special" />
                     <TabItem Header="Welcome">
-                        <TextBlock Text="Amazing designs!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    </TabItem>
+                    <TabItem Header="Welcome">
+
+                    </TabItem>
+                    <TabItem Header="Welcome">
+
+                    </TabItem>
+                    <TabItem Header="Welcome">
+
+                    </TabItem>
+                    <TabItem Header="Welcome">
+
                     </TabItem>
                 </dragablz:TabablzControl>
+                
 
             </Grid>
         </Grid>
