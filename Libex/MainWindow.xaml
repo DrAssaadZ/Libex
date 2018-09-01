@@ -80,66 +80,80 @@
             </StackPanel>
         </materialDesign:DrawerHost.LeftDrawerContent>
 
-        <!--main grid-->
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="36"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="10*"/>
-            </Grid.RowDefinitions>
-            
-                <materialDesign:ColorZone Mode="PrimaryDark"  Grid.Row="0"  MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <ToggleButton x:Name="openMenuBtn" VerticalAlignment="Center" Margin="5 0 0 0" Grid.Column="0" HorizontalAlignment="Left" ToolTip="Open Menu" Click="openMenuBtn_Click" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" CommandParameter="x:Static Dock.Left" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"/>
-                    <TextBlock Text="LibeX" Grid.Column="1" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" TextAlignment="Center"/>
-                    <Grid  Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 5 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="minAppBtn"  Margin="1.5" Click="minAppBtn_Click" ToolTip="Minimize to taskbar" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
-                            <materialDesign:PackIcon  Kind="WindowMinimize" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
-                        </Button>
-                        <Button x:Name="maxAppBtn" Click="maxAppBtn_Click" ToolTip="Maximize" Grid.Column="1" Margin="1.5" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
-                            <materialDesign:PackIcon  Kind="WindowMaximize"  Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
-                        </Button>
-                        <Button x:Name="restoreAppBtn" ToolTip="Restore down" Click="restoreAppBtn_Click" Visibility="Collapsed" Grid.Column="1" Margin="1.5" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
-                            <materialDesign:PackIcon  Kind="WindowRestore"  Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
-                        </Button>
-                        <Button x:Name="exitAppBtn" Click="exitAppBtn_Click" Grid.Column="2" Margin="1.5"  ToolTip="Exit" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
-                            <materialDesign:PackIcon  Kind="FileExcelBox" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </materialDesign:ColorZone>
-
-            <StackPanel Orientation="Horizontal" x:Name="gridMenu" Background="{DynamicResource PrimaryHueMidBrush}" Grid.Row="1">
-                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <StackPanel Margin="20 0 0 0" HorizontalAlignment="Center" Orientation="Vertical">
-                        <Button Background="{x:Null}" BorderBrush="{x:Null}" Padding="0 0 0 0" Height="50" Width="50">
-                            <materialDesign:PackIcon Kind="Information" Height="50" Width="50"></materialDesign:PackIcon>
-                        </Button>
-                        <TextBlock Foreground="white" Text="About" TextAlignment="Center"></TextBlock>
-                    </StackPanel>
+        
+        <materialDesign:DialogHost >
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Width="300" Height="170" Orientation="Vertical">
+                    <TextBlock Height="130" Width="200" FontSize="15" xml:space="preserve">
+Libex version beta
+Developed by:
+DrAssaadZ
+oZoubia
+Summer 2018.
+                    </TextBlock>
+                    <Button Width="100" Background="{StaticResource SecondaryAccentBrush}" BorderBrush="{x:Null}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"> Close </Button>
                 </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+                <!--main grid-->
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
 
-                <!--<Button Content="user control" x:Name="usercontrolShowBtn" Click="usercontrolShowBtn_Click" Background="White" Foreground="Blue"/>
+                <materialDesign:ColorZone Mode="PrimaryDark"  Grid.Row="0"  MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ToggleButton x:Name="openMenuBtn" VerticalAlignment="Center" Margin="5 0 0 0" Grid.Column="0" HorizontalAlignment="Left" ToolTip="Open Menu" Click="openMenuBtn_Click" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" CommandParameter="x:Static Dock.Left" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"/>
+                        <TextBlock Text="LibeX" Grid.Column="1" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" TextAlignment="Center"/>
+                        <Grid  Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 5 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="minAppBtn"  Margin="1.5" Click="minAppBtn_Click" ToolTip="Minimize to taskbar" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                                <materialDesign:PackIcon  Kind="WindowMinimize" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
+                            </Button>
+                            <Button x:Name="maxAppBtn" Click="maxAppBtn_Click" ToolTip="Maximize" Grid.Column="1" Margin="1.5" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                                <materialDesign:PackIcon  Kind="WindowMaximize"  Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
+                            </Button>
+                            <Button x:Name="restoreAppBtn" ToolTip="Restore down" Click="restoreAppBtn_Click" Visibility="Collapsed" Grid.Column="1" Margin="1.5" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                                <materialDesign:PackIcon  Kind="WindowRestore"  Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
+                            </Button>
+                            <Button x:Name="exitAppBtn" Click="exitAppBtn_Click" Grid.Column="2" Margin="1.5"  ToolTip="Exit" HorizontalAlignment="Right" Padding="0 0 0 0" materialDesign:RippleAssist.IsDisabled="True" BorderBrush="{x:Null}" Background="{x:Null}">
+                                <materialDesign:PackIcon  Kind="FileExcelBox" Height="27" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </materialDesign:ColorZone>
+
+                <StackPanel Orientation="Horizontal" x:Name="gridMenu" Background="{DynamicResource PrimaryHueMidBrush}" Grid.Row="1">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <StackPanel Margin="20 0 0 0" HorizontalAlignment="Center" Orientation="Vertical">
+                            <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0 0 0 0" Height="50" Width="50" >
+                                <materialDesign:PackIcon Kind="Information" Height="50" Width="50"></materialDesign:PackIcon>
+                            </Button>
+                            <TextBlock Foreground="white" Text="About" TextAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--<Button Content="user control" x:Name="usercontrolShowBtn" Click="usercontrolShowBtn_Click" Background="White" Foreground="Blue"/>
                 <Grid x:Name="userControlGrid" Background="Red" Width="300" Height="60" Margin="10 0 0 0">
                     
                 </Grid>-->
-            </StackPanel>
-            <Grid HorizontalAlignment="Center" Grid.Row="2" >
-                <!--<Button Content="Blue Amber" x:Name="blueAmberBtn" Click="blueAmberBtn_Click"/>
+                </StackPanel>
+                <Grid HorizontalAlignment="Center" Grid.Row="2" >
+                    <!--<Button Content="Blue Amber" x:Name="blueAmberBtn" Click="blueAmberBtn_Click"/>
                 <Button Content="Teal Amber" x:Name="tealAmberBtn" Click="tealAmberBtn_Click"/>
                 <Button Content="Blue grey Amber" x:Name="blueGreyBtn" Click="blueGreyBtn_Click"/>-->
-                
-                <!--<TabControl Loaded="myTab_Loaded" x:Name="myTab" Height="500" Width="700" Background="Green">
+
+                    <!--<TabControl Loaded="myTab_Loaded" x:Name="myTab" Height="500" Width="700" Background="Green">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -148,29 +162,16 @@
                         </Grid.RowDefinitions>
                     </Grid>
                 </TabControl>-->
-                
-                
+
+
                     <dragablz:TabablzControl  ShowDefaultCloseButton="True"  x:Name="tabControlDragable" >
-                    <TabItem Header="Special" />
-                    <TabItem Header="Welcome">
+                        <TabItem Header="Special">
+                        </TabItem>
+                    </dragablz:TabablzControl>
 
-                    </TabItem>
-                    <TabItem Header="Welcome">
 
-                    </TabItem>
-                    <TabItem Header="Welcome">
-
-                    </TabItem>
-                    <TabItem Header="Welcome">
-
-                    </TabItem>
-                    <TabItem Header="Welcome">
-
-                    </TabItem>
-                </dragablz:TabablzControl>
-                
-
+                </Grid>
             </Grid>
-        </Grid>
+        </materialDesign:DialogHost>
     </materialDesign:DrawerHost>
 </Window>
