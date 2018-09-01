@@ -67,17 +67,32 @@
       <DependentUpon>bookUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Client.cs" />
+    <Compile Include="ClientsUserControl.xaml.cs">
+      <DependentUpon>ClientsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DashBoardUserControl.xaml.cs">
       <DependentUpon>DashBoardUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="OrdersUserControl.xaml.cs">
+      <DependentUpon>OrdersUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RBook.cs" />
     <Compile Include="Rent.cs" />
+    <Compile Include="ReturnedBooksUserControl.xaml.cs">
+      <DependentUpon>ReturnedBooksUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SBook.cs" />
     <Compile Include="secondUserControlTest.xaml.cs">
       <DependentUpon>secondUserControlTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sell.cs" />
+    <Compile Include="SellsAndRentsUserControl.xaml.cs">
+      <DependentUpon>SellsAndRentsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsUserControl.xaml.cs">
+      <DependentUpon>SettingsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
     </Compile>
@@ -88,6 +103,10 @@
       <DependentUpon>TestUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="bookUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +126,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OrdersUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\BlueAmberTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,7 +142,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ReturnedBooksUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="secondUserControlTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SellsAndRentsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

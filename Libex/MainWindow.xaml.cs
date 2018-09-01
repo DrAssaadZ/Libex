@@ -59,9 +59,10 @@ namespace Libex
             if (this.WindowState == WindowState.Maximized)
             {
                 restoreAppBtn.Visibility = Visibility.Visible;
-                maxAppBtn.Visibility = Visibility.Collapsed;
+                maxAppBtn.Visibility = Visibility.Collapsed;               
             }
         }
+            
 
         //restore minimize window
         private void restoreAppBtn_Click(object sender, RoutedEventArgs e)
@@ -154,42 +155,42 @@ namespace Libex
                     break;
                 case 2:
                     gridMenu.Children.Clear();
-                    gridMenu.Children.Add(new bookUserControl());
+                    gridMenu.Children.Add(new ClientsUserControl());
                     //close automaticly the list menu after chosing an item
                     closeMenuBtn.Command.Execute(closeMenuBtn.Command);
                     openMenuBtn.IsChecked = false;
                     break;
                 case 3:
                     gridMenu.Children.Clear();
-                    gridMenu.Children.Add(new DashBoardUserControl());
+                    gridMenu.Children.Add(new bookUserControl());
                     //close automaticly the list menu after chosing an item
                     closeMenuBtn.Command.Execute(closeMenuBtn.Command);
                     openMenuBtn.IsChecked = false;
                     break;
                 case 4:
                     gridMenu.Children.Clear();
-                    gridMenu.Children.Add(new DashBoardUserControl());
+                    gridMenu.Children.Add(new OrdersUserControl());
                     //close automaticly the list menu after chosing an item
                     closeMenuBtn.Command.Execute(closeMenuBtn.Command);
                     openMenuBtn.IsChecked = false;
                     break;
                 case 5:
                     gridMenu.Children.Clear();
-                    gridMenu.Children.Add(new DashBoardUserControl());
+                    gridMenu.Children.Add(new ReturnedBooksUserControl());
                     //close automaticly the list menu after chosing an item
                     closeMenuBtn.Command.Execute(closeMenuBtn.Command);
                     openMenuBtn.IsChecked = false;
                     break;
                 case 6:
                     gridMenu.Children.Clear();
-                    gridMenu.Children.Add(new DashBoardUserControl());
+                    gridMenu.Children.Add(new SellsAndRentsUserControl());
                     //close automaticly the list menu after chosing an item
                     closeMenuBtn.Command.Execute(closeMenuBtn.Command);
                     openMenuBtn.IsChecked = false;
                     break;
                 case 7:
                     gridMenu.Children.Clear();
-                    gridMenu.Children.Add(new DashBoardUserControl());
+                    gridMenu.Children.Add(new SettingsUserControl());
                     //close automaticly the list menu after chosing an item
                     closeMenuBtn.Command.Execute(closeMenuBtn.Command);
                     openMenuBtn.IsChecked = false;
@@ -206,6 +207,19 @@ namespace Libex
             MenuCursor.Margin = new Thickness(0, (117.5 + (50 * listItemSelectedIndex)), 0, 0);
         }
 
+        //window size event , it changes the size of the tab control based on the window size 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized )
+            {
+                tabControlDragable.Width = 1920;
+                
+            }
+            else
+            {
+            tabControlDragable.Width = this.Width;
+            }
+        }
 
         
     }
