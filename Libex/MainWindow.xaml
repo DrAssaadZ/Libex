@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:Libex"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"           
-        Title="Libex" Height="700"  Width="1000" SizeChanged="Window_SizeChanged" MinWidth="1000" MaxHeight="1080" MaxWidth="1920" MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" >
-
+        Title="Libex" Height="700"  Width="1000" SizeChanged="Window_SizeChanged" MinWidth="1000" MaxHeight="1080" MaxWidth="1920" MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged">
+        
 
 
     <!--removing the border on the window when resizing-->
@@ -164,7 +164,7 @@ Summer 2018.
                 </TabControl>-->
 
 
-                    <dragablz:TabablzControl  ShowDefaultCloseButton="True"  x:Name="tabControlDragable" >
+                    <dragablz:TabablzControl MaxWidth="1900" ShowDefaultCloseButton="True" Loaded="tabControlDragable_Loaded" x:Name="tabControlDragable" >
                         <TabItem Header="Special">
                         </TabItem>
                     </dragablz:TabablzControl>

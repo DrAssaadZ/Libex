@@ -26,8 +26,8 @@ namespace Libex
             InitializeComponent();
 
         }
-        
-        
+
+
         // open menu click event
         private void openMenuBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -123,11 +123,7 @@ namespace Libex
         //    UC1.Visibility = System.Windows.Visibility.Visible;
         //}
         
-        //adding the tab created from the user control to the tabControl in the main window
-        private void myTab_Loaded(object sender, RoutedEventArgs e)
-        {
-            GlobalVariables.tbControl = (sender as TabControl);
-        }
+        
 
         //method that shows which menu item is selected
         private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -210,17 +206,13 @@ namespace Libex
         //window size event , it changes the size of the tab control based on the window size 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.WindowState == WindowState.Maximized )
-            {
-                tabControlDragable.Width = 1920;
-                
-            }
-            else
-            {
-            tabControlDragable.Width = this.Width;
-            }
+                tabControlDragable.Width = this.Width;            
         }
 
-        
+        //binding the tab control with the tbcontrol gloabl variabl
+        private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.tbControl = (sender as TabControl);
+        }
     }
 }
