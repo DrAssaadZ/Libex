@@ -9,18 +9,23 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Libex
-{   
+{
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        //dispatcher timer variable for the slideshow 
+        System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
+        //image number for the slide show 
+        private int imageNumber = 1;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -48,7 +53,9 @@ namespace Libex
 
         //max application button click
         private void maxAppBtn_Click(object sender, RoutedEventArgs e)
-        {           
+        {
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             this.WindowState = WindowState.Maximized;
             maxAppBtn.Visibility = Visibility.Collapsed;
             restoreAppBtn.Visibility = Visibility.Visible;
@@ -59,10 +66,10 @@ namespace Libex
             if (this.WindowState == WindowState.Maximized)
             {
                 restoreAppBtn.Visibility = Visibility.Visible;
-                maxAppBtn.Visibility = Visibility.Collapsed;               
+                maxAppBtn.Visibility = Visibility.Collapsed;
             }
         }
-            
+
 
         //restore minimize window
         private void restoreAppBtn_Click(object sender, RoutedEventArgs e)
@@ -77,53 +84,51 @@ namespace Libex
         {
             openMenuBtn.IsChecked = false;
         }
-       
+
         //left mouse clicked on the top color zone event
         private void ColorZone_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-        
+
         //minimize button click event
         private void minAppBtn_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
 
-        //private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Resources.MergedDictionaries.Clear();
-        //    AddResourceDictionary("Resources/TealAmberTheme.xaml");            
-        //}
 
-        //private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Resources.MergedDictionaries.Clear();
-        //    AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
-        //}
+        private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+            AddResourceDictionary("Resources/TealAmberTheme.xaml");
+        }
+
+        private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+            AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
+        }
 
 
-        //private void blueAmberBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Resources.MergedDictionaries.Clear();
-        //    AddResourceDictionary("Resources/BlueAmberTheme.xaml");
-        //}
+        private void blueAmberBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Resources.MergedDictionaries.Clear();
+            AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+        }
 
-        //public void AddResourceDictionary(string source)
-        //{
-        //    ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
-        //    this.Resources.MergedDictionaries.Add(resourceDictionary);
-        //}
+        public void AddResourceDictionary(string source)
+        {
+            ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
+            this.Resources.MergedDictionaries.Add(resourceDictionary);
+        }
 
-        //private void usercontrolShowBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    userControlGrid.Children.Clear();
-        //    TestUserControl UC1 = new TestUserControl();
-        //    userControlGrid.Children.Add(UC1);
-        //    UC1.Visibility = System.Windows.Visibility.Visible;
-        //}
-        
-        
+        //adding the tab created from the user control to the tabControl in the main window
+        private void myTab_Loaded(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.tbControl = (sender as TabControl);
+        }
+
 
         //method that shows which menu item is selected
         private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -131,7 +136,7 @@ namespace Libex
             //the selected item
             int listItemSelectedIndex = MenuList.SelectedIndex;
             MoveCursorMenu(listItemSelectedIndex);
-            
+
             //changing the user controls on list item clicks
             switch (listItemSelectedIndex)
             {
@@ -206,13 +211,65 @@ namespace Libex
         //window size event , it changes the size of the tab control based on the window size 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-                tabControlDragable.Width = this.Width;            
+
+            if (this.WindowState == WindowState.Maximized)
+            {
+                tabControlDragable.Width = 1920;
+
+            }
+            else
+            {
+                tabControlDragable.Width = this.Width;
+            }
         }
 
-        //binding the tab control with the tbcontrol gloabl variabl
-        private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
+        //dispatcher time of the image slide show initializing 
+        private void DispatcherTimerSlideShow()
         {
-            GlobalVariables.tbControl = (sender as TabControl);
+            dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcher.Interval = new TimeSpan(0, 0, 2);
+            dispatcher.Start();
+
+        }
+
+        //changing images in every tick of the dispatcher timer 
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            loadNextImage();
+        }
+
+        //activatin the slideshow when the expander is expended 
+        private void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            DispatcherTimerSlideShow();
+        }
+
+        //stopping the slideshow when the expander is collapsed
+        private void Expander_Collapsed(object sender, RoutedEventArgs e)
+        {
+            dispatcher.Stop();
+        }
+
+        //loading the next image 
+        private void loadNextImage()
+        {
+            if (imageNumber == 4)
+            {
+                imageNumber = 1;
+            }
+            string temp = string.Format(@"Resources\{0}.jpg", imageNumber);
+            BitmapImage img = new BitmapImage(new Uri(temp, UriKind.Relative));
+            
+            img.UriSource = new Uri(temp, UriKind.Relative);          
+            SlideShowImageContainer.Source = new BitmapImage(new Uri(temp, UriKind.Relative));
+            imageNumber++;
+        }
+
+        //get started button event in the WELCOME expander
+        private void getStartedBtn_Click(object sender, RoutedEventArgs e)
+        {
+            openMenuBtn.Command.Execute(openMenuBtn.Command);
+
         }
     }
 }
