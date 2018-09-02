@@ -29,6 +29,7 @@ namespace Libex
         public MainWindow()
         {
             InitializeComponent();
+            tabControlDragable.Width = this.Width;
 
         }
 
@@ -77,6 +78,7 @@ namespace Libex
             this.WindowState = WindowState.Normal;
             restoreAppBtn.Visibility = Visibility.Collapsed;
             maxAppBtn.Visibility = Visibility.Visible;
+            tabControlDragable.Width = this.Width;
         }
 
         //turns the open menu button unchecked 
@@ -123,11 +125,7 @@ namespace Libex
             this.Resources.MergedDictionaries.Add(resourceDictionary);
         }
 
-        //adding the tab created from the user control to the tabControl in the main window
-        private void myTab_Loaded(object sender, RoutedEventArgs e)
-        {
-            GlobalVariables.tbControl = (sender as TabControl);
-        }
+      
 
 
         //method that shows which menu item is selected
@@ -211,16 +209,7 @@ namespace Libex
         //window size event , it changes the size of the tab control based on the window size 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-
-            if (this.WindowState == WindowState.Maximized)
-            {
-                tabControlDragable.Width = 1920;
-
-            }
-            else
-            {
-                tabControlDragable.Width = this.Width;
-            }
+            tabControlDragable.Width = this.Width;           
         }
 
         //dispatcher time of the image slide show initializing 
@@ -270,6 +259,11 @@ namespace Libex
         {
             openMenuBtn.Command.Execute(openMenuBtn.Command);
 
+        }
+
+        private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.tbControl = (sender as TabControl);
         }
     }
 }

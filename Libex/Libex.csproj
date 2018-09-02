@@ -322,7 +322,6 @@
   <ItemGroup>
     <Resource Include="Resources\SplashBackground.jpg" />
   </ItemGroup>
-
   <ItemGroup>
     <Resource Include="Resources\library.jpg" />
   </ItemGroup>
@@ -346,7 +345,6 @@
   <ItemGroup>
     <Resource Include="Resources\glow.jpg" />
   </ItemGroup>
-
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
