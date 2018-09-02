@@ -7,7 +7,10 @@
         xmlns:local="clr-namespace:Libex"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"           
+
         Title="Libex" Height="700"  Width="1000" SizeChanged="Window_SizeChanged" MinWidth="1000"  MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" >
+
+
 
 
 
@@ -224,6 +227,7 @@ Summer 2018.
                                             </Expander.Background>
                                             <StackPanel Orientation="Vertical"  Margin="24,8,24,16">
 
+
                                             </StackPanel>
                                         </Expander>
                                         <Border Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True"/>
@@ -261,6 +265,8 @@ Summer 2018.
                                     </StackPanel>
                                 </ScrollViewer>
                             </materialDesign:Card>
+
+
                         </TabItem>
                     </dragablz:TabablzControl>
                 </Grid>

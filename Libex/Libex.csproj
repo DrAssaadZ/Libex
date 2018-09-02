@@ -37,6 +37,15 @@
     <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>F:\les études\3eme Année\Projet Final\4.5\hotel Managment\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>F:\les études\3eme Année\Projet Final\4.5\hotel Managment\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>F:\les études\3eme Année\Projet Final\4.5\hotel Managment\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -44,7 +53,11 @@
       <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>F:\les études\3eme Année\Projet Final\4.5\hotel Managment\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,54 +76,143 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="bookUserControl.xaml.cs">
+    <Compile Include="Tabs userControls\addClientUserControl.xaml.cs">
+      <DependentUpon>addClientUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\bkCategoryUserControl.xaml.cs">
+      <DependentUpon>bkCategoryUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\bkReturnTdyUserControl.xaml.cs">
+      <DependentUpon>bkReturnTdyUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\bookAnalyticsUserControl.xaml.cs">
+      <DependentUpon>bookAnalyticsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox userControls\bookUserControl.xaml.cs">
       <DependentUpon>bookUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs" />
-    <Compile Include="ClientsUserControl.xaml.cs">
+    <Compile Include="Project Classes\Client.cs" />
+    <Compile Include="Tabs userControls\clientAnalyticsUserControl.xaml.cs">
+      <DependentUpon>clientAnalyticsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\clientListUserControl.xaml.cs">
+      <DependentUpon>clientListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox userControls\ClientsUserControl.xaml.cs">
       <DependentUpon>ClientsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DashBoardUserControl.xaml.cs">
+    <Compile Include="Tabs userControls\currRentBooksUserControl.xaml.cs">
+      <DependentUpon>currRentBooksUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox userControls\DashBoardUserControl.xaml.cs">
       <DependentUpon>DashBoardUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GlobalVariables.cs" />
-    <Compile Include="OrdersUserControl.xaml.cs">
+    <Compile Include="Tabs userControls\delayBkUserControl.xaml.cs">
+      <DependentUpon>delayBkUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\globalSettingUserControl.xaml.cs">
+      <DependentUpon>globalSettingUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Project Classes\GlobalVariables.cs" />
+    <Compile Include="Tabs userControls\incomesAnalyticsUserControl.xaml.cs">
+      <DependentUpon>incomesAnalyticsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\listOrdersUserControl.xaml.cs">
+      <DependentUpon>listOrdersUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox userControls\OrdersUserControl.xaml.cs">
       <DependentUpon>OrdersUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RBook.cs" />
-    <Compile Include="Rent.cs" />
-    <Compile Include="ReturnedBooksUserControl.xaml.cs">
+    <Compile Include="Tabs userControls\personalSettingUserControl.xaml.cs">
+      <DependentUpon>personalSettingUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Project Classes\RBook.cs" />
+    <Compile Include="Project Classes\Rent.cs" />
+    <Compile Include="Tabs userControls\rentABookUserControl.xaml.cs">
+      <DependentUpon>rentABookUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\rentBooksUserControl.xaml.cs">
+      <DependentUpon>rentBooksUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox userControls\ReturnedBooksUserControl.xaml.cs">
       <DependentUpon>ReturnedBooksUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SBook.cs" />
-    <Compile Include="secondUserControlTest.xaml.cs">
-      <DependentUpon>secondUserControlTest.xaml</DependentUpon>
+    <Compile Include="Tabs userControls\saleBooksUserControl.xaml.cs">
+      <DependentUpon>saleBooksUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sell.cs" />
-    <Compile Include="SellsAndRentsUserControl.xaml.cs">
+    <Compile Include="Project Classes\SBook.cs" />
+    <Compile Include="Project Classes\Sell.cs" />
+    <Compile Include="Tabs userControls\sellABookUserControl.xaml.cs">
+      <DependentUpon>sellABookUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox userControls\SellsAndRentsUserControl.xaml.cs">
       <DependentUpon>SellsAndRentsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SettingsUserControl.xaml.cs">
+    <Compile Include="Toolbox userControls\SettingsUserControl.xaml.cs">
       <DependentUpon>SettingsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\soldBooksUserControl.xaml.cs">
+      <DependentUpon>soldBooksUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="statisticsUserControl.xaml.cs">
+    <Compile Include="Toolbox userControls\statisticsUserControl.xaml.cs">
       <DependentUpon>statisticsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TestUserControl.xaml.cs">
-      <DependentUpon>TestUserControl.xaml</DependentUpon>
-    </Compile>
-    <Page Include="bookUserControl.xaml">
+    <Page Include="Tabs userControls\addClientUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ClientsUserControl.xaml">
+    <Page Include="Tabs userControls\bkCategoryUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DashBoardUserControl.xaml">
+    <Page Include="Tabs userControls\bkReturnTdyUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\bookAnalyticsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Toolbox userControls\bookUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\clientAnalyticsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\clientListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Toolbox userControls\ClientsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\currRentBooksUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Toolbox userControls\DashBoardUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\delayBkUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\globalSettingUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\incomesAnalyticsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\listOrdersUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,7 +228,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="OrdersUserControl.xaml">
+    <Page Include="Toolbox userControls\OrdersUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\personalSettingUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\rentABookUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\rentBooksUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,19 +256,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ReturnedBooksUserControl.xaml">
+    <Page Include="Toolbox userControls\ReturnedBooksUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="secondUserControlTest.xaml">
+    <Page Include="Tabs userControls\saleBooksUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SellsAndRentsUserControl.xaml">
+    <Page Include="Tabs userControls\sellABookUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SettingsUserControl.xaml">
+    <Page Include="Toolbox userControls\SellsAndRentsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Toolbox userControls\SettingsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\soldBooksUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,11 +284,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="statisticsUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TestUserControl.xaml">
+    <Page Include="Toolbox userControls\statisticsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,6 +322,7 @@
   <ItemGroup>
     <Resource Include="Resources\SplashBackground.jpg" />
   </ItemGroup>
+
   <ItemGroup>
     <Resource Include="Resources\library.jpg" />
   </ItemGroup>
@@ -227,5 +346,13 @@
   <ItemGroup>
     <Resource Include="Resources\glow.jpg" />
   </ItemGroup>
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

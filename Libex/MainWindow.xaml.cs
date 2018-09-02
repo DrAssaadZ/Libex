@@ -97,6 +97,7 @@ namespace Libex
             this.WindowState = WindowState.Minimized;
         }
 
+
         private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Resources.MergedDictionaries.Clear();
@@ -127,6 +128,7 @@ namespace Libex
         {
             GlobalVariables.tbControl = (sender as TabControl);
         }
+
 
         //method that shows which menu item is selected
         private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -209,6 +211,7 @@ namespace Libex
         //window size event , it changes the size of the tab control based on the window size 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+
             if (this.WindowState == WindowState.Maximized)
             {
                 tabControlDragable.Width = 1920;
@@ -266,6 +269,7 @@ namespace Libex
         private void getStartedBtn_Click(object sender, RoutedEventArgs e)
         {
             openMenuBtn.Command.Execute(openMenuBtn.Command);
+
         }
     }
 }
