@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Libex"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"           
-        Title="Libex" Height="700"  Width="1000" SizeChanged="Window_SizeChanged" MinWidth="1000" MaxHeight="1080" MaxWidth="1920" MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" >
+        Title="Libex" Height="700"  Width="1000" SizeChanged="Window_SizeChanged" MinWidth="1000"  MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" >
 
 
 
@@ -149,27 +149,120 @@ Summer 2018.
                 </Grid>-->
                 </StackPanel>
                 <Grid HorizontalAlignment="Center" Grid.Row="2" >
-                    <!--<Button Content="Blue Amber" x:Name="blueAmberBtn" Click="blueAmberBtn_Click"/>
+                <!--<Button Content="Blue Amber" x:Name="blueAmberBtn" Click="blueAmberBtn_Click"/>
                 <Button Content="Teal Amber" x:Name="tealAmberBtn" Click="tealAmberBtn_Click"/>
                 <Button Content="Blue grey Amber" x:Name="blueGreyBtn" Click="blueGreyBtn_Click"/>-->
+                    <!--tab control--> 
+                    <dragablz:TabablzControl  ShowDefaultCloseButton="True" x:Name="tabControlDragable" >
+                        <TabItem Header="Welcome">
+                            <materialDesign:Card  Margin="20 30 20 10">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                                    
+                                    <StackPanel>
+                                        <!--welcome part-->
+                                        <Expander HorizontalAlignment="Stretch" >
+                                            <Expander.Header>
+                                                <TextBlock Text="WELCOME" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignDisplay1TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}" />
+                                            </Expander.Header>
+                                            <Expander.Background>
+                                                <ImageBrush ImageSource="Resources/library2.jpg"  Stretch="UniformToFill"/>
+                                            </Expander.Background>
+                                            <Grid Margin="24,8,24,16">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Row="0" Foreground="White"  TextAlignment="Center" FontSize="23" HorizontalAlignment="Center">
+                                                Thank you for trying Libex our humble library management application <LineBreak/>
+                                                it's an easy to use advanced library management that has the core <LineBreak/>
+                                                management features plus other new features that we want you to check <LineBreak/>
+                                                out which makes library management easy and fun, check them all out     <LineBreak/>                    
+                                                and let us think what do you think about them, we hope that you love it. <LineBreak/>
+                                                </TextBlock>
+                                                <Rectangle Grid.Row="0" Fill="White" Opacity="0.1"/>
+                                                <Button x:Name="getStartedBtn" Click="getStartedBtn_Click" Grid.Row="1" Margin="0 25 0 0 " Width="120" Height="38" Content="Get started" BorderBrush="{x:Null}" Background="{StaticResource SecondaryAccentBrush}"/>
+                                            </Grid>
+                                        </Expander>
+                                        <Border Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True"/>
+                                        <!--general view part-->
+                                        <Expander HorizontalAlignment="Stretch" Expanded="Expander_Expanded" Collapsed="Expander_Collapsed" >
+                                            <Expander.Header>
+                                                <TextBlock Text="General view" Style="{StaticResource MaterialDesignDisplay1TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}" HorizontalAlignment="Center" />
+                                            </Expander.Header>
+                                            <Expander.Background>
+                                                <ImageBrush ImageSource="Resources/stars.jpg" Stretch="UniformToFill"/>
+                                            </Expander.Background>
+                                            <Grid   Margin="24,8,24,16">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Rectangle Fill="White" Grid.Column="0" Opacity="0.1"/>
+                                                <StackPanel Orientation="Vertical" Grid.Column="0" Margin="0 20 0 0">
+                                                    <TextBlock Grid.Row="0"  Foreground="White" TextWrapping="Wrap" TextAlignment="Center" FontSize="23">
+                                                Libex was beautifully designed to have the main and core management features 
+                                                that every library management application has, like adding , deleting or editing books in your library,
+                                                you can also add clients edit or delete them... you can manage the sales and rents of the books 
+                                                    with the easy to use and well designed interface that makes navigating through the entire application simple and fun.
+                                                    </TextBlock>
+                                                    <Separator Height="10" Width="Auto" Margin="100 20 100 0"/>
+                                                </StackPanel>
+                                                <Border BorderThickness="2" BorderBrush="White" Grid.Column="1" Margin="20 0 0 0">
+                                                    <Image x:Name="SlideShowImageContainer"  Source="Resources/library.jpg" Stretch="Fill" Height="Auto" Width="Auto"   />
+                                                </Border>
+                                            </Grid>
+                                        </Expander>
+                                        <Border Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True"/>
+                                        <!--something else part-->
+                                        <Expander HorizontalAlignment="Stretch" >
+                                            <Expander.Header>
+                                                <TextBlock Text="WELCOME" Style="{StaticResource MaterialDesignDisplay1TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}" HorizontalAlignment="Center" />
+                                            </Expander.Header>
+                                            <Expander.Background>
+                                                <ImageBrush ImageSource="Resources/book.jpg" Stretch="UniformToFill"/>
+                                            </Expander.Background>
+                                            <StackPanel Orientation="Vertical"  Margin="24,8,24,16">
 
-                    <!--<TabControl Loaded="myTab_Loaded" x:Name="myTab" Height="500" Width="700" Background="Green">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                    </Grid>
-                </TabControl>-->
-
-
-                    <dragablz:TabablzControl  ShowDefaultCloseButton="True"  x:Name="tabControlDragable" >
-                        <TabItem Header="Special">
+                                            </StackPanel>
+                                        </Expander>
+                                        <Border Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True"/>
+                                        <!--something else part-->
+                                        <Expander HorizontalAlignment="Stretch" >
+                                            <Expander.Header>
+                                                <TextBlock Text="Multiple options" Style="{StaticResource MaterialDesignDisplay1TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}" HorizontalAlignment="Center" />
+                                            </Expander.Header>
+                                            <Expander.Background>
+                                                <ImageBrush ImageSource="Resources/glow.jpg" Stretch="UniformToFill"/>
+                                            </Expander.Background>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Rectangle Fill="White" Grid.Column="0" Opacity="0.1"/>
+                                                <StackPanel Orientation="Vertical" Grid.Column="0" Margin="0 20 0 0">
+                                                    <TextBlock Grid.Row="0"  Foreground="White" TextWrapping="Wrap" TextAlignment="Center" FontSize="23">
+                                                        An application with an eye attracting interface that makes those long hours of 
+                                                        managing data less boring and more fun with the ability to choose among different skins of 
+                                                        the application, you can choose the one that suits your taste better, other than the skins 
+                                                        there are other options that you can customize that will find in the setting.                                                        
+                                                    </TextBlock>
+                                                    <Separator Height="10" Width="Auto" Margin="100 20 100 0"/>
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 20">
+                                                        <Button Background="#2196F3" Width="100" Content="Blue Amber" x:Name="blueAmberBtn" Click="blueAmberBtn_Click"/>
+                                                        <Button Margin="10 0 10 0" Background="#009688" Width="100" Content="Teal Amber" x:Name="tealAmberBtn" Click="tealAmberBtn_Click"/>
+                                                        <Button Background="#607D8B" Width="100" Content="Blue grey Amber" x:Name="blueGreyBtn" Click="blueGreyBtn_Click"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Expander>
+                                        <Border Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True"/>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </materialDesign:Card>
                         </TabItem>
                     </dragablz:TabablzControl>
-
-
                 </Grid>
             </Grid>
         </materialDesign:DialogHost>
