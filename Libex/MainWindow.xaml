@@ -156,7 +156,7 @@ Summer 2018.
                 <Button Content="Teal Amber" x:Name="tealAmberBtn" Click="tealAmberBtn_Click"/>
                 <Button Content="Blue grey Amber" x:Name="blueGreyBtn" Click="blueGreyBtn_Click"/>-->
                     <!--tab control--> 
-                    <dragablz:TabablzControl  ShowDefaultCloseButton="True" x:Name="tabControlDragable" >
+                    <dragablz:TabablzControl Loaded="tabControlDragable_Loaded"  ShowDefaultCloseButton="True" x:Name="tabControlDragable" >
                         <TabItem Header="Welcome">
                             <materialDesign:Card  Margin="20 30 20 10">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto" >
