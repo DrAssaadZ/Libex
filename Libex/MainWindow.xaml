@@ -22,7 +22,7 @@
     
 
     <!--left menu drawer host-->
-    <materialDesign:DrawerHost x:Name="mainDrawerHost" MouseDown="DrawerHost_MouseDown">
+    <materialDesign:DrawerHost x:Name="mainDrawerHost"  MouseDown="DrawerHost_MouseDown">
         <materialDesign:DrawerHost.LeftDrawerContent>
             <StackPanel Orientation="Horizontal" Background="{DynamicResource PrimaryHueDarkBrush}">
                 <Grid x:Name="MenuCursor" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Background="{DynamicResource SecondaryAccentBrush}" Width="10" Margin="0 117.5 0 0"></Grid>
