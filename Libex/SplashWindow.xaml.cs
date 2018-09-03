@@ -81,7 +81,7 @@ namespace Libex
                 {
                     //creating the database along with the clients table 
                     SqlCeConnection dataBaseConnection = new SqlCeConnection(@"Data Source=" + dataBasePath + ";Max Database Size = 4091;");
-                    string query = " CREATE TABLE Clients(ClientID int PRIMARY KEY IDENTITY(1,1) , ClientName nvarchar(50), ClientFName nvarchar(50), ClientGender nvarchar(10), ClientAge nvarchar(10), ClientPoints int)";
+                    string query = " CREATE TABLE Clients([Client ID] int PRIMARY KEY IDENTITY(1,1) , Name nvarchar(50), [Last Name] nvarchar(50), Gender nvarchar(10), [Age Period] nvarchar(10), Points int)";
                     SqlCeCommand cmd = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd.ExecuteNonQuery();
@@ -89,7 +89,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating selling books table
-                    query = " CREATE TABLE SBooks(SBookID int PRIMARY KEY IDENTITY(1,1) , SBookName nvarchar(50), SBookISBN nvarchar(20), SBookEdition int, SBookPageNumber int, SBookAuthor nvarchar(20), SBookRating int, SBookAudience nvarchar(10), SBookCopyRightHolder nvarchar(20), SBookEditor nvarchar(20), SBookGenre nvarchar(10), SBookPrice real, SBookLAnguage nvarchar(15), SBookIllustrator nvarchar(20), SBookCover image, SBookQuantity int, SBookAbout nvarchar(500))";
+                    query = " CREATE TABLE SBooks([SBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [Book Rating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(10), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover image, Quantity int, About nvarchar(500))";
                     SqlCeCommand cmd2 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd2.ExecuteNonQuery();
@@ -97,7 +97,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating renting books table
-                    query = " CREATE TABLE RBooks(RBookID int PRIMARY KEY IDENTITY(1,1) , RBookName nvarchar(50), SBookISBN nvarchar(20), RBookEdition int, SBookPageNumber int, RBookAuthor nvarchar(20), RBookRating int, RBookAudience nvarchar(10), RBookCopyRightHolder nvarchar(20), RBookEditor nvarchar(20), RBookGenre nvarchar(10), RBookPrice real, RBookLAnguage nvarchar(15), RBookIllustrator nvarchar(20), RBookCover image, RBookQuantity int, RBookAbout nvarchar(500), RBookStatus nvarchar(10), RbookRentDAy datetime, RBookReturnDate datetime)";
+                    query = " CREATE TABLE RBooks([RBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [BookRating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(10), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover image, About nvarchar(500), Status nvarchar(10), [Rent DAy] datetime, [Return Date] datetime)";
                     SqlCeCommand cmd3 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd3.ExecuteNonQuery();
@@ -105,7 +105,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating sells table
-                    query = " CREATE TABLE Sells(SellID int PRIMARY KEY IDENTITY(1,1) , BookName nvarchar(50), SBookISBN nvarchar(20), SBookGenre nvarchar(10), SellDate datetime, ClientAge nvarchar(10))";
+                    query = " CREATE TABLE Sells(SellID int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), Genre nvarchar(10), [Sell Date] datetime, [Client Age] nvarchar(10))";
                     SqlCeCommand cmd4 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd4.ExecuteNonQuery();
@@ -113,7 +113,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating renting rents table
-                    query = " CREATE TABLE Rents(RentID int PRIMARY KEY IDENTITY(1,1) , BookID int, ClientID int, RentDay datetime, ReturnDay datetime)";
+                    query = " CREATE TABLE Rents([RentID] int PRIMARY KEY IDENTITY(1,1) , [Book ID] int, [Client ID] int, [Rent Day] datetime, [Return Day] datetime)";
                     SqlCeCommand cmd5 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd5.ExecuteNonQuery();
@@ -121,18 +121,33 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //adding foreign key1
-                    query = "ALTER TABLE Rents ADD CONSTRAINT [RBookID] FOREIGN KEY ([BookID]) REFERENCES RBooks([RBookID])";
+                    query = "ALTER TABLE Rents ADD CONSTRAINT [Book ID] FOREIGN KEY ([Book ID]) REFERENCES RBooks([RBook ID])";
                     SqlCeCommand cmd6 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd6.ExecuteNonQuery();
                     dataBaseConnection.Close();
 
                     //adding foreign key2
-                    query = "ALTER TABLE Rents ADD CONSTRAINT [ClientID] FOREIGN KEY ([ClientID]) REFERENCES Clients([ClientID])";
+                    query = "ALTER TABLE Rents ADD CONSTRAINT [Client ID] FOREIGN KEY ([Client ID]) REFERENCES Clients([Client ID])";
                     SqlCeCommand cmd7 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd7.ExecuteNonQuery();
                     dataBaseConnection.Close();
+                    Thread.Sleep(200);
+
+                    query = " CREATE TABLE commands(cmID int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), Author nvarchar(20), Price real, [Client ID] int)";
+                    SqlCeCommand cmd8 = new SqlCeCommand(query, dataBaseConnection);
+                    dataBaseConnection.Open();
+                    cmd8.ExecuteNonQuery();
+                    dataBaseConnection.Close();
+                    Thread.Sleep(200);
+
+                    query = "ALTER TABLE commands ADD CONSTRAINT [Client ID] FOREIGN KEY ([Client ID]) REFERENCES Clients([Client ID])";
+                    SqlCeCommand cmd9 = new SqlCeCommand(query, dataBaseConnection);
+                    dataBaseConnection.Open();
+                    cmd9.ExecuteNonQuery();
+                    dataBaseConnection.Close();
+                    Thread.Sleep(200);
                 }
                 catch (Exception)
                 {

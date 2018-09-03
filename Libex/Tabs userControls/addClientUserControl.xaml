@@ -1,12 +1,82 @@
 ﻿<UserControl x:Class="Libex.addClientUserControl"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Libex"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="2.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="20 10 0 0" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}">
+            Add a Client
+        </TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBox Width="250" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBlock x:Name="hint1" Text="hello world" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ComboBox Margin="0 20 0 0" Width="250" materialDesign:HintAssist.Hint="Gender" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBoxItem>
+                            Male
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Female
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock x:Name="hint3" Text="hello world" Foreground="Red"/>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBox Width="250" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Family Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBlock x:Name="hint2" Text="hello world" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left">
+                    <ComboBox Margin="0 20 0 0" Width="250" materialDesign:HintAssist.Hint="Age Period" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBoxItem>
+                            Kid
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Teenager
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Young Person
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            rajal
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            40-50
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Old Person
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock x:Name="hint4" Text="hello world" Foreground="Red"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="addClientBtn" Click="addClientBtn_Click" Width="100" Content="Add Client" Margin="0 0 10 0" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}"/>
+            <Button x:Name="printBtn" Click="printBtn_Click" Width="100" Content="Print" Margin="10 0 0 0" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}"/>
+        </StackPanel>
+        <materialDesign:Snackbar Grid.Row="2" Message="Client Added" IsActive="False" x:Name="addSnackBar"/>
+        <materialDesign:Snackbar Grid.Row="2" Message="Preparing To Print" IsActive="False" x:Name="printSnackBar"/>
+        
     </Grid>
 </UserControl>
