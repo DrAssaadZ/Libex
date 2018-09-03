@@ -22,6 +22,7 @@ namespace Libex
     {
         System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
         System.Windows.Threading.DispatcherTimer dispatcher2 = new System.Windows.Threading.DispatcherTimer();
+
         public addClientUserControl()
         {
             InitializeComponent();
@@ -33,24 +34,13 @@ namespace Libex
             DispatcherTimerAddClientAddSnack();
         }
 
-        private void DispatcherTimerprintSnack()
-        {
-            dispatcher2.Tick += new EventHandler(dispatcherTimer2_Tick);
-            dispatcher2.Interval = new TimeSpan(0, 0, 2);
-            dispatcher2.Start();
-        }
-
-        private void dispatcherTimer2_Tick(object sender, EventArgs e)
-        {
-            printSnackBar.IsActive = false;
-            dispatcher2.Stop();
-        }
-
         private void printBtn_Click(object sender, RoutedEventArgs e)
         {
             printSnackBar.IsActive = true;
             DispatcherTimerprintSnack();
         }
+
+
 
         //timer that closes the addsnackbar
         private void DispatcherTimerAddClientAddSnack()
@@ -68,5 +58,17 @@ namespace Libex
             dispatcher.Stop();
         }
 
+        private void DispatcherTimerprintSnack()
+        {
+            dispatcher2.Tick += new EventHandler(dispatcherTimer2_Tick);
+            dispatcher2.Interval = new TimeSpan(0, 0, 2);
+            dispatcher2.Start();
+        }
+
+        private void dispatcherTimer2_Tick(object sender, EventArgs e)
+        {
+            printSnackBar.IsActive = false;
+            dispatcher2.Stop();
+        }
     }
 }
