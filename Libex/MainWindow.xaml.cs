@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Libex
 {
@@ -22,7 +23,7 @@ namespace Libex
     public partial class MainWindow : Window
     {
         //dispatcher timer variable for the slideshow 
-        System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
+        DispatcherTimer dispatcher = new DispatcherTimer();
         //image number for the slide show 
         private int imageNumber = 1;
 
@@ -30,7 +31,6 @@ namespace Libex
         {
             InitializeComponent();
             tabControlDragable.Width = this.Width;
-
         }
 
 
@@ -126,8 +126,6 @@ namespace Libex
         }
 
       
-
-
         //method that shows which menu item is selected
         private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -215,6 +213,7 @@ namespace Libex
         //dispatcher time of the image slide show initializing 
         private void DispatcherTimerSlideShow()
         {
+            
             dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcher.Interval = new TimeSpan(0, 0, 2);
             dispatcher.Start();
@@ -224,22 +223,22 @@ namespace Libex
         //changing images in every tick of the dispatcher timer 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            loadNextImage();
+            loadNextImage();           
         }
 
         //activatin the slideshow when the expander is expended 
         private void Expander_Expanded(object sender, RoutedEventArgs e)
-        {
-            DispatcherTimerSlideShow();
+        {          
+            DispatcherTimerSlideShow();           
         }
 
         //stopping the slideshow when the expander is collapsed
         private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
-            dispatcher.Stop();
+            dispatcher.Stop();          
         }
 
-        //loading the next image 
+        //loading the next image
         private void loadNextImage()
         {
             if (imageNumber == 4)
@@ -248,8 +247,8 @@ namespace Libex
             }
             string temp = string.Format(@"Resources\{0}.jpg", imageNumber);
             BitmapImage img = new BitmapImage(new Uri(temp, UriKind.Relative));
-            
-            img.UriSource = new Uri(temp, UriKind.Relative);          
+
+            img.UriSource = new Uri(temp, UriKind.Relative);
             SlideShowImageContainer.Source = new BitmapImage(new Uri(temp, UriKind.Relative));
             imageNumber++;
         }
@@ -257,13 +256,26 @@ namespace Libex
         //get started button event in the WELCOME expander
         private void getStartedBtn_Click(object sender, RoutedEventArgs e)
         {
-            openMenuBtn.Command.Execute(openMenuBtn.Command);
-
+            openMenuBtn.Command.Execute(openMenuBtn.Command);           
         }
 
         private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
         {
             GlobalVariables.tbControl = (sender as TabControl);
+        }
+
+        //settings button click event in the welcome tab 
+        private void settingBtnInWelcomeTab_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new SettingsUserControl());
+        }
+
+        //statistics button click event in the welcome tab
+        private void statisticsBtnInWelcomeTab_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new statisticsUserControl());
         }
     }
 }
