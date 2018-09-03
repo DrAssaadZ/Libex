@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml;
 
 namespace Libex
 {
@@ -29,6 +30,7 @@ namespace Libex
 
         public MainWindow()
         {
+            LoadMainWindowSetting();
             InitializeComponent();
             tabControlDragable.Width = this.Width;
         }
@@ -99,26 +101,43 @@ namespace Libex
             this.WindowState = WindowState.Minimized;
         }
 
-
+        //appling green theme on button click 
         private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Resources.MergedDictionaries.Clear();
             AddResourceDictionary("Resources/TealAmberTheme.xaml");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
+            ThemeNode.InnerText = "Green";            
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
 
+        //appling blue grey them on button click
         private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Resources.MergedDictionaries.Clear();
             AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
+            ThemeNode.InnerText = "Gray";
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
 
-
+        //appling blue theme on button click
         private void blueAmberBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Resources.MergedDictionaries.Clear();
             AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
+            ThemeNode.InnerText = "Blue";
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
 
+        //adding a resource dictionnary 
         public void AddResourceDictionary(string source)
         {
             ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
@@ -276,6 +295,36 @@ namespace Libex
         {
             gridMenu.Children.Clear();
             gridMenu.Children.Add(new statisticsUserControl());
+        }
+
+        //loading setting to the main window
+        public void LoadMainWindowSetting()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            string theme = doc.SelectSingleNode("//Theme").InnerText;
+
+
+            switch (theme)
+            {
+                case "Blue":
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+                    break;
+                case "Green":
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/TealAmberTheme.xaml");
+                    break;
+                case "Gray":
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
+                    break;
+
+                default:
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+                    break;
+            }
         }
     }
 }

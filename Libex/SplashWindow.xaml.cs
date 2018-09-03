@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace Libex
 {
@@ -28,7 +29,7 @@ namespace Libex
         static string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         static string appDirectoryPath = appDataPath + @"\Libex";
         static string dbDirectoryPath = appDirectoryPath + @"\Data Base";
-        static string settingDirectoryPath = appDirectoryPath + @"\Setting";
+        public static string settingDirectoryPath = appDirectoryPath + @"\Setting";
         static string backUpDirectoryPath = appDirectoryPath + @"\Backup";
         static string dataBasePath = dbDirectoryPath + @"\LibexDB.sdf";
         bool pathExists = Directory.Exists(appDirectoryPath);
@@ -44,7 +45,8 @@ namespace Libex
             }
             else
             {
-                //Only one instance of the application is running 
+                LoadSetting();
+                //Only one instance of the application is running                 
                 InitializeComponent();
 
                 BackgroundWorker worker = new BackgroundWorker();
@@ -72,6 +74,7 @@ namespace Libex
                 Thread.Sleep(200);
                 Directory.CreateDirectory(settingDirectoryPath);
                 Thread.Sleep(200);
+                CreateSettingFile();
                 Directory.CreateDirectory(backUpDirectoryPath);
                 Thread.Sleep(200);
                 File.Create(dataBasePath).Close();
@@ -164,6 +167,96 @@ namespace Libex
             MainWindow obj = new MainWindow();
             obj.Show();
             this.Close();
+        }
+
+        private void CreateSettingFile()
+        {
+            //initializing xml document object that we need to create all the nodes and setting the root node
+            XmlDocument document = new XmlDocument();
+            XmlNode RootElement = document.CreateElement("App");
+            document.AppendChild(RootElement);
+            // creating the links node and appending it to the root node (app)
+            XmlNode linksNode = document.CreateElement("Links");
+            RootElement.AppendChild(linksNode);
+            //creating the logo note and appending it to the links node
+            XmlNode logoNode = document.CreateElement("Logo");
+            linksNode.AppendChild(logoNode);
+            //creating the settings node 
+            XmlNode settingNode = document.CreateElement("Settings");
+            RootElement.AppendChild(settingNode);
+            //creating the theme node 
+            XmlNode themeNOde = document.CreateElement("Theme");
+            themeNOde.InnerText = "Blue";
+            settingNode.AppendChild(themeNOde);
+            //creating the language node 
+            XmlNode languageNode = document.CreateElement("Language");
+            languageNode.InnerText = "En";
+            settingNode.AppendChild(languageNode);
+            //creating the tray node 
+            XmlNode trayNode = document.CreateElement("Tray");
+            trayNode.InnerText = "0";
+            settingNode.AppendChild(trayNode);
+            //creating the startwith windows node 
+            XmlNode startWithWindowsNode = document.CreateElement("StartWithWindows");
+            startWithWindowsNode.InnerText = "0";
+            settingNode.AppendChild(startWithWindowsNode);
+            //creating the libary name node 
+            XmlNode LibraryNameNode = document.CreateElement("LibraryName");
+            settingNode.AppendChild(LibraryNameNode);
+            //creating the address node 
+            XmlNode AddressNode = document.CreateElement("Address");
+            settingNode.AppendChild(AddressNode);
+            //creating the owner node 
+            XmlNode OwnerNOde = document.CreateElement("Owner");
+            settingNode.AppendChild(OwnerNOde);
+            //saving the xml document 
+            document.Save(settingDirectoryPath + @"\Settings.xml");
+        }
+
+        //loading application settings
+        public void LoadSetting()
+        {
+            if (!pathExists)
+            {
+                //appling blue theme on button click                
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+
+            }
+            else
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(settingDirectoryPath + @"\Settings.xml");
+                string theme = doc.SelectSingleNode("//Theme").InnerText;
+                
+
+                switch (theme)
+                {
+                    case "Blue":
+                        this.Resources.MergedDictionaries.Clear();
+                        AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+                        break;
+                    case "Green":
+                        this.Resources.MergedDictionaries.Clear();
+                        AddResourceDictionary("Resources/TealAmberTheme.xaml");
+                        break;
+                    case "Gray":
+                        this.Resources.MergedDictionaries.Clear();
+                        AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
+                        break;
+
+                    default:
+                        this.Resources.MergedDictionaries.Clear();
+                        AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+                        break;
+                }
+            }
+        }
+        //adding a resource dictionnary 
+        public void AddResourceDictionary(string source)
+        {
+            ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
+            this.Resources.MergedDictionaries.Add(resourceDictionary);
         }
     }
 }
