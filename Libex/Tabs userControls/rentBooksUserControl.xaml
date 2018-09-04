@@ -4,58 +4,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"   
              xmlns:local="clr-namespace:Libex"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Margin="20 10 0 0" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}">
-            Rent a Book
-        </TextBlock>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Width="150" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <ComboBox Margin="0 0 0 20" x:Name="rBookComboBox" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <ComboBox Margin="0 0 0 20" x:Name="clientId" materialDesign:HintAssist.Hint="Client Age" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <DatePicker x:Name="FutureDatePicker" Width="100" materialDesign:HintAssist.Hint="Future Date">
-                    
-                </DatePicker>
-                <StackPanel>
-                    <CheckBox x:Name="reductionCheckBox" IsChecked="False" Margin="0,0,0,8">Reduction</CheckBox>
-                    <TextBox FontSize="18" Style="{StaticResource MaterialDesignTextFieldBoxTextBox}" VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" Width="150" materialDesign:HintAssist.Hint="Reduction %" IsEnabled="{Binding Path=IsChecked, ElementName=reductionCheckBox}" />
-                </StackPanel>
-            </StackPanel>
-            <materialDesign:Card Grid.Column="1" Height="250" Width="400" Margin=" 0 25 0 25">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Book's Name</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Author</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">ISBN</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Genre</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Price</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Audience</TextBlock>
+
+        <materialDesign:ColorZone Padding="0 10 0 10" Background="{DynamicResource SecondaryAccentBrush}">
+            <Grid  Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <TextBlock Margin="35 0 0 0" Text="Search" FontSize="25" HorizontalAlignment="Left" Grid.Column="0" VerticalAlignment="Center" Foreground="White"/>
+                    <materialDesign:ColorZone Margin="20 0 0 0" VerticalAlignment="Center" Grid.Column="0" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Button IsEnabled="False" Style="{DynamicResource MaterialDesignToolButton}" Margin="0 0 0 0" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Width="25" Height="25" Kind="Magnify" />
+                            </Button>
+                            <TextBox Width="300" FontSize="15" materialDesign:HintAssist.Hint="Search a book for rent " materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="10 0 0 0">
+                        <TextBlock Foreground="White" FontWeight="Bold" Text="Grid view" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                        <ToggleButton x:Name="saleBookViewBtn" Style="{StaticResource MaterialDesignSwitchToggleButton}" Checked="saleBookViewBtn_Checked" Unchecked="saleBookViewBtn_Unchecked"/>
+                        <TextBlock Foreground="White" FontWeight="Bold" Text="Large view" VerticalAlignment="Center" Margin="10 0 0 0"/>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                    </StackPanel>
-                    <Image Height="150" Width="100" Margin="55 0 0 0" x:Name="bookCoverImg"></Image>
                 </StackPanel>
-            </materialDesign:Card>
+                <Button   Content="Add a book" Grid.Column="2" Width="110" Margin="0 0 10 0"/>
+            </Grid>
+        </materialDesign:ColorZone>
+        <Grid Grid.Row="1" x:Name="rentBookUserControlMainGrid" Loaded="rentBookUserControlMainGrid_Loaded">
+
         </Grid>
-        <Button x:Name="confirmBtn" Click="confirmBtn_Click" VerticalAlignment="Top" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}" Grid.Row="2" Height="25" Width="120" Content="Confirm"></Button>
-        <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="confirmSnack"/>
-        <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="errorSnack"/>
+
     </Grid>
 </UserControl>

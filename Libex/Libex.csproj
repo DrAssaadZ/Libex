@@ -101,6 +101,18 @@
     <Compile Include="Tabs userControls\bookAnalyticsUserControl.xaml.cs">
       <DependentUpon>bookAnalyticsUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tabs userControls\rentBookGridViewUserControl.xaml.cs">
+      <DependentUpon>rentBookGridViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\rentBookLargeViewUserControl.xaml.cs">
+      <DependentUpon>rentBookLargeViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\saleBookGridViewUserControl.xaml.cs">
+      <DependentUpon>saleBookGridViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\saleBookLargeViewUserControl.xaml.cs">
+      <DependentUpon>saleBookLargeViewUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Toolbox userControls\bookUserControl.xaml.cs">
       <DependentUpon>bookUserControl.xaml</DependentUpon>
     </Compile>
@@ -198,6 +210,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tabs userControls\bookAnalyticsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\rentBookGridViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\rentBookLargeViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\saleBookGridViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\saleBookLargeViewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
