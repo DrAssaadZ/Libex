@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Libex
+namespace Libex.Tabs_userControls
 {
     /// <summary>
-    /// Interaction logic for bkCategoryUserControl.xaml
+    /// Interaction logic for rentBookLargeViewUserControl.xaml
     /// </summary>
-    public partial class bkCategoryUserControl : UserControl
+    public partial class rentBookLargeViewUserControl : UserControl
     {
-        public bkCategoryUserControl()
+        public rentBookLargeViewUserControl()
         {
             InitializeComponent();
         }
-
-        
-
-
-        
     }
 }

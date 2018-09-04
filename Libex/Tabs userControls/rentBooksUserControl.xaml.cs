@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libex.Tabs_userControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace Libex
         public rentBooksUserControl()
         {
             InitializeComponent();
+        }
+
+        //showing the grid view of the books when the tab is created as default view
+        private void rentBookUserControlMainGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            rentBookUserControlMainGrid.Children.Clear();
+            rentBookUserControlMainGrid.Children.Add(new rentBookGridViewUserControl());
+        }
+        //grid view  toggle button checked event
+        private void saleBookViewBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            rentBookUserControlMainGrid.Children.Clear();
+            rentBookUserControlMainGrid.Children.Add(new rentBookLargeViewUserControl());
+        }
+
+        //large view toggle button unchecked event
+        private void saleBookViewBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            rentBookUserControlMainGrid.Children.Clear();
+            rentBookUserControlMainGrid.Children.Add(new rentBookGridViewUserControl());
         }
     }
 }
