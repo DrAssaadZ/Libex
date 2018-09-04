@@ -46,5 +46,23 @@ namespace Libex
             saleBookUserControlMainGrid.Children.Clear();
             saleBookUserControlMainGrid.Children.Add(new saleBookGridViewUserControl());
         }
+
+        //add new book button click event
+        private void addSBookBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Add a book",
+            };
+
+            GlobalVariables.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            addSBookUserControl UC1 = new addSBookUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
+        }
     }
 }
