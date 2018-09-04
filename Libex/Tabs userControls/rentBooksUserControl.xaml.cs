@@ -47,5 +47,23 @@ namespace Libex
             rentBookUserControlMainGrid.Children.Add(new rentBookGridViewUserControl());
 
         }
+
+        //rent a book button click event
+        private void rentBookBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Rent a book",
+            };
+
+            GlobalVariables.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            rentABookUserControl UC1 = new rentABookUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
+        }
     }
 }

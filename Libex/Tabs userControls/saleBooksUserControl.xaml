@@ -35,7 +35,7 @@
                         <TextBlock Foreground="White" FontWeight="Bold" Text="Large view" VerticalAlignment="Center" Margin="10 0 0 0"/>
                     </StackPanel>
                 </StackPanel>
-                <Button Content="Add a book" Grid.Column="2" Width="110" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                <Button x:Name="addSBookBtn" Click="addSBookBtn_Click" Content="Add a book" Grid.Column="2" Width="110" VerticalAlignment="Center" Margin="0 0 10 0"/>
             </Grid>
         </materialDesign:ColorZone>
         
