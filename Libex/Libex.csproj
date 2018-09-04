@@ -83,6 +83,15 @@
     <Compile Include="Tabs userControls\addClientUserControl.xaml.cs">
       <DependentUpon>addClientUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tabs userControls\addOrderUserControl.xaml.cs">
+      <DependentUpon>addOrderUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\addRBookUserControl.xaml.cs">
+      <DependentUpon>addRBookUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs userControls\addSBookUserControl.xaml.cs">
+      <DependentUpon>addSBookUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tabs userControls\bkCategoryUserControl.xaml.cs">
       <DependentUpon>bkCategoryUserControl.xaml</DependentUpon>
     </Compile>
@@ -165,6 +174,18 @@
       <DependentUpon>statisticsUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Tabs userControls\addClientUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\addOrderUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\addRBookUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tabs userControls\addSBookUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

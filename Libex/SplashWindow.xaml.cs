@@ -84,7 +84,7 @@ namespace Libex
                 {
                     //creating the database along with the clients table 
                     SqlCeConnection dataBaseConnection = new SqlCeConnection(@"Data Source=" + dataBasePath + ";Max Database Size = 4091;");
-                    string query = " CREATE TABLE Clients([Client ID] int PRIMARY KEY IDENTITY(1,1) , Name nvarchar(50), [Last Name] nvarchar(50), Gender nvarchar(10), [Age Period] nvarchar(10), Points int)";
+                    string query = " CREATE TABLE Clients([Client ID] int PRIMARY KEY IDENTITY(1,1) , Name nvarchar(50), [Last Name] nvarchar(50), Gender nvarchar(10), [Age Period] nvarchar(10))";
                     SqlCeCommand cmd = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd.ExecuteNonQuery();
@@ -124,7 +124,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //adding foreign key1
-                    query = "ALTER TABLE Rents ADD CONSTRAINT [Book ID] FOREIGN KEY ([Book ID]) REFERENCES RBooks([RBook ID])";
+                    query = "ALTER TABLE Rents ADD CONSTRAINT [Book ID] FOREIGN KEY ([Book ID]) REFERENCES RBooks([RBook ID], Status nvarchar(10))";
                     SqlCeCommand cmd6 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd6.ExecuteNonQuery();
@@ -138,7 +138,7 @@ namespace Libex
                     dataBaseConnection.Close();
                     Thread.Sleep(200);
 
-                    query = " CREATE TABLE commands(cmID int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), Author nvarchar(20), Price real, [Client ID] int)";
+                    query = " CREATE TABLE commands(cmID int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), Author nvarchar(20), Price real, [Client ID] int, Language nvarchar(15), Edition int)";
                     SqlCeCommand cmd8 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd8.ExecuteNonQuery();

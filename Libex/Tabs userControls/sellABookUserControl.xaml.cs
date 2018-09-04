@@ -20,9 +20,29 @@ namespace Libex
     /// </summary>
     public partial class sellABookUserControl : UserControl
     {
+        System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
         public sellABookUserControl()
         {
             InitializeComponent();
+        }
+
+        private void confirmBtn_Click(object sender, RoutedEventArgs e)
+        {
+            confirmSnack.IsActive = true;
+            DispatcherTimerConfirmSnack();
+        }
+
+        private void DispatcherTimerConfirmSnack()
+        {
+            dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcher.Interval = new TimeSpan(0, 0, 2);
+            dispatcher.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            confirmSnack.IsActive = false;
+            dispatcher.Stop();
         }
     }
 }
