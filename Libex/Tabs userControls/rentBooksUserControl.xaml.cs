@@ -26,6 +26,7 @@ namespace Libex
             InitializeComponent();
         }
 
+
         //showing the grid view of the books when the tab is created as default view
         private void rentBookUserControlMainGrid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -44,6 +45,7 @@ namespace Libex
         {
             rentBookUserControlMainGrid.Children.Clear();
             rentBookUserControlMainGrid.Children.Add(new rentBookGridViewUserControl());
+
         }
     }
 }

@@ -21,7 +21,6 @@ namespace Libex
         string RBookEditor;
         string RbookGenre;
         float RBookRentPrice;
-        string RBookLang;
         string RBookIllustrator;
         string RBookQuantity;
         BitmapImage RBookCover;

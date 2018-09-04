@@ -13,24 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Libex
+namespace Libex.Tabs_userControls
 {
     /// <summary>
-    /// Interaction logic for rentABookUserControl.xaml
+    /// Interaction logic for addOrderUserControl.xaml
     /// </summary>
-    public partial class rentABookUserControl : UserControl
+    public partial class addOrderUserControl : UserControl
     {
         System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
-        public rentABookUserControl()
+        public addOrderUserControl()
         {
             InitializeComponent();
         }
 
-        private void confirmBtn_Click(object sender, RoutedEventArgs e)
+        private void addOrderBtn_Click(object sender, RoutedEventArgs e)
         {
             confirmSnack.IsActive = true;
             DispatcherTimerConfirmSnack();
         }
+
         private void DispatcherTimerConfirmSnack()
         {
             dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
