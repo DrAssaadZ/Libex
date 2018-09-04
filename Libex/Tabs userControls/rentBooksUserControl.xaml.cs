@@ -24,5 +24,10 @@ namespace Libex
         {
             InitializeComponent();
         }
+
+        private void confirmBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

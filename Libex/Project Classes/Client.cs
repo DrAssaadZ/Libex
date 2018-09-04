@@ -13,7 +13,6 @@ namespace Libex
         string CFName;
         string CGender;
         string CAgePeriod;
-        int Points;
 
         public Client()
         {

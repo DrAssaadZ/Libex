@@ -10,6 +10,7 @@ namespace Libex
     {
         int RBookId;
         int CId;
+        string status;
         DateTime RentDay;
         DateTime ReturnDAy;
         int RentNumberDAys;
