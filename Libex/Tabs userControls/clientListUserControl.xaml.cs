@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,32 @@ namespace Libex
     /// </summary>
     public partial class clientListUserControl : UserControl
     {
+        
+        SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
         public clientListUserControl()
         {
             InitializeComponent();
+            ShowClientsDataGrid();
+        }
+
+        public void ShowClientsDataGrid()
+        {            
+            
+            string query = "SELECT * FROM Clients";
+            databaseConnection.Open();
+            SqlCeCommand cmd = new SqlCeCommand(query,databaseConnection);
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            clientListDataGrid.ItemsSource = data.DefaultView;
+            databaseConnection.Close();
+
+        }
+
+        //refresh button click
+        private void refreshClientList_Click(object sender, RoutedEventArgs e)
+        {
+            ShowClientsDataGrid();
         }
     }
 }

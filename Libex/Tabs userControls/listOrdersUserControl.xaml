@@ -10,8 +10,9 @@
     <Grid>
         
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
 
             <materialDesign:ColorZone Padding="0 10 0 10" Background="{DynamicResource SecondaryAccentBrush}">
@@ -37,7 +38,9 @@
                 </StackPanel>
             </Grid>
         </materialDesign:ColorZone>
-        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="ordersDataGrid" Background="White" AutoGenerateColumns="True" Margin="20 20 20 20"></DataGrid>
-
+        <Button x:Name="refreshBtn" Click="refreshBtn_Click" Grid.Row="1" Height="35" Width="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Margin="0 0 10 0">
+            <materialDesign:PackIcon Kind="Refresh" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="35" Height="35" />
+        </Button>
+        <DataGrid Grid.Row="2" IsReadOnly="True" x:Name="ordersDataGrid" Background="White" AutoGenerateColumns="True" ></DataGrid>
     </Grid>
 </UserControl>

@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -21,23 +21,27 @@
                 <TextBlock Foreground="{DynamicResource SecondaryAccentBrush}" Text="Add an Order" FontSize="24" Margin="20 0 0 0"></TextBlock>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
-                        <TextBox  HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Clien ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox x:Name="ClientIDBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Client ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
-                        <TextBox HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Book's NAme" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <ComboBox x:Name="BooksNameComboBox" />
                         <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
-                        <TextBox HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Author" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox x:Name="bookAuthorBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Author" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
-                        <TextBox HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Year of Edition" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox x:Name="bookEditionBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Year of Edition" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
-                        <TextBox HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Language" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox x:Name="bookLanguage" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Language" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="20 0 0 0" Orientation="Vertical">
+                        <TextBox x:Name="bookPrice" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Price" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                 </StackPanel>

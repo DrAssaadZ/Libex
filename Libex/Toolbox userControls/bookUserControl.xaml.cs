@@ -49,11 +49,13 @@ namespace Libex
             TabItem newTabItem = new TabItem
             {
                 Header = "For Rent Books",
+                
             };
-
+            
             GlobalVariables.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
+            
             rentBooksUserControl UC1 = new rentBooksUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
@@ -69,7 +71,7 @@ namespace Libex
             };
 
             GlobalVariables.tbControl.Items.Add(newTabItem);
-            newTabItem.Content = tabGrid;
+            newTabItem.Content = tabGrid;           
             tabGrid.Children.Clear();
             currRentBooksUserControl UC1 = new currRentBooksUserControl();
             tabGrid.Children.Add(UC1);

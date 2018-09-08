@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +23,12 @@ namespace Libex
     /// </summary>
     public partial class listOrdersUserControl : UserControl
     {
+        SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
         public listOrdersUserControl()
         {
             InitializeComponent();
+            ShowOrdersDataGrid();
+
         }
 
         private void addOrderBtn_Click(object sender, RoutedEventArgs e)
@@ -41,6 +46,25 @@ namespace Libex
             addOrderUserControl UC1 = new addOrderUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
+        }
+
+        public void ShowOrdersDataGrid()
+        {
+
+            string query = "SELECT [Client ID],[Book Name],Author,Language,Price FROM commands";
+            databaseConnection.Open();
+            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            ordersDataGrid.ItemsSource = data.DefaultView;
+            databaseConnection.Close();
+
+        }
+
+        private void refreshBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ShowOrdersDataGrid();
         }
     }
 }
