@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Libex.Tabs_userControls
 {
@@ -20,16 +22,21 @@ namespace Libex.Tabs_userControls
     /// </summary>
     public partial class addSBookUserControl : UserControl
     {
-        System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
+        System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();        
         public addSBookUserControl()
         {
             InitializeComponent();
         }
-
+  
+        //add button click event
         private void addBookBtn_Click(object sender, RoutedEventArgs e)
         {
             confirmSnack.IsActive = true;
             DispatcherTimerConfirmSnack();
+           
+            SBook obj = new SBook(bookNameBox.Text, ISBNBox.Text,int.Parse(editionYearBox.Text),int.Parse(nbrPagesBox.Text),authorBox.Text,audienceBox.Text,copyrightHolderBox.Text,editorBox.Text
+                                    ,genreBox.Text, float.Parse( priceBox.Text),languagebox.Text,illustratorBox.Text,int.Parse(quantityBox.Text),BasicRatingBar.Value,coverContainer.Source,aboutBox.Text);
+            obj.insertSaleBook();           
         }
 
         private void DispatcherTimerConfirmSnack()
@@ -44,5 +51,26 @@ namespace Libex.Tabs_userControls
             confirmSnack.IsActive = false;
             dispatcher.Stop();
         }
+
+        //cover button click event
+        private void coverBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Title = "Select image";
+                dialog.Filter = "Image files (*.png;*.jpeg,*.jpg)|*.png;*.jpeg;*.jpg";
+                if (dialog.ShowDialog() == true)
+                {
+                    //image source                                      
+                    coverContainer.Source = new BitmapImage(new Uri(dialog.FileName));                   
+                }
+            }
+            catch (Exception)
+            {               
+                MessageBox.Show("Please pick an image file");
+            }
+        }
+
     }
 }

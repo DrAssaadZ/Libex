@@ -32,10 +32,13 @@ namespace Libex
         public static string settingDirectoryPath = appDirectoryPath + @"\Setting";
         static string backUpDirectoryPath = appDirectoryPath + @"\Backup";
         static string dataBasePath = dbDirectoryPath + @"\LibexDB.sdf";
+        //GlobalVariables.coverPath = dbDirectoryPath + @"\coverImages";
+        
         bool pathExists = Directory.Exists(appDirectoryPath);
 
         public SplashWindow()
         {
+            
             //testing if the application is already runing
             if (Process.GetProcessesByName("Libex").Length > 1)
             {
@@ -67,10 +70,12 @@ namespace Libex
         //predefined function that does the work of the thread 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
+            GlobalVariables.coverPath = dbDirectoryPath + @"\coverImages";
             //testing if the database is created or not
             if (!pathExists)
             {
                 Directory.CreateDirectory(dbDirectoryPath);
+                Directory.CreateDirectory(GlobalVariables.coverPath);
                 Thread.Sleep(200);
                 Directory.CreateDirectory(settingDirectoryPath);
                 Thread.Sleep(200);
@@ -84,7 +89,7 @@ namespace Libex
                 {
                     //creating the database along with the clients table 
                     SqlCeConnection dataBaseConnection = new SqlCeConnection(@"Data Source=" + dataBasePath + ";Max Database Size = 4091;");
-                    string query = " CREATE TABLE Clients([Client ID] int PRIMARY KEY IDENTITY(1,1) , Name nvarchar(50), [Last Name] nvarchar(50), Gender nvarchar(10), [Age Period] nvarchar(10))";
+                    string query = " CREATE TABLE Clients([Client ID] int PRIMARY KEY IDENTITY(1,1) , Name nvarchar(50), [Last Name] nvarchar(50), Gender nvarchar(10), [Age Period] nvarchar(15))";
                     SqlCeCommand cmd = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd.ExecuteNonQuery();
@@ -92,7 +97,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating selling books table
-                    query = " CREATE TABLE SBooks([SBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [Book Rating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(10), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover image, Quantity int, About nvarchar(500))";
+                    query = " CREATE TABLE SBooks([SBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [Book Rating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(10), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover nvarchar(100), Quantity int, About nvarchar(500))";
                     SqlCeCommand cmd2 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd2.ExecuteNonQuery();
@@ -100,7 +105,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating renting books table
-                    query = " CREATE TABLE RBooks([RBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [BookRating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(10), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover image, About nvarchar(500), Status nvarchar(10), [Rent DAy] datetime, [Return Date] datetime)";
+                    query = " CREATE TABLE RBooks([RBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [BookRating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(10), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover nvarchar(100), About nvarchar(500), Status nvarchar(10))";
                     SqlCeCommand cmd3 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd3.ExecuteNonQuery();
@@ -124,7 +129,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //adding foreign key1
-                    query = "ALTER TABLE Rents ADD CONSTRAINT [Book ID] FOREIGN KEY ([Book ID]) REFERENCES RBooks([RBook ID], Status nvarchar(10))";
+                    query = "ALTER TABLE Rents ADD CONSTRAINT [Book ID] FOREIGN KEY ([Book ID]) REFERENCES RBooks([RBook ID])";
                     SqlCeCommand cmd6 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd6.ExecuteNonQuery();
@@ -151,10 +156,18 @@ namespace Libex
                     cmd9.ExecuteNonQuery();
                     dataBaseConnection.Close();
                     Thread.Sleep(200);
+
+                    query = "ALTER TABLE commands ADD CONSTRAINT [Book Name] FOREIGN KEY ([Book Name]) REFERENCES RBooks([Book Name])";
+                    SqlCeCommand cmd10 = new SqlCeCommand(query, dataBaseConnection);
+                    dataBaseConnection.Open();
+                    cmd10.ExecuteNonQuery();
+                    dataBaseConnection.Close();
+                    Thread.Sleep(200);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("An erreur has been accured,\n please restart the application");
+                    //MessageBox.Show("An erreur has been accured,\n please restart the application");
+                    MessageBox.Show(ex.Message.ToString());
                 }
                 
             }

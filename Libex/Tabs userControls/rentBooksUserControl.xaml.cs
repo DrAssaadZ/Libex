@@ -61,7 +61,7 @@ namespace Libex
             GlobalVariables.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
-            rentABookUserControl UC1 = new rentABookUserControl();
+            addRBookUserControl UC1 = new addRBookUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }

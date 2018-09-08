@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,10 @@ namespace Libex.Tabs_userControls
         {
             confirmSnack.IsActive = true;
             DispatcherTimerConfirmSnack();
+
+            RBook obj = new RBook(bookNameBox.Text, ISBNBox.Text, int.Parse(editionYearBox.Text), int.Parse(nbrPagesBox.Text), bookAuthorBox.Text, AudienceBox.Text, copyrightHolderBox.Text, editorBox.Text
+                                    , genreBox.Text, float.Parse(priceBox.Text), languageBox.Text, illustratorBox.Text, BasicRatingBar.Value, coverContainer.Source, aboutBox.Text);
+            obj.insertRentBook();
         }
         private void DispatcherTimerConfirmSnack()
         {
@@ -42,6 +47,26 @@ namespace Libex.Tabs_userControls
         {
             confirmSnack.IsActive = false;
             dispatcher.Stop();
+        }
+
+        //add cover button click event
+        private void AddCoverBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Title = "Select image";
+                dialog.Filter = "Image files (*.png;*.jpeg,*.jpg)|*.png;*.jpeg;*.jpg";
+                if (dialog.ShowDialog() == true)
+                {
+                    //image source                                      
+                    coverContainer.Source = new BitmapImage(new Uri(dialog.FileName));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please pick an image file");
+            }
         }
     }
 }

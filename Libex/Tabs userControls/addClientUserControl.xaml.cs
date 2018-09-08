@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,12 +29,17 @@ namespace Libex
             InitializeComponent();
         }
 
+        //add client button event
         private void addClientBtn_Click(object sender, RoutedEventArgs e)
         {
             addSnackBar.IsActive = true;
             DispatcherTimerAddClientAddSnack();
+
+            Client obj = new Client(addClientNameBox.Text,addClientFnameBox.Text,addClientGenderBox.Text,addClientAgeBox.Text);
+            obj.insertClient();        
         }
 
+        //print button event
         private void printBtn_Click(object sender, RoutedEventArgs e)
         {
             printSnackBar.IsActive = true;

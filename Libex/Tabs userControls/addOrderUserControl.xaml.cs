@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libex.Project_Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,9 @@ namespace Libex.Tabs_userControls
         {
             confirmSnack.IsActive = true;
             DispatcherTimerConfirmSnack();
+
+            Command obj = new Command(int.Parse(ClientIDBox.Text),BooksNameComboBox.Text,int.Parse( bookEditionBox.Text),bookLanguage.Text,bookAuthorBox.Text,float.Parse(bookPrice.Text));
+            obj.addAnOrder();
         }
 
         private void DispatcherTimerConfirmSnack()

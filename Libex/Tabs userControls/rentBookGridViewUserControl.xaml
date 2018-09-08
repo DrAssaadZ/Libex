@@ -4,9 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Libex.Tabs_userControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Green">
-            
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="1"  IsReadOnly="True" x:Name="rentBookDataGrid"  AutoGenerateColumns="True"  MaxWidth="1200"></DataGrid>
+        <Button x:Name="refreshBtn" Click="refreshBtn_Click" Grid.Row="0" Height="35" Width="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Margin="0 0 10 0">
+            <materialDesign:PackIcon Kind="Refresh" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="35" Height="35" />
+        </Button>
     </Grid>
 </UserControl>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,26 @@ namespace Libex.Tabs_userControls
         public rentBookGridViewUserControl()
         {
             InitializeComponent();
+            ShowRBooksDataGrid();
+        }
+
+        //showing the rent books in the data grid
+        public void ShowRBooksDataGrid()
+        {
+            SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
+            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Genre],[Price],[Language],[BookRating] FROM RBooks";
+            databaseConnection.Open();
+            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            rentBookDataGrid.ItemsSource = data.DefaultView;
+            databaseConnection.Close();
+        }
+
+        private void refreshBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ShowRBooksDataGrid();
         }
     }
 }
