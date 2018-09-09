@@ -49,5 +49,20 @@ namespace Libex
         {
             ShowClientsDataGrid();
         }
+
+        private void printIDBtn_Click(object sender, RoutedEventArgs e)
+        {
+                       
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            deleteClientConfirmation obj = new deleteClientConfirmation();
+            obj.ShowDialog();
+
+            //update dataGrid after deletion            
+            ShowClientsDataGrid();
+        }
     }
 }

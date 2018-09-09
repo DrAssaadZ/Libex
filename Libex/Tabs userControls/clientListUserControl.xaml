@@ -30,6 +30,23 @@
         <Button ToolTip="Refresh" Click="refreshClientList_Click" Grid.Row="1" HorizontalAlignment="Right" Margin="0 0 10 0" Background="{x:Null}" x:Name="refreshClientList" Width="35" Height="35" Padding="0" BorderBrush="{x:Null}">
             <materialDesign:PackIcon Kind="Refresh" Width="35" Height="35" Foreground="{DynamicResource PrimaryHueDarkBrush}"></materialDesign:PackIcon>
         </Button>
-        <DataGrid Grid.Row="2" IsReadOnly="True" x:Name="clientListDataGrid" Background="White" AutoGenerateColumns="True" MaxWidth="1200" Margin="10"></DataGrid>
+        <DataGrid Grid.Row="2" IsReadOnly="True" x:Name="clientListDataGrid" Background="White" AutoGenerateColumns="True" MaxWidth="1200" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Background="{DynamicResource PrimaryHueDarkBrush}" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Delete" x:Name="deleteBtn" Click="deleteBtn_Click">
+                                    <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
+                                </Button>
+                                <Button Background="{DynamicResource PrimaryHueDarkBrush}" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Print ID Card" x:Name="printIDBtn"  >
+                                    <materialDesign:PackIcon Kind="Printer" ></materialDesign:PackIcon>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
