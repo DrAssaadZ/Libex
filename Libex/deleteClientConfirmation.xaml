@@ -1,0 +1,19 @@
+﻿<Window x:Class="Libex.deleteClientConfirmation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libex"
+        mc:Ignorable="d"
+        Title="deleteClientConfirmation" Height="219.634" WindowStyle="None" Width="385.34">
+    <StackPanel Orientation="Vertical">
+        <materialDesign:ColorZone Height="15" Background="{DynamicResource SecondaryAccentBrush}"></materialDesign:ColorZone>
+        <TextBlock  Height="100" Text="Are You Sure Wanna Delete?" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"></TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="yesBtn" Height="35" Content="Yes" Width="75" Margin="0 0 10 0" Click="yesBtn_Click"></Button>
+            <Button x:Name="noBtn" Height="35" Content="No" Width="75"  Margin="10 0 0 0" Click="noBtn_Click"></Button>
+        </StackPanel>
+
+    </StackPanel>
+</Window>

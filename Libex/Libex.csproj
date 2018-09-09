@@ -79,6 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="deleteClientConfirmation.xaml.cs">
+      <DependentUpon>deleteClientConfirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Project Classes\Command.cs" />
     <Compile Include="Tabs userControls\addClientUserControl.xaml.cs">
       <DependentUpon>addClientUserControl.xaml</DependentUpon>
@@ -185,6 +188,10 @@
     <Compile Include="Toolbox userControls\statisticsUserControl.xaml.cs">
       <DependentUpon>statisticsUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="deleteClientConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Tabs userControls\addClientUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
