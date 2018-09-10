@@ -12,7 +12,24 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="saleBookDataGrid"  AutoGenerateColumns="True"  MaxWidth="1200" ></DataGrid>
+        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="saleBookDataGrid"  AutoGenerateColumns="True"  MaxWidth="1200" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0 0 10 0" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Delete" x:Name="deleteBtn" Click="deleteBtn_Click">
+                                    <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
+                                </Button>
+                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}"  BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="More Informations" x:Name="moreInfoBtn"  >
+                                    <materialDesign:PackIcon Kind="Information" ></materialDesign:PackIcon>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="refreshBtn" Click="refreshBtn_Click" Grid.Row="0" Height="35" Width="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Margin="0 0 10 0">
             <materialDesign:PackIcon Kind="Refresh" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="35" Height="35" />
         </Button>

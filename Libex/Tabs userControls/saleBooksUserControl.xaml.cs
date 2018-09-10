@@ -1,6 +1,8 @@
 ﻿using Libex.Tabs_userControls;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace Libex
     /// </summary>
     public partial class saleBooksUserControl : UserControl
     {
+        saleBookGridViewUserControl gridView = new saleBookGridViewUserControl();
         public saleBooksUserControl()
         {
             InitializeComponent();
@@ -30,21 +33,21 @@ namespace Libex
         private void saleBookViewBtn_Checked(object sender, RoutedEventArgs e)
         {
             saleBookUserControlMainGrid.Children.Clear();
-            saleBookUserControlMainGrid.Children.Add(new saleBookLargeViewUserControl());
+            saleBookUserControlMainGrid.Children.Add(gridView);
         }
 
         //large view toggle button unchecked event
         private void saleBookViewBtn_Unchecked(object sender, RoutedEventArgs e)
         {
             saleBookUserControlMainGrid.Children.Clear();
-            saleBookUserControlMainGrid.Children.Add(new saleBookGridViewUserControl());
+            saleBookUserControlMainGrid.Children.Add(new saleBookLargeViewUserControl());
         }
 
         //showing the grid view of the books when the tab is created as default view
         private void saleBookUserControlMainGrid_Loaded(object sender, RoutedEventArgs e)
         {
             saleBookUserControlMainGrid.Children.Clear();
-            saleBookUserControlMainGrid.Children.Add(new saleBookGridViewUserControl());
+            saleBookUserControlMainGrid.Children.Add(gridView);
         }
 
         //add new book button click event
@@ -63,6 +66,19 @@ namespace Libex
             addSBookUserControl UC1 = new addSBookUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
+        }
+
+        private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
+            string query = "SELECT [SBook ID], [Book Name], [Book ISBN],[Book Edition],[Author],[Genre],[Price],[Language],[Quantity],[Book Rating] FROM SBooks WHERE [Book Name] LIKE '%" + searchBar.Text + "%'";
+            databaseConnection.Open();
+            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            gridView.saleBookDataGrid.ItemsSource = data.DefaultView;
+            databaseConnection.Close();
         }
     }
 }

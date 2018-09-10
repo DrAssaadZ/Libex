@@ -32,11 +32,64 @@ namespace Libex
         //add client button event
         private void addClientBtn_Click(object sender, RoutedEventArgs e)
         {
-            addSnackBar.IsActive = true;
-            DispatcherTimerAddClientAddSnack();
+            if (addClientNameBox.Text.Any(char.IsDigit) || addClientFnameBox.Text.Any(char.IsDigit) ||  addClientNameBox.Text.Length < 2 || addClientFnameBox.Text.Length < 2 || addClientGenderBox.Text.Length == 0 || addClientAgeBox.Text.Length == 0 )
+            {
+                if (addClientNameBox.Text.Length < 2)
+                {
+                    hint1.Text = "Name is empty or too short";
+                }
+                else if (addClientNameBox.Text.Any(char.IsDigit))
+                {
+                    hint1.Text = "Name contains a number";
+                }
+                else
+                {
+                    hint1.Text = "";
+                }
+                
+                if (addClientFnameBox.Text.Length < 2)
+                {
+                    hint2.Text = "Family name is empty or too short";
+                }
+                else if (addClientFnameBox.Text.Any(char.IsDigit))
+                {
+                    hint2.Text = "Family name contains a number";
+                }
+                else
+                {
+                    hint2.Text = "";
+                }
+                if (addClientGenderBox.Text.Length == 0)
+                {
+                    hint3.Text = "Choose a gender";
+                }
+                else
+                {
+                    hint3.Text = "";
+                }
+                if (addClientAgeBox.Text.Length == 0)
+                {
+                    hint4.Text = "Choose an age period";
+                }
+                else
+                {
+                    hint4.Text = "";
+                }
+            }
+            else
+            {
+                hint1.Text = "";
+                hint2.Text = "";
+                hint3.Text = "";
+                hint4.Text = "";
 
-            Client obj = new Client(addClientNameBox.Text,addClientFnameBox.Text,addClientGenderBox.Text,addClientAgeBox.Text);
-            obj.insertClient();        
+                addSnackBar.IsActive = true;
+                DispatcherTimerAddClientAddSnack();
+
+                Client obj = new Client(addClientNameBox.Text, addClientFnameBox.Text, addClientGenderBox.Text, addClientAgeBox.Text);
+                obj.insertClient();
+            }
+           
         }
 
         //print button event

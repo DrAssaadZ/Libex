@@ -28,7 +28,7 @@
                             <Button IsEnabled="False" Style="{DynamicResource MaterialDesignToolButton}" Margin="0 0 0 0" VerticalAlignment="Center">
                                 <materialDesign:PackIcon Width="25" Height="25" Kind="Magnify" />
                             </Button>
-                            <TextBox Width="300" FontSize="15" materialDesign:HintAssist.Hint="Search a book for rent " materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
+                            <TextBox x:Name="searchBar" TextChanged="searchBar_TextChanged" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Search a book for rent " materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
                         </StackPanel>
                     </materialDesign:ColorZone>
                     <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="10 0 0 0">
@@ -41,6 +41,7 @@
             </Grid>
         </materialDesign:ColorZone>
         <Grid Grid.Row="1" x:Name="rentBookUserControlMainGrid" Loaded="rentBookUserControlMainGrid_Loaded">
+            
 
         </Grid>
 

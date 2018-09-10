@@ -82,6 +82,12 @@
     <Compile Include="deleteClientConfirmation.xaml.cs">
       <DependentUpon>deleteClientConfirmation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="deleteRBookConfirmation.xaml.cs">
+      <DependentUpon>deleteRBookConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="deleteSBookConfiramtion.xaml.cs">
+      <DependentUpon>deleteSBookConfiramtion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Project Classes\Command.cs" />
     <Compile Include="Tabs userControls\addClientUserControl.xaml.cs">
       <DependentUpon>addClientUserControl.xaml</DependentUpon>
@@ -189,6 +195,14 @@
       <DependentUpon>statisticsUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="deleteClientConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="deleteRBookConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="deleteSBookConfiramtion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -32,7 +32,7 @@ namespace Libex.Tabs_userControls
         public void ShowBooksDataGrid()
         {
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Genre],[Price],[Language],[Quantity],[Book Rating] FROM SBooks";
+            string query = "SELECT [SBook ID], [Book Name], [Book ISBN],[Book Edition],[Author],[Genre],[Price],[Language],[Quantity],[Book Rating] FROM SBooks";
             databaseConnection.Open();
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
@@ -45,6 +45,16 @@ namespace Libex.Tabs_userControls
 
         private void refreshBtn_Click(object sender, RoutedEventArgs e)
         {
+            ShowBooksDataGrid();
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            deleteSBookConfiramtion obj = new deleteSBookConfiramtion();
+            obj.ShowDialog();
+
+            //update dataGrid after deletion            
             ShowBooksDataGrid();
         }
     }

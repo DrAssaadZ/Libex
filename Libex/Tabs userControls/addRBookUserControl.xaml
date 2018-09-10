@@ -75,6 +75,30 @@
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <ComboBox x:Name="genreBox" materialDesign:HintAssist.Hint="Genre" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBoxItem Content="Science Fiction"></ComboBoxItem>
+                                    <ComboBoxItem Content="Drama"></ComboBoxItem>
+                                    <ComboBoxItem Content="Action/Adventure"></ComboBoxItem>
+                                    <ComboBoxItem Content="Romance"></ComboBoxItem>
+                                    <ComboBoxItem Content="Mystery"></ComboBoxItem>
+                                    <ComboBoxItem Content="Fantasy"></ComboBoxItem>
+                                    <ComboBoxItem Content="Biographies"></ComboBoxItem>
+                                    <ComboBoxItem Content="Trilogy"></ComboBoxItem>
+                                    <ComboBoxItem Content="Series"></ComboBoxItem>
+                                    <ComboBoxItem Content="Journals"></ComboBoxItem>
+                                    <ComboBoxItem Content="Diaries"></ComboBoxItem>
+                                    <ComboBoxItem Content="Cookbooks"></ComboBoxItem>
+                                    <ComboBoxItem Content="Art"></ComboBoxItem>
+                                    <ComboBoxItem Content="Comics"></ComboBoxItem>
+                                    <ComboBoxItem Content="Dictionaries"></ComboBoxItem>
+                                    <ComboBoxItem Content="Encyclopedias"></ComboBoxItem>
+                                    <ComboBoxItem Content="Math"></ComboBoxItem>
+                                    <ComboBoxItem Content="Religion"></ComboBoxItem>
+                                    <ComboBoxItem Content="Science"></ComboBoxItem>
+                                    <ComboBoxItem Content="Health"></ComboBoxItem>
+                                    <ComboBoxItem Content="History"></ComboBoxItem>
+                                    <ComboBoxItem Content="Self help"></ComboBoxItem>
+                                    <ComboBoxItem Content="Poetry"></ComboBoxItem>
+                                    <ComboBoxItem Content="Health"></ComboBoxItem>
                                 </ComboBox>
                                 <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
