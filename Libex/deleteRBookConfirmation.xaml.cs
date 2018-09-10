@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.SqlServerCe;
 
 namespace Libex
 {
     /// <summary>
-    /// Interaction logic for deleteClientConfirmation.xaml
+    /// Interaction logic for deleteRBookConfirmation.xaml
     /// </summary>
-    public partial class deleteClientConfirmation : Window
+    public partial class deleteRBookConfirmation : Window
     {
-        public deleteClientConfirmation()
+        public deleteRBookConfirmation()
         {
             InitializeComponent();
         }
@@ -28,27 +28,13 @@ namespace Libex
         private void yesBtn_Click(object sender, RoutedEventArgs e)
         {
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-            string query = "SELECT COUNT (*) FROM Rents WHERE [Client ID] = '" + GlobalVariables.dataRowView[0] + "'";
+            string query = "DELETE FROM RBooks WHERE [RBook ID] = '" + GlobalVariables.dataRowView[0] + "'";
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             databaseConnection.Open();
-            int numberOfRents = (int) cmd.ExecuteScalar();
+            cmd.ExecuteNonQuery();
             databaseConnection.Close();
 
-            if (numberOfRents == 0)
-            {
-                query = "DELETE FROM Clients WHERE [CLient ID] = '" + GlobalVariables.dataRowView[0] + "'";
-                SqlCeCommand cmd2 = new SqlCeCommand(query, databaseConnection);
-                databaseConnection.Open();
-                cmd2.ExecuteNonQuery();
-                databaseConnection.Close();
-
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Client is currently renting a book");
-                this.Close();
-            }
+            this.Close();
         }
 
         private void noBtn_Click(object sender, RoutedEventArgs e)

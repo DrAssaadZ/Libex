@@ -97,7 +97,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating selling books table
-                    query = " CREATE TABLE SBooks([SBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [Book Rating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(10), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover nvarchar(100), Quantity int, About nvarchar(500))";
+                    query = " CREATE TABLE SBooks([SBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [Book Rating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(20), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover nvarchar(100), Quantity int, About nvarchar(500))";
                     SqlCeCommand cmd2 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd2.ExecuteNonQuery();
@@ -105,7 +105,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating renting books table
-                    query = " CREATE TABLE RBooks([RBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [BookRating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(10), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover nvarchar(100), About nvarchar(500), Status nvarchar(10))";
+                    query = " CREATE TABLE RBooks([RBook ID] int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), [Book Edition] int, [Number of Pages] int, Author nvarchar(20), [BookRating] int, Audience nvarchar(10), [Copyright Holder] nvarchar(20), Editor nvarchar(20), Genre nvarchar(20), Price real, Language nvarchar(15), Illustrator nvarchar(20), Cover nvarchar(100), About nvarchar(500), Status nvarchar(10))";
                     SqlCeCommand cmd3 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd3.ExecuteNonQuery();

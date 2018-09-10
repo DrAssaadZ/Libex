@@ -22,7 +22,7 @@
                         <Button IsEnabled="False" Style="{DynamicResource MaterialDesignToolButton}" Margin="0 0 0 0" VerticalAlignment="Center">
                             <materialDesign:PackIcon Width="25" Height="25" Kind="Magnify" />
                         </Button>
-                        <TextBox Width="300" FontSize="15" materialDesign:HintAssist.Hint="Search a Client" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
+                        <TextBox x:Name="searchBar" TextChanged="searchBar_TextChanged" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Search a Client" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
                     </StackPanel>
                 </materialDesign:ColorZone>
             </StackPanel>
@@ -36,10 +36,10 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Background="{DynamicResource PrimaryHueDarkBrush}" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Delete" x:Name="deleteBtn" Click="deleteBtn_Click">
+                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0 0 10 0" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Delete" x:Name="deleteBtn" Click="deleteBtn_Click">
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
                                 </Button>
-                                <Button Background="{DynamicResource PrimaryHueDarkBrush}" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Print ID Card" x:Name="printIDBtn"  >
+                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}"  BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Print ID Card" x:Name="printIDBtn"  >
                                     <materialDesign:PackIcon Kind="Printer" ></materialDesign:PackIcon>
                                 </Button>
                             </StackPanel>

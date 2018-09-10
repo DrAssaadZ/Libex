@@ -66,5 +66,27 @@ namespace Libex
         {
             ShowOrdersDataGrid();
         }
+
+        private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string query = "SELECT [Client ID],[Book Name],Author,Language,Price FROM commands WHERE [Client ID] LIKE '%" + searchBar.Text + "%' OR [Book Name] LIKE '%" + searchBar.Text + "%'";
+            databaseConnection.Open();
+            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            ordersDataGrid.ItemsSource = data.DefaultView;
+            databaseConnection.Close();
+        }
+
+        private void sellBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

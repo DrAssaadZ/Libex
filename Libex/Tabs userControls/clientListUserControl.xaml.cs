@@ -64,5 +64,17 @@ namespace Libex
             //update dataGrid after deletion            
             ShowClientsDataGrid();
         }
+
+        private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string query = "SELECT * FROM Clients WHERE Name Like '%" + searchBar.Text + "%' OR [Last Name] LIKE'%" + searchBar.Text + "%'";
+            databaseConnection.Open();
+            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            clientListDataGrid.ItemsSource = data.DefaultView;
+            databaseConnection.Close();
+        }
     }
 }

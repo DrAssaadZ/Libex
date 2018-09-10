@@ -32,7 +32,7 @@ namespace Libex.Tabs_userControls
         public void ShowRBooksDataGrid()
         {
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Genre],[Price],[Language],[BookRating] FROM RBooks";
+            string query = "SELECT [RBook ID], [Book Name], [Book ISBN],[Book Edition],[Author],[Genre],[Price],[Language],[BookRating] FROM RBooks";
             databaseConnection.Open();
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
@@ -45,6 +45,21 @@ namespace Libex.Tabs_userControls
         private void refreshBtn_Click(object sender, RoutedEventArgs e)
         {
             ShowRBooksDataGrid();
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            deleteRBookConfirmation obj = new deleteRBookConfirmation();
+            obj.ShowDialog();
+
+            //update dataGrid after deletion            
+            ShowRBooksDataGrid();
+        }
+
+        private void rentBookDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
