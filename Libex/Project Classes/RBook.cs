@@ -59,9 +59,9 @@ namespace Libex
             {
                 SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
                 string query = "INSERT INTO RBooks([Book Name],[Book ISBN],[Book Edition],[Number of Pages],[Author],[BookRating],[Audience],[Copyright Holder]," +
-                    "[Editor],[Genre],[Price],[Language],[Illustrator],[About]) " +
+                    "[Editor],[Genre],[Price],[Language],[Illustrator],[About],[Status]) " +
                     "VALUES (@bookName, @ISBN, @bookEdition, @pageNbr, @author, @rating, @audience, @copyrightHolder, @editor, @genre, @price, @language, " +
-                    "@illustrator, @about)";
+                    "@illustrator, @about,@status)";
                 SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
                 cmd.Parameters.AddWithValue("@bookName", this.RBookName);
                 cmd.Parameters.AddWithValue("@ISBN", this.RBookISBN);
@@ -76,8 +76,8 @@ namespace Libex
                 cmd.Parameters.AddWithValue("@price", this.RBookRentPrice);
                 cmd.Parameters.AddWithValue("@language", this.RBookLanguage);
                 cmd.Parameters.AddWithValue("@illustrator", this.RBookIllustrator);
-
                 cmd.Parameters.AddWithValue("@about", this.AboutBook);
+                cmd.Parameters.AddWithValue("@status", "Available");
                 
                 databaseConnection.Open();
                 cmd.ExecuteNonQuery();
@@ -88,9 +88,9 @@ namespace Libex
             {
                 SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
                 string query = "INSERT INTO RBooks([Book Name],[Book ISBN],[Book Edition],[Number of Pages],[Author],[BookRating],[Audience],[Copyright Holder]," +
-                    "[Editor],[Genre],[Price],[Language],[Illustrator],[About],[Cover]) " +
+                    "[Editor],[Genre],[Price],[Language],[Illustrator],[About],[Cover],[Status]) " +
                     "VALUES (@bookName, @ISBN, @bookEdition, @pageNbr, @author, @rating, @audience, @copyrightHolder, @editor, @genre, @price, @language, " +
-                    "@illustrator, @about, @imgcover)";
+                    "@illustrator, @about, @imgcover,@status)";
                 SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
                 cmd.Parameters.AddWithValue("@bookName", this.RBookName);
                 cmd.Parameters.AddWithValue("@ISBN", this.RBookISBN);
@@ -105,7 +105,7 @@ namespace Libex
                 cmd.Parameters.AddWithValue("@price", this.RBookRentPrice);
                 cmd.Parameters.AddWithValue("@language", this.RBookLanguage);
                 cmd.Parameters.AddWithValue("@illustrator", this.RBookIllustrator);
-
+                cmd.Parameters.AddWithValue("@status", "Available");
                 cmd.Parameters.AddWithValue("@about", this.AboutBook);
                 cmd.Parameters.AddWithValue("imgcover", GlobalVariables.coverPath + @"\" + this.RBookName + ".png");
                 databaseConnection.Open();

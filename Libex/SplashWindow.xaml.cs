@@ -113,7 +113,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating sells table
-                    query = " CREATE TABLE Sells(SellID int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), Genre nvarchar(10), [Sell Date] datetime, [Client Age] nvarchar(10))";
+                    query = " CREATE TABLE Sells(SellID int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), Genre nvarchar(10),Price real, [Sell Date] datetime, [Client Age] nvarchar(10))";
                     SqlCeCommand cmd4 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd4.ExecuteNonQuery();
@@ -121,7 +121,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating renting rents table
-                    query = " CREATE TABLE Rents([RentID] int PRIMARY KEY IDENTITY(1,1) , [Book ID] int, [Client ID] int, [Rent Day] datetime, [Return Day] datetime)";
+                    query = " CREATE TABLE Rents([RentID] int PRIMARY KEY IDENTITY(1,1) , [Book ID] int, [Client ID] int,Status nvarchar(20),Price real, [Rent Day] datetime, [Return Day] datetime)";
                     SqlCeCommand cmd5 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd5.ExecuteNonQuery();
@@ -156,13 +156,7 @@ namespace Libex
                     cmd9.ExecuteNonQuery();
                     dataBaseConnection.Close();
                     Thread.Sleep(200);
-
-                    query = "ALTER TABLE commands ADD CONSTRAINT [Book Name] FOREIGN KEY ([Book Name]) REFERENCES RBooks([Book Name])";
-                    SqlCeCommand cmd10 = new SqlCeCommand(query, dataBaseConnection);
-                    dataBaseConnection.Open();
-                    cmd10.ExecuteNonQuery();
-                    dataBaseConnection.Close();
-                    Thread.Sleep(200);
+                   
                 }
                 catch (Exception ex)
                 {

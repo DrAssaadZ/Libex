@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,24 @@ namespace Libex
     /// </summary>
     public partial class currRentBooksUserControl : UserControl
     {
+        SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
         public currRentBooksUserControl()
         {
             InitializeComponent();
+            fillCurrentRentBDataGrid();
+        }
+
+        //function that fills the currently rent books data grid 
+        public void fillCurrentRentBDataGrid()
+        {
+            string query = "SELECT * FROM Rents";
+            SqlCeCommand cmd = new SqlCeCommand(query,databaseConnection);
+            databaseConnection.Open();
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
+            DataTable books = new DataTable();
+            adapt.Fill(books);
+            currRentBookDataGrid.ItemsSource = books.DefaultView;
+            databaseConnection.Close();
         }
     }
 }
