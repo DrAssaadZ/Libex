@@ -32,15 +32,17 @@ namespace Libex
         //grid view  toggle button checked event
         private void saleBookViewBtn_Checked(object sender, RoutedEventArgs e)
         {
-            saleBookUserControlMainGrid.Children.Clear();
-            saleBookUserControlMainGrid.Children.Add(gridView);
+            saleBookUserControlMainGrid.Children.Clear();            
+            saleBookUserControlMainGrid.Children.Add(new saleBookLargeViewUserControl());
+
         }
 
         //large view toggle button unchecked event
         private void saleBookViewBtn_Unchecked(object sender, RoutedEventArgs e)
         {
-            saleBookUserControlMainGrid.Children.Clear();
-            saleBookUserControlMainGrid.Children.Add(new saleBookLargeViewUserControl());
+            saleBookUserControlMainGrid.Children.Clear();            
+            saleBookUserControlMainGrid.Children.Add(gridView);
+
         }
 
         //showing the grid view of the books when the tab is created as default view
