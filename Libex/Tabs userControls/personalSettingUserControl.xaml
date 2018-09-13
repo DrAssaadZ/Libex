@@ -1,4 +1,5 @@
 ﻿<UserControl x:Class="Libex.personalSettingUserControl"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,6 +8,54 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            
+            <StackPanel Orientation ="Horizontal">
+                <Viewbox>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="{DynamicResource SecondaryAccentBrush}" Text="Personal Settings" FontSize="24" Margin="15 0 0 0"></TextBlock>
+                        <StackPanel Margin="20 10 0 0" Orientation="Vertical">
+                            <TextBox x:Name="NameBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Library Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBlock x:Name="hint1" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Margin="20 0 0 0" Orientation="Vertical">
+                            <TextBox x:Name="AddressBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Adress" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBlock x:Name="hint2" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Margin="20 0 0 0" Orientation="Vertical">
+                            <TextBox x:Name="OwnerBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Owner" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBlock x:Name="hint3" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Margin="20 0 0 0" Orientation="Vertical">
+                            <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="E-mail" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBlock x:Name="hint4" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Margin="20 0 0 0" Orientation="Vertical">
+                            <TextBox x:Name="NumberBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Phone" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBlock x:Name="hint5" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Viewbox>
+                <Viewbox  Margin="300 10 0 0">
+                    <Border BorderThickness="2" BorderBrush="{DynamicResource PrimaryHueDarkBrush}">
+                        <StackPanel  HorizontalAlignment="Center">
+                            <Image Stretch="Fill" Width="180" x:Name="logoContainer" Height="250" Margin="20" ></Image>
+                            <Button Width="35" Height="35" Background="{x:Null}" x:Name="LogoBtn" Click="LogoBtn_Click" Padding="0"  BorderBrush="{x:Null}">
+                                <materialDesign:PackIcon Kind="ImagePlus" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Viewbox>
+            </StackPanel>
+        </Grid>
+        <Button Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="370 20 0 0" Width="120" Height="29" Name="confirmBtn" Click="confirmBtn_Click" Content="Update">
+            
+        </Button>
             
     </Grid>
 </UserControl>

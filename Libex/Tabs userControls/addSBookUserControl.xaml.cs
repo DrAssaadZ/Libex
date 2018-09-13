@@ -32,7 +32,8 @@ namespace Libex.Tabs_userControls
         private void addBookBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            if (bookNameBox.Text.Length < 1 || ISBNBox.Text.Length < 1 || editionYearBox.Text.Length < 4 || authorBox.Text.Length < 2 || audienceBox.Text.Length < 1 || nbrPagesBox.Text.Length < 1 || authorBox.Text.Length < 2 || genreBox.Text.Length < 2 || copyrightHolderBox.Text.Length < 2 )
+
+            if (bookNameBox.Text.Length < 1 || ISBNBox.Text.Length < 1 || editionYearBox.Text.Length < 4 || authorBox.Text.Length < 2 || audienceBox.Text.Length < 1 || nbrPagesBox.Text.Length < 1 || authorBox.Text.Length < 2 || genreBox.Text.Length < 2 || copyrightHolderBox.Text.Length < 2)
             {
 
             }
