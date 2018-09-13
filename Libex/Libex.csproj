@@ -79,6 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BookModelUserControl.xaml.cs">
+      <DependentUpon>BookModelUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="deleteClientConfirmation.xaml.cs">
       <DependentUpon>deleteClientConfirmation.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,7 @@
     <Compile Include="deleteSBookConfiramtion.xaml.cs">
       <DependentUpon>deleteSBookConfiramtion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Project Classes\BookBindingInformation.cs" />
     <Compile Include="Project Classes\Command.cs" />
     <Compile Include="Tabs userControls\addClientUserControl.xaml.cs">
       <DependentUpon>addClientUserControl.xaml</DependentUpon>
@@ -194,6 +198,10 @@
     <Compile Include="Toolbox userControls\statisticsUserControl.xaml.cs">
       <DependentUpon>statisticsUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="BookModelUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="deleteClientConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
