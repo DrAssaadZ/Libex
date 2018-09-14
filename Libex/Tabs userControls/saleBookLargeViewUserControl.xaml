@@ -8,11 +8,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"                                     
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        <ListView x:Name="SaleBookList" materialDesign:RippleAssist.IsDisabled="True">
+        
+        <ListView x:Name="SaleBookList" materialDesign:RippleAssist.IsDisabled="True" MaxWidth="1300">
             <!--deviding the list to three columns-->
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid  Columns="4"/>
+                    <UniformGrid Columns="4"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <!--removing the mouse over style from the list-->

@@ -21,11 +21,18 @@ namespace Libex
     /// </summary>
     public partial class BookModelUserControl : UserControl
     {
-        public BookModelUserControl(string Bname, string AuthName , string ImgCov)
+        public BookModelUserControl(string Bname, string AuthName , string ImgCov,string ISBN,int Edition,string Editor,string Genre,float Price, string About)
         {
             InitializeComponent();
-            //giving the book binding imformation to the context 
-            this.DataContext = new BookBindingInformation { BookNameBi = Bname, AuthorBi = AuthName, CoverImgBi = ImgCov };
+            bookNameBox.Text = Bname;
+            authorBox.Text = AuthName;
+            coverBox.Source = new BitmapImage(new Uri(ImgCov));
+            ISBNBox.Text = ISBN;
+            EditionBox.Text = Edition.ToString();
+            EditorBox.Text = Editor;
+            GenreBox.Text = Genre;
+            PriceBox.Text = Price.ToString();
+            AboutBox.Text = About;
         }
     }
 }

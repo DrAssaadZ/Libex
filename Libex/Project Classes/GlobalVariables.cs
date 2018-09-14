@@ -9,13 +9,13 @@ using System.Windows.Controls;
 
 namespace Libex
 {
-    class GlobalVariables
+   class GlobalVariables
     {
         public static TabControl tbControl;
         public static string databasePath = @"Data Source=" + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Libex\Data Base\LibexDB.sdf";
         public static string coverPath;
         public static DataRowView dataRowView;
-
+        
 
     }
 }

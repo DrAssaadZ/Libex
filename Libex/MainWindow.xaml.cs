@@ -309,19 +309,23 @@ namespace Libex
             {
                 case "Blue":
                     this.Resources.MergedDictionaries.Clear();
+                    
                     AddResourceDictionary("Resources/BlueAmberTheme.xaml");
                     break;
                 case "Green":
                     this.Resources.MergedDictionaries.Clear();
+                    
                     AddResourceDictionary("Resources/TealAmberTheme.xaml");
                     break;
                 case "Gray":
                     this.Resources.MergedDictionaries.Clear();
+                    
                     AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
                     break;
 
                 default:
                     this.Resources.MergedDictionaries.Clear();
+                    
                     AddResourceDictionary("Resources/BlueAmberTheme.xaml");
                     break;
             }

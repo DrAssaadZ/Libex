@@ -3,10 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"            
              xmlns:local="clr-namespace:Libex"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <!--main grid row definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <!--title part-->
+        <TextBlock Text="Global Settings" Foreground="{DynamicResource SecondaryAccentBrush}" FontSize="40" Margin="20 10 0 0"/>
+        <!--settings part-->
+        <materialDesign:Card Grid.Row="1" Margin="10">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Pick the application Theme" Margin="30 10 0 10" FontSize="20"/>
+                <StackPanel Orientation="Horizontal" Margin="40 0 0 10">
+                    <Button Background="#2196F3" BorderBrush="{x:Null}" Width="140" Content="Blue Amber" x:Name="blueBtn" Click="blueBtn_Click"/>
+                    <Button Margin="10 0 10 0" BorderBrush="{x:Null}" Background="#009688" Width="140" Content="Teal Amber" x:Name="tealBtn" Click="tealBtn_Click" />
+                    <Button Background="#607D8B" BorderBrush="{x:Null}" Width="140" Content="Blue grey Amber" x:Name="blueGBtn" Click="blueGBtn_Click" />
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:Card>
     </Grid>
 </UserControl>
