@@ -14,6 +14,7 @@ namespace Libex
         public static TabControl tbControl;
         public static string databasePath = @"Data Source=" + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Libex\Data Base\LibexDB.sdf";
         public static string coverPath;
+        public static string logoPath;
         public static DataRowView dataRowView;
         
 

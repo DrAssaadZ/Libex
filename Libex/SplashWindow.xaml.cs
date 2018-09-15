@@ -71,11 +71,13 @@ namespace Libex
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             GlobalVariables.coverPath = dbDirectoryPath + @"\coverImages";
+            GlobalVariables.logoPath = settingDirectoryPath + @"\logo";
             //testing if the database is created or not
             if (!pathExists)
             {
                 Directory.CreateDirectory(dbDirectoryPath);
                 Directory.CreateDirectory(GlobalVariables.coverPath);
+                Directory.CreateDirectory(GlobalVariables.logoPath);
                 Thread.Sleep(200);
                 Directory.CreateDirectory(settingDirectoryPath);
                 Thread.Sleep(200);
@@ -187,14 +189,15 @@ namespace Libex
             RootElement.AppendChild(linksNode);
             //creating the logo note and appending it to the links node
             XmlNode logoNode = document.CreateElement("Logo");
+            logoNode.InnerText = "0";
             linksNode.AppendChild(logoNode);
             //creating the settings node 
             XmlNode settingNode = document.CreateElement("Settings");
             RootElement.AppendChild(settingNode);
             //creating the theme node 
-            XmlNode themeNOde = document.CreateElement("Theme");
-            themeNOde.InnerText = "Blue";
-            settingNode.AppendChild(themeNOde);
+            XmlNode themeNode = document.CreateElement("Theme");
+            themeNode.InnerText = "Blue";
+            settingNode.AppendChild(themeNode);
             //creating the language node 
             XmlNode languageNode = document.CreateElement("Language");
             languageNode.InnerText = "En";
@@ -216,6 +219,12 @@ namespace Libex
             //creating the owner node 
             XmlNode OwnerNOde = document.CreateElement("Owner");
             settingNode.AppendChild(OwnerNOde);
+            //creating the phone node 
+            XmlNode phoneNode = document.CreateElement("Phone");
+            settingNode.AppendChild(phoneNode);
+            //creating the email node 
+            XmlNode mailNode = document.CreateElement("Email");
+            settingNode.AppendChild(mailNode);
             //saving the xml document 
             document.Save(settingDirectoryPath + @"\Settings.xml");
         }
