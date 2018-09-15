@@ -104,7 +104,7 @@ namespace Libex
         //appling green theme on button click 
         private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Clear();
             AddResourceDictionary("Resources/TealAmberTheme.xaml");
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
@@ -115,9 +115,9 @@ namespace Libex
 
         //appling blue grey them on button click
         private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Resources.MergedDictionaries.Clear();
-            AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
+        {           
+            Application.Current.Resources.MergedDictionaries.Clear();            
+            AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");            
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
             XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
@@ -128,7 +128,7 @@ namespace Libex
         //appling blue theme on button click
         private void blueAmberBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Clear();
             AddResourceDictionary("Resources/BlueAmberTheme.xaml");
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
@@ -141,7 +141,7 @@ namespace Libex
         public void AddResourceDictionary(string source)
         {
             ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
-            this.Resources.MergedDictionaries.Add(resourceDictionary);
+            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
         }
 
       
