@@ -91,7 +91,6 @@
     <Compile Include="deleteSBookConfiramtion.xaml.cs">
       <DependentUpon>deleteSBookConfiramtion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Project Classes\BookBindingInformation.cs" />
     <Compile Include="Project Classes\Command.cs" />
     <Compile Include="Tabs userControls\addClientUserControl.xaml.cs">
       <DependentUpon>addClientUserControl.xaml</DependentUpon>

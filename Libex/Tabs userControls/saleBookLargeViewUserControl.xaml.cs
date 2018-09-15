@@ -23,31 +23,33 @@ namespace Libex.Tabs_userControls
     /// </summary>
     public partial class saleBookLargeViewUserControl : UserControl
     {
+       
         public saleBookLargeViewUserControl()
-        {           
-
+        {
+            //querying the books in the Sale books database 
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-            string qurry = "SELECT [Book Name],Author,Cover FROM SBooks ";
+            string qurry = "SELECT [Book Name],[Book ISBN],[Book Edition],Editor,Genre,Price,Author,About,Cover FROM SBooks ";
             SqlCeDataAdapter adapt = new SqlCeDataAdapter(qurry, databaseConnection);
             databaseConnection.Open();
             DataTable books = new DataTable();
             adapt.Fill(books);
             databaseConnection.Close();
 
+            //querying number of books in the sale books database
             string query2 = "SELECT COUNT(*) FROM SBooks";
             SqlCeCommand cmd = new SqlCeCommand(query2, databaseConnection);
             databaseConnection.Open();
             int nbrBooks = (int)cmd.ExecuteScalar();
             databaseConnection.Close();
-            
+
             InitializeComponent();
 
+            //showing the books in the books list 
             for (int i = 0; i < nbrBooks; i++)
             {
-                SaleBookList.Items.Add(new BookModelUserControl(books.Rows[i]["Book Name"].ToString(), books.Rows[i]["Author"].ToString(), books.Rows[i]["Cover"].ToString()));
-            }
-
-            
-        }
+                SaleBookList.Items.Add(new BookModelUserControl(books.Rows[i]["Book Name"].ToString(), books.Rows[i]["Author"].ToString(), books.Rows[i]["Cover"].ToString()
+                                        ,books.Rows[i]["Book ISBN"].ToString(),int.Parse(books.Rows[i]["Book Edition"].ToString()),books.Rows[i]["Editor"].ToString(),books.Rows[i]["Genre"].ToString(),float.Parse(books.Rows[i]["Price"].ToString()),books.Rows[i]["About"].ToString()));
+            }          
+        }        
     }
 }
