@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
+using Microsoft.Win32;
 
 
 namespace Libex
@@ -25,6 +26,7 @@ namespace Libex
         public globalSettingUserControl()
         {
             InitializeComponent();
+            startWWinState();
         }
 
        
@@ -69,6 +71,49 @@ namespace Libex
             XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
             ThemeNode.InnerText = "Gray";
             doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+        }
+
+        private void startWWinBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            XmlNode startNode = doc.SelectSingleNode("//StartWithWindows");
+            startNode.InnerText = "1";
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+
+            //access regesitry to make the app start with windows
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            reg.SetValue("Libex", System.Reflection.Assembly.GetExecutingAssembly().Location);
+        }
+
+        private void startWWinBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            XmlNode startNode = doc.SelectSingleNode("//StartWithWindows");
+            startNode.InnerText = "0";
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+
+            //access regesitry to make the app stop starting with windows
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            reg.DeleteValue("Libex", false);
+        }
+
+        //this function set the state of the toggle button of start with windows according to the setting file
+        private void startWWinState()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            int startState = int.Parse(doc.SelectSingleNode("//StartWithWindows").InnerText);
+
+            if (startState == 0)
+            {
+                startWWinBtn.IsChecked = false;
+            }
+            else
+            {
+                startWWinBtn.IsChecked = true;
+            }
         }
     }
 }
