@@ -202,10 +202,6 @@ namespace Libex
             XmlNode languageNode = document.CreateElement("Language");
             languageNode.InnerText = "En";
             settingNode.AppendChild(languageNode);
-            //creating the tray node 
-            XmlNode trayNode = document.CreateElement("Tray");
-            trayNode.InnerText = "0";
-            settingNode.AppendChild(trayNode);
             //creating the startwith windows node 
             XmlNode startWithWindowsNode = document.CreateElement("StartWithWindows");
             startWithWindowsNode.InnerText = "0";

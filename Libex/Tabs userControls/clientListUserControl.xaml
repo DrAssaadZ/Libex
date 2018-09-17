@@ -39,7 +39,7 @@
                                 <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0 0 10 0" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Delete" x:Name="deleteBtn" Click="deleteBtn_Click">
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
                                 </Button>
-                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}"  BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Print ID Card" x:Name="printIDBtn"  >
+                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}"  BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Print ID Card" x:Name="printIDBtn" Click="printIDBtn_Click" >
                                     <materialDesign:PackIcon Kind="Printer" ></materialDesign:PackIcon>
                                 </Button>
                             </StackPanel>

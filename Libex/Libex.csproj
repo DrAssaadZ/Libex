@@ -93,6 +93,9 @@
     <Compile Include="deleteSBookConfiramtion.xaml.cs">
       <DependentUpon>deleteSBookConfiramtion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="printClientUserControl.xaml.cs">
+      <DependentUpon>printClientUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Project Classes\Command.cs" />
     <Compile Include="Tabs userControls\addClientUserControl.xaml.cs">
       <DependentUpon>addClientUserControl.xaml</DependentUpon>
@@ -212,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="deleteSBookConfiramtion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="printClientUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -400,9 +407,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\AppLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\SplashBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -427,6 +431,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\glow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\appIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -21,6 +21,7 @@ namespace Libex
     /// </summary>
     public partial class addClientUserControl : UserControl
     {
+        //dispatcher vars
         System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
         System.Windows.Threading.DispatcherTimer dispatcher2 = new System.Windows.Threading.DispatcherTimer();
 
@@ -97,9 +98,10 @@ namespace Libex
         {
             printSnackBar.IsActive = true;
             DispatcherTimerprintSnack();
+
+            
+            
         }
-
-
 
         //timer that closes the addsnackbar
         private void DispatcherTimerAddClientAddSnack()
@@ -107,7 +109,6 @@ namespace Libex
             dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcher.Interval = new TimeSpan(0, 0, 2);
             dispatcher.Start();
-
         }
 
         //stop the timer after 2 secs

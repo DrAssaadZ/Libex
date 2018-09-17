@@ -41,7 +41,7 @@ namespace Libex
             
         }
      
-
+        // blue amber button click event
         private void blueBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Resources.MergedDictionaries.Clear();
@@ -54,6 +54,7 @@ namespace Libex
             
         }
 
+        //teal amber button click event
         private void tealBtn_Click(object sender, RoutedEventArgs e)
         {
             
@@ -66,6 +67,7 @@ namespace Libex
             doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
 
+        //blue grey amber button click event
         private void blueGBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Resources.MergedDictionaries.Clear();
@@ -90,6 +92,7 @@ namespace Libex
             reg.SetValue("Libex", System.Reflection.Assembly.GetExecutingAssembly().Location);
         }
 
+        //start with window toggle button unckecked event
         private void startWWinBtn_Unchecked(object sender, RoutedEventArgs e)
         {
             XmlDocument doc = new XmlDocument();
