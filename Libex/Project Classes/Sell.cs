@@ -79,12 +79,7 @@ namespace Libex
         }
 
 
-   //     string query = "UPDATE roomsTab SET [Room Status] = 'Occupied' WHERE [Room Name] =@roomname";
-   //     SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
-   //     cmd.Parameters.AddWithValue("@roomname",roomname);
-			//databaseConnection.Open();
-			//cmd.ExecuteNonQuery();
-			//databaseConnection.Close();
+   
 
         
     }
