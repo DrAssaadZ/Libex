@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Xml;
 
+
 namespace Libex
 {
     /// <summary>
@@ -23,6 +24,8 @@ namespace Libex
     /// </summary>
     public partial class MainWindow : Window
     {
+        //creating the icon tray object
+        System.Windows.Forms.NotifyIcon IconNotify; 
         //dispatcher timer variable for the slideshow 
         DispatcherTimer dispatcher = new DispatcherTimer();
         //image number for the slide show 
@@ -115,7 +118,7 @@ namespace Libex
 
         //appling blue grey them on button click
         private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             Application.Current.Resources.MergedDictionaries.Clear();            
             AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");            
             XmlDocument doc = new XmlDocument();
@@ -331,6 +334,62 @@ namespace Libex
             }
         }
 
-        
+        //minimize to tray button click event
+        private void minimizeToTray_Click(object sender, RoutedEventArgs e)
+        {
+            //creating the tray icon 
+            IconNotify = new System.Windows.Forms.NotifyIcon();
+            IconNotify.Icon = new System.Drawing.Icon("../../Resources/appIcon.ico");
+            IconNotify.Visible = true;            
+            IconNotify.MouseClick += new System.Windows.Forms.MouseEventHandler(icon_click);
+            IconNotify.ShowBalloonTip(500,"Minimized","Libex has been minimized to tray",System.Windows.Forms.ToolTipIcon.Info);
+            //creating the tray icon contextual menu 
+            System.Windows.Forms.ContextMenu trayMenu = new System.Windows.Forms.ContextMenu();
+            trayMenu.MenuItems.Add("Settings", new EventHandler(Setting));
+            trayMenu.MenuItems.Add("Exit App", new EventHandler(ExitApp));            
+            IconNotify.ContextMenu = trayMenu;
+
+            //minimizing the app when minimize to tray button is clicked 
+            this.WindowState = WindowState.Minimized;
+            this.ShowInTaskbar = false;
+        }
+       
+
+        //setting app tray item clicked
+        private void Setting(object sender, EventArgs e)
+        {
+            //restoring window state after left mouse click on the tray icon
+            this.WindowState = WindowState.Normal;
+            this.ShowInTaskbar = true;
+            //focus the app after being restored from the tray
+            this.Activate();
+            //showing the setting tab user control
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new SettingsUserControl());
+            IconNotify.Dispose();
+        }
+
+        //exit app tray item clicked 
+        private void ExitApp(object sender, EventArgs e)
+        {
+            //exiting the application when the exit app item is chosen
+            Application.Current.Shutdown();
+            IconNotify.Dispose();
+        }
+
+        //tray icon clicked event 
+        private void icon_click(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            //left mouse click 
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                //restoring window state after left mouse click on the tray icon
+                this.WindowState = WindowState.Normal;
+                this.ShowInTaskbar = true; 
+                //focus the app after being restored from the tray
+                this.Activate();
+                IconNotify.Dispose();
+            }
+        }
     }
 }

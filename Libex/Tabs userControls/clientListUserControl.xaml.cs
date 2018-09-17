@@ -30,9 +30,9 @@ namespace Libex
             ShowClientsDataGrid();
         }
 
+        //showing the client in the client data grid 
         public void ShowClientsDataGrid()
-        {            
-            
+        {                        
             string query = "SELECT * FROM Clients";
             databaseConnection.Open();
             SqlCeCommand cmd = new SqlCeCommand(query,databaseConnection);
@@ -41,7 +41,6 @@ namespace Libex
             adapt.Fill(data);
             clientListDataGrid.ItemsSource = data.DefaultView;
             databaseConnection.Close();
-
         }
 
         //refresh button click
@@ -50,11 +49,21 @@ namespace Libex
             ShowClientsDataGrid();
         }
 
+        //print button on the client list clicked event
         private void printIDBtn_Click(object sender, RoutedEventArgs e)
         {
-                       
+            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;            
+            //query to get the client info on the selected row
+            string query = "SELECT [Client ID], Name, [Last Name],Gender FROM Clients WHERE [Client ID] = '" + GlobalVariables.dataRowView[0] + "'";
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(query,databaseConnection);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+           //instanciating an object from the print user control for the client info selected 
+            printClientUserControl obj = new printClientUserControl(int.Parse(data.Rows[0]["Client ID"].ToString()), data.Rows[0]["Name"].ToString(), data.Rows[0]["Last Name"].ToString(), data.Rows[0]["Gender"].ToString());
+            obj.print();
         }
 
+        // delete button on the client list clicked event
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
             GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;
@@ -65,6 +74,7 @@ namespace Libex
             ShowClientsDataGrid();
         }
 
+        //search bar method
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             string query = "SELECT * FROM Clients WHERE Name Like '%" + searchBar.Text + "%' OR [Last Name] LIKE'%" + searchBar.Text + "%'";
@@ -76,5 +86,7 @@ namespace Libex
             clientListDataGrid.ItemsSource = data.DefaultView;
             databaseConnection.Close();
         }
+
+        
     }
 }
