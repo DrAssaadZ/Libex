@@ -160,7 +160,7 @@ Summer 2018.
                                         <!--welcome part-->
                                         <Expander HorizontalAlignment="Stretch" >
                                             <Expander.Header>
-                                                <TextBlock Text="WELCOME" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignDisplay1TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}" />
+                                                <TextBlock Text="{DynamicResource welcome}" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignDisplay1TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}" />
                                             </Expander.Header>
                                             <Expander.Background>
                                                 <ImageBrush ImageSource="Resources/library2.jpg"  Stretch="UniformToFill"/>

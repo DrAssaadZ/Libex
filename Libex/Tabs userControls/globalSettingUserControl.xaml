@@ -33,6 +33,24 @@
                     <ToggleButton Name="startWWinBtn" Checked="startWWinBtn_Checked" Unchecked="startWWinBtn_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Default ToggleButton Style" />
                 </StackPanel>
             </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Create a backup file" Margin="30 10 20 10" FontSize="20"/>
+                    <Button x:Name="seletDirBtn" Click="seletDirBtn_Click" Content="Directory" Margin="0 0 20 0"></Button>
+                    <TextBlock Name="directoryBox" Text="" MaxWidth="300" VerticalAlignment="Center" ></TextBlock>
+                    <Button Margin="20 0 0 0" Content="Create backup" Name="createBkupBtn" Click="createBkupBtn_Click"></Button>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Margin="10">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Pick the application Theme" Margin="30 10 0 10" FontSize="20"/>
+                    <StackPanel Orientation="Horizontal" Margin="40 0 0 10">
+                        <Button Width="140" Content="English" x:Name="EnBtn" Click="EnBtn_Click"/>
+                        <Button Margin="10 0 10 0"   Width="140" Content="Franch" x:Name="FrBtn" Click="FrBtn_Click"/>
+                        <Button Width="140" Content="Arabic" x:Name="ArBtn" Click="ArBtn_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:Card>
         </StackPanel>
     </Grid>
 </UserControl>

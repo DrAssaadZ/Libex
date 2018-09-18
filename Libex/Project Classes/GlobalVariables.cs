@@ -16,7 +16,9 @@ namespace Libex
         public static string coverPath;
         public static string logoPath;
         public static DataRowView dataRowView;
-        
+        public static string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        public static string appDirectoryPath = appDataPath + @"\Libex";
+
 
     }
 }
