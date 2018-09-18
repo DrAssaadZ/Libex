@@ -6,13 +6,13 @@
              StartupUri="SplashWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/BlueAmberTheme.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
+                <ResourceDictionary x:Name="lol" Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="Resources/englishDict.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
-                       
         </ResourceDictionary>
     </Application.Resources>
 </Application>
