@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Libex"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Height="300" Width="400">
+             d:DesignHeight="450" d:DesignWidth="800" Height="300" Width="400"  BorderBrush="Black" BorderThickness="1.5">
     <!--grid to be printed-->
-    <Grid Margin="10" x:Name="ClientInfoGrid">
+    <Grid Margin="10"  Height="290" Width="390" x:Name="windowToPrint" HorizontalAlignment="Left" VerticalAlignment="Top"> 
         <!--app logo rectangle-->
-        <Rectangle Height="50" Width="50" Panel.ZIndex="1000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20 0 0">
+        <Rectangle Height="50"  Width="50" Panel.ZIndex="1000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20 0 0">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Resources/appIcon.ico"/>
+                <ImageBrush x:Name="libraryLogo"/>
             </Rectangle.Fill>
         </Rectangle>
         <!--border surrounding all-->
@@ -23,17 +23,18 @@
                         <!--library information row-->
                         <RowDefinition Height="*"/>
                         <!--client information row-->
-                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1.2*"/>
                     </Grid.RowDefinitions>
                     <!--library information part-->
                     <StackPanel Grid.Row="0" Orientation="Vertical">
-                        <TextBlock Text="Library Name" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
-                        <TextBlock Text="library phone" FontSize="14" HorizontalAlignment="Center"/>
-                        <TextBlock HorizontalAlignment="Center" FontSize="14" Text="library email"/>
+                        <TextBlock Text="Library Name" x:Name="libraryName" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+                        <TextBlock Text="library phone" x:Name="libraryPhone" FontSize="12" HorizontalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" x:Name="libraryEmail" FontSize="12" Text="library email"/>
+                        <TextBlock HorizontalAlignment="Center" x:Name="libraryAddress" FontSize="12" Text="library Address"/>
                         <Separator Background="Black" Width="200" Margin="0 5 0 0"/>
                     </StackPanel>
                     <!--client information part-->
-                    <Grid Grid.Row="1" Margin="25">
+                    <Grid Grid.Row="1" Margin="20">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>

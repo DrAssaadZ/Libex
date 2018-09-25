@@ -2,11 +2,132 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"    
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Libex"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <!--title grid-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Sells" Grid.Column="0" HorizontalAlignment="Center" FontSize="25" Foreground="{StaticResource SecondaryAccentBrush}"/>
+                <TextBlock Text="Rents" Grid.Column="1" HorizontalAlignment="Center" FontSize="25" Foreground="{StaticResource SecondaryAccentBrush}"/>
+            </Grid>
+                <!--sells and rents grid-->
+            <Grid  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <!--sells column-->
+                <StackPanel Orientation="Vertical" Grid.Column="0">
+                    <!--category card-->
+                    <materialDesign:Card Height="350" Margin="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!--sale category  chart-->
+                            <lvc:CartesianChart Series="{Binding SeriesCollection1}">
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:Axis Title="Genre" Labels="{Binding Labels1}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisX>
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis LabelFormatter="{Binding Formatter1}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisY>
+                            </lvc:CartesianChart>
+                            <TextBlock Grid.Row="1" Text="Titles classified by Genre" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </materialDesign:Card>
+                    <!--audience card-->
+                    <materialDesign:Card Height="350" Margin="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!--sale audience chart-->
+                            <lvc:CartesianChart Series="{Binding SeriesCollection2}">
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:Axis Title="Age Periods" Labels="{Binding Labels2}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisX>
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis LabelFormatter="{Binding Formatter2}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisY>
+                            </lvc:CartesianChart>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Text="Titles classified by audience"/>
+                        </Grid>
+                    </materialDesign:Card>
+                </StackPanel>
+                <!--rents column-->
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                    <!--rent category chart-->
+                    <materialDesign:Card Height="350" Margin="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!--sale category  chart-->
+                            <lvc:CartesianChart Series="{Binding SeriesCollection3}">
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:Axis Title="Genre" Labels="{Binding Labels3}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisX>
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis LabelFormatter="{Binding Formatter3}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisY>
+                            </lvc:CartesianChart>
+                            <TextBlock Grid.Row="1" Text="Titles classified by Genre" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </materialDesign:Card>
+                    <!--rent audience chart-->
+                    <materialDesign:Card Height="350" Margin="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!--sale audience chart-->
+                            <lvc:CartesianChart Series="{Binding SeriesCollection4}">
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:Axis Title="Age Periods" Labels="{Binding Labels4}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisX>
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis LabelFormatter="{Binding Formatter4}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisY>
+                            </lvc:CartesianChart>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Text="Titles classified by audience"/>
+                        </Grid>
+                    </materialDesign:Card>
+                </StackPanel>
+            </Grid>
+            <!--both rent and sale chart-->
+            <materialDesign:Card Height="350">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--sale audience chart-->
+                    <lvc:PieChart VerticalAlignment="Stretch" LegendLocation="Bottom" DataClick="PieChart_DataClick" Hoverable="True" DataTooltip="{x:Null}">
+                        <lvc:PieChart.Series>
+                            <lvc:PieSeries Name="forSalePercent" Title="Sale"  DataLabels="True"
+                               LabelPoint="{Binding PointLabel}"/>
+                            <lvc:PieSeries Name="forRentPercent" Title="Rent" DataLabels="True" 
+                               LabelPoint="{Binding PointLabel}"/>
+                        </lvc:PieChart.Series>
+                    </lvc:PieChart>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" Text="Number of books avaible for sale and rent"/>
+                </Grid>
+            </materialDesign:Card>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

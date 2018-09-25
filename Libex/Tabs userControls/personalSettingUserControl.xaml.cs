@@ -28,6 +28,7 @@ namespace Libex
             InitializeComponent();
         }
 
+        //logo button click event , browsing for images
         private void LogoBtn_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -47,6 +48,7 @@ namespace Libex
             }
         }
 
+        //confirm button click event
         private void confirmBtn_Click(object sender, RoutedEventArgs e)
         {
             if (File.Exists(GlobalVariables.logoPath + @"\logo.png"))
@@ -60,9 +62,9 @@ namespace Libex
 
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
-            XmlNode nameNode = doc.SelectSingleNode("//LibraryNAme");
+            XmlNode nameNode = doc.SelectSingleNode("//LibraryName");
             nameNode.InnerText = NameBox.Text;
-            XmlNode AddressNode = doc.SelectSingleNode("//Adress");
+            XmlNode AddressNode = doc.SelectSingleNode("//Address");
             AddressNode.InnerText = AddressBox.Text;
             XmlNode ownerNode = doc.SelectSingleNode("//Owner");
             ownerNode.InnerText = OwnerBox.Text;
@@ -70,8 +72,8 @@ namespace Libex
             mailNode.InnerText = EmailBox.Text;
             XmlNode phoneNode = doc.SelectSingleNode("//Phone");
             phoneNode.InnerText = NumberBox.Text;
-            XmlNode logoNode = doc.SelectSingleNode("//logo");
-            phoneNode.InnerText = "1";
+            XmlNode logoNode = doc.SelectSingleNode("//Logo");
+            logoNode.InnerText = "1";
             doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
     }

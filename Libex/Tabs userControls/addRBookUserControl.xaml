@@ -49,6 +49,24 @@
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <ComboBox x:Name="AudienceBox" materialDesign:HintAssist.Hint="Audience" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBoxItem>
+                                        Kid
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Teenager
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Young adult
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Adult
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Mid aged
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Elderly
+                                    </ComboBoxItem>
                                 </ComboBox>
                                 <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>

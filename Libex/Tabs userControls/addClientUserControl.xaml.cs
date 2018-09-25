@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Libex
     /// </summary>
     public partial class addClientUserControl : UserControl
     {
+        SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
         //dispatcher vars
         System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
         System.Windows.Threading.DispatcherTimer dispatcher2 = new System.Windows.Threading.DispatcherTimer();
@@ -89,6 +91,7 @@ namespace Libex
 
                 Client obj = new Client(addClientNameBox.Text, addClientFnameBox.Text, addClientGenderBox.Text, addClientAgeBox.Text);
                 obj.insertClient();
+                printBtn.IsEnabled = true;
             }
            
         }
@@ -96,10 +99,23 @@ namespace Libex
         //print button event
         private void printBtn_Click(object sender, RoutedEventArgs e)
         {
-            printSnackBar.IsActive = true;
-            DispatcherTimerprintSnack();
-
-            
+            // print only if the boxes arent empty
+            if (addClientNameBox.Text.Length > 0 && addClientFnameBox.Text.Length > 0 && addClientAgeBox.Text.Length > 0 && addClientGenderBox.Text.Length > 0 )
+            {
+                string query = "SELECT [Client ID], [Name], [Last Name], Gender FROM Clients WHERE [Name] ='" + addClientNameBox.Text + "' AND [Last Name] ='" + addClientFnameBox.Text + "'" ;
+                SqlCeDataAdapter adapt = new SqlCeDataAdapter(query, databaseConnection);
+                DataTable data = new DataTable();
+                databaseConnection.Open();
+                adapt.Fill(data);
+                databaseConnection.Close();
+                //opening the print dialog and printing 
+                printClientUserControl instance = new printClientUserControl(int.Parse(data.Rows[0]["Client ID"].ToString()),data.Rows[0]["Name"].ToString(),data.Rows[0]["Last Name"].ToString(),data.Rows[0]["Gender"].ToString());
+                instance.print();
+                //dispatcher
+                printSnackBar.IsActive = true;
+                DispatcherTimerprintSnack();
+                
+            }
             
         }
 
