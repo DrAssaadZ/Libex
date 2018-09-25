@@ -26,52 +26,52 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <TextBox x:Name="bookNameBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock x:Name="hint1" Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
-                                <TextBox x:Name="bookAuthorBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Author" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBox x:Name="authorBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Author" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                <TextBlock x:Name="hint2" Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBox x:Name="ISBNBox" HorizontalAlignment="Left" Width="80" materialDesign:HintAssist.Hint="ISBN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     <TextBox x:Name="nbrPagesBox" Margin="20 0 0 0" HorizontalAlignment="Left" Width="80" materialDesign:HintAssist.Hint="N° Pages" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                 </StackPanel>
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock x:Name="hint3" Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <TextBox x:Name="editionYearBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Year of Edition" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock x:Name="hint4" Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <TextBox x:Name="editorBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Editor" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <ComboBox x:Name="AudienceBox" materialDesign:HintAssist.Hint="Audience" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                                 </ComboBox>
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <TextBox x:Name="copyrightHolderBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Copyrights Holder" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBox x:Name="priceBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Price" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                 </StackPanel>
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock x:Name="hint5" Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
 
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <TextBox x:Name="languageBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Language" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <TextBox x:Name="illustratorBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Illustrator" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <ComboBox x:Name="genreBox" materialDesign:HintAssist.Hint="Genre" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
@@ -100,11 +100,11 @@
                                     <ComboBoxItem Content="Poetry"></ComboBoxItem>
                                     <ComboBoxItem Content="Health"></ComboBoxItem>
                                 </ComboBox>
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <materialDesign:RatingBar Value="0" x:Name="BasicRatingBar" />
-                                <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                                <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

@@ -38,8 +38,6 @@ namespace Libex
             DataContext = this;
 
             initializeGenderChart();
-
-
         }
 
         //for the first chart
