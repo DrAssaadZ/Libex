@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace Libex
 {
@@ -25,6 +26,7 @@ namespace Libex
             //initializing 
             InitializeComponent();
             //assigning vars
+            gettingLibraryinfo();
             IDBox.Text = ClientID.ToString();
             NameBox.Text = name;
             LNamebox.Text = last_name;
@@ -34,10 +36,26 @@ namespace Libex
             //printing the grid 
             public void print() { 
                 PrintDialog dial = new PrintDialog();
+                
                 if (dial.ShowDialog() == true)
-                    {
-                        dial.PrintVisual(ClientInfoGrid, "Client Info Print");
+                    {                       
+                        dial.PrintVisual(windowToPrint, "Client Info Print");
                     }
             }
+
+        //getting library informations
+        public void gettingLibraryinfo()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            libraryName.Text = doc.SelectSingleNode("//LibraryName").InnerText;
+            libraryPhone.Text = doc.SelectSingleNode("//Phone").InnerText;
+            libraryEmail.Text = doc.SelectSingleNode("//Email").InnerText;
+            libraryAddress.Text = doc.SelectSingleNode("//Address").InnerText;            
+            if (doc.SelectSingleNode("//Logo").InnerText == "1")
+            {
+                libraryLogo.ImageSource = new BitmapImage(new Uri(GlobalVariables.logoPath + @"\logo.png"));
+            }
+        }
     }
 }

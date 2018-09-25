@@ -27,20 +27,19 @@ namespace Libex
         public clientAnalyticsUserControl()
         {
             InitializeComponent();
-
             //first chart
-            PointLabel = chartPoint =>
-                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-
+            initializeGenderChart();
             //second chart
             ageChartItnit();
-
+            //third chart
+            ctegoryXageInit();
+            //data binding
             DataContext = this;
 
-            initializeGenderChart();
         }
 
-        //for the first chart
+        #region gender chart
+        //gender chart event
         public Func<ChartPoint, string> PointLabel { get; set; }
         private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
         {
@@ -54,14 +53,16 @@ namespace Libex
             selectedSeries.PushOut = 8;
         }
 
-
+        //gender chart init
         public void initializeGenderChart()
         {
-            
+            PointLabel = chartPoint =>
+               string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
             string query = "SELECT COUNT (*) FROM Clients WHERE Gender = 'Male'";
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             databaseConnection.Open();
-            int maleCount = (int) cmd.ExecuteScalar();            
+            int maleCount = (int)cmd.ExecuteScalar();
             databaseConnection.Close();
 
             query = "SELECT COUNT (*) FROM Clients WHERE Gender = 'Female'";
@@ -75,7 +76,14 @@ namespace Libex
             femalepercentage.Fill = (Brush)FindResource("SecondaryAccentBrush");
             malepercentage.Fill = (Brush)FindResource("PrimaryHueMidBrush");
         }
+        #endregion
 
+        #region age chart
+        //initializing component of the chart
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> Formatter { get; set; }
+        //age chart init
         public void ageChartItnit()
         {
             string query = "SELECT COUNT (*) FROM Clients WHERE [Age Period] = 'Kid'";
@@ -125,7 +133,14 @@ namespace Libex
             Labels = new[] { "Kid", "Teenager", "Young Adult", "adult", "Mid Aged", "Elderly" };
             Formatter = value => value.ToString("N");
         }
+        #endregion
 
+        #region category chart
+        //initializing components of the category chart
+        public SeriesCollection SeriesCollection1 { get; set; }
+        public string[] Labels1 { get; set; }
+        public Func<double, string> Formatter1 { get; set; }
+        //category chart init
         public void ctegoryXageInit()
         {
             string query = "SELECT COUNT (*) FROM Sells WHERE [Client Age] = 'Kid'";
@@ -175,15 +190,6 @@ namespace Libex
             Labels1 = new[] { "Kid", "Teenager", "Young Adult", "adult", "Mid Aged", "Elderly" };
             Formatter1 = value => value.ToString("N");
         }
-
-        //for the second chart
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> Formatter { get; set; }
-
-        //for the third chart
-        public SeriesCollection SeriesCollection1 { get; set; }
-        public string[] Labels1 { get; set; }
-        public Func<double, string> Formatter1 { get; set; }
+        #endregion        
     }
 }
