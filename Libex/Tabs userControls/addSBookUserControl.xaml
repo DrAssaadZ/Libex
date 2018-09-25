@@ -132,7 +132,7 @@
             <Viewbox Grid.Column="2" Margin="0 10 0 0">
                 <Border BorderThickness="2" BorderBrush="{DynamicResource PrimaryHueDarkBrush}">
                     <StackPanel  HorizontalAlignment="Center">
-                        <Image Stretch="Fill" Width="180" x:Name="coverContainer" Height="250" Margin="20" ></Image>
+                        <Image Stretch="Fill" Width="180" Opacity="0.6" Source="/Resources/book_Cover.png" x:Name="coverContainer" Height="250" Margin="20" ></Image>
                         <Button Width="35" Height="35" Background="{x:Null}" x:Name="coverBtn" Click="coverBtn_Click" Padding="0"  BorderBrush="{x:Null}">
                             <materialDesign:PackIcon Kind="ImagePlus" Height="35" Width="35" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
                         </Button>
