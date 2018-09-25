@@ -456,6 +456,9 @@
   <ItemGroup>
     <Resource Include="Resources\appIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\book_Cover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

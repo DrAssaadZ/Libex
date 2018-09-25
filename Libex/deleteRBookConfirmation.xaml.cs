@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,8 @@ namespace Libex
             databaseConnection.Open();
             cmd.ExecuteNonQuery();
             databaseConnection.Close();
+
+            File.Delete(GlobalVariables.coverPath + @"\" + GlobalVariables.dataRowView[1] + ".png");
 
             this.Close();
         }
