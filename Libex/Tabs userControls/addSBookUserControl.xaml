@@ -116,7 +116,6 @@
                                     <ComboBoxItem Content="History"></ComboBoxItem>
                                     <ComboBoxItem Content="Self help"></ComboBoxItem>
                                     <ComboBoxItem Content="Poetry"></ComboBoxItem>
-                                    <ComboBoxItem Content="Health"></ComboBoxItem>
                                 </ComboBox>
                                 <TextBlock x:Name="hint11" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>

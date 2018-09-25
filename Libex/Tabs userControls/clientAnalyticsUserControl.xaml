@@ -67,7 +67,7 @@
                         <lvc:Axis LabelFormatter="{Binding Formatter1}"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
-                <TextBlock Grid.Row="1" Text="Subscribed Clients classified by Age" TextAlignment="Center"></TextBlock>
+                <TextBlock Grid.Row="1" Text="Book sells classified by age category" TextAlignment="Center"></TextBlock>
 
             </Grid>
         </materialDesign:Card>

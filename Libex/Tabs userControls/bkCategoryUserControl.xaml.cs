@@ -23,6 +23,7 @@ namespace Libex
     public partial class bkCategoryUserControl : UserControl
     {
         string Type = "SBooks";
+        SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
         public bkCategoryUserControl()
         {
             InitializeComponent();
@@ -32,18 +33,26 @@ namespace Libex
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             Type = "RBooks";
+            searchBook();
         }
 
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             Type = "SBooks";
+            searchBook();
         }
        
+        //search method when text changed in the search bar
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            searchBook();            
+        }
+       
+        //category drop down closed
+        private void categoryComboxBox_DropDownClosed(object sender, EventArgs e)
+        {
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Price],[Language],[Quantity],[Book Rating] FROM " + Type + " WHERE Genre ='" + categoryComboxBox.Text + "' AND [Book Name] LIKE '%" + searchBox.Text + "%'";
+            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Price],[Language] FROM " + Type + " WHERE Genre ='" + categoryComboxBox.Text + "'";
             databaseConnection.Open();
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
@@ -52,11 +61,11 @@ namespace Libex
             categoryBookDataGrid.ItemsSource = data.DefaultView;
             databaseConnection.Close();
         }
-       
-        private void categoryComboxBox_DropDownClosed(object sender, EventArgs e)
+
+        //search method 
+        public void searchBook()
         {
-            SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Price],[Language],[Quantity],[Book Rating] FROM " + Type + " WHERE Genre ='" + categoryComboxBox.Text + "'";
+            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Price],[Language] FROM " + Type + " WHERE Genre ='" + categoryComboxBox.Text + "' AND [Book Name] LIKE '%" + searchBox.Text + "%'";
             databaseConnection.Open();
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
