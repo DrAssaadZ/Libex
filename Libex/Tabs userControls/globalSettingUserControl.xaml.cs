@@ -14,7 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using Microsoft.Win32;
-
+using System.IO;
+using System.IO.Compression;
+using Ionic.Zip;
 
 
 namespace Libex
@@ -37,28 +39,23 @@ namespace Libex
         public void AddResourceDictionary(string source)
         {
             ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
-            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
-            
+            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);            
         }
      
         // blue amber button click event
         private void blueBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Resources.MergedDictionaries.Clear();
+        {           
             AddResourceDictionary("Resources/BlueAmberTheme.xaml");
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
             XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
             ThemeNode.InnerText = "Blue";
-            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
-            
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");            
         }
 
         //teal amber button click event
         private void tealBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            Application.Current.Resources.MergedDictionaries.Clear();             
             AddResourceDictionary("Resources/TealAmberTheme.xaml");
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
@@ -69,8 +66,7 @@ namespace Libex
 
         //blue grey amber button click event
         private void blueGBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Resources.MergedDictionaries.Clear();
+        { 
             AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
@@ -121,6 +117,63 @@ namespace Libex
             {
                 startWWinBtn.IsChecked = true;
             }
+        }
+
+        private void seletDirBtn_Click(object sender, RoutedEventArgs e)
+        {
+            using (var fbd = new System.Windows.Forms.FolderBrowserDialog())
+            {
+                System.Windows.Forms.DialogResult result = fbd.ShowDialog();
+                directoryBox.Text = fbd.SelectedPath;
+            }
+        }
+
+        private void createBkupBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (directoryBox.Text !="")
+            {
+                using (var zip = new Ionic.Zip.ZipFile())
+                {
+                    //select the path to zip
+                    zip.AddDirectory(GlobalVariables.appDirectoryPath);
+                    //save the ziped file
+                    zip.Save(directoryBox.Text + @"\BackUp.zip");                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select a directory first");
+            }
+        }
+
+        private void EnBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddResourceDictionary("Resources/englishDict.xaml");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            XmlNode ThemeNode = doc.SelectSingleNode("//Language");
+            ThemeNode.InnerText = "En";
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+        }
+
+        private void FrBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddResourceDictionary("Resources/frenchDict.xaml");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            XmlNode ThemeNode = doc.SelectSingleNode("//Language");
+            ThemeNode.InnerText = "Fr";
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+        }
+
+        private void ArBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddResourceDictionary("Resources/arabDict.xaml");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            XmlNode ThemeNode = doc.SelectSingleNode("//Language");
+            ThemeNode.InnerText = "Ar";
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
     }
 }

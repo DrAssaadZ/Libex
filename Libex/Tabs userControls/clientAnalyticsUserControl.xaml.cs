@@ -35,6 +35,7 @@ namespace Libex
             ctegoryXageInit();
             //data binding
             DataContext = this;
+
         }
 
         #region gender chart

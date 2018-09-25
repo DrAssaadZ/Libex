@@ -306,7 +306,28 @@ namespace Libex
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
             string theme = doc.SelectSingleNode("//Theme").InnerText;
+            doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
+            string lang = doc.SelectSingleNode("//Language").InnerText;
 
+            switch (lang)
+            {
+                case "En":
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/englishDict.xaml");
+                    break;
+                case "Fr":
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/frenchDict.xaml");
+                    break;
+                case "Ar":
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/arabDict.xaml");
+                    break;
+                default:
+                    this.Resources.MergedDictionaries.Clear();
+                    AddResourceDictionary("Resources/englishDict.xaml");
+                    break;
+            }
 
             switch (theme)
             {

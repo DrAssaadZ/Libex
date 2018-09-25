@@ -29,8 +29,7 @@ namespace Libex
         static string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         static string appDirectoryPath = appDataPath + @"\Libex";
         static string dbDirectoryPath = appDirectoryPath + @"\Data Base";
-        public static string settingDirectoryPath = appDirectoryPath + @"\Setting";
-        static string backUpDirectoryPath = appDirectoryPath + @"\Backup";
+        public static string settingDirectoryPath = appDirectoryPath + @"\Setting";        
         static string dataBasePath = dbDirectoryPath + @"\LibexDB.sdf";
         //GlobalVariables.coverPath = dbDirectoryPath + @"\coverImages";
         
@@ -81,8 +80,7 @@ namespace Libex
                 Thread.Sleep(200);
                 Directory.CreateDirectory(settingDirectoryPath);
                 Thread.Sleep(200);
-                CreateSettingFile();
-                Directory.CreateDirectory(backUpDirectoryPath);
+                CreateSettingFile();                
                 Thread.Sleep(200);
                 File.Create(dataBasePath).Close();
                 Thread.Sleep(200);
@@ -233,6 +231,7 @@ namespace Libex
                 //appling blue theme on button click                
                     this.Resources.MergedDictionaries.Clear();
                     AddResourceDictionary("Resources/BlueAmberTheme.xaml");
+                    AddResourceDictionary("Resources/englishDict.xaml");
 
             }
             else
@@ -240,7 +239,28 @@ namespace Libex
                 XmlDocument doc = new XmlDocument();
                 doc.Load(settingDirectoryPath + @"\Settings.xml");
                 string theme = doc.SelectSingleNode("//Theme").InnerText;
-                
+                doc.Load(settingDirectoryPath + @"\Settings.xml");
+                string lang = doc.SelectSingleNode("//Language").InnerText;
+
+                switch (lang)
+                {
+                    case "En":
+                        this.Resources.MergedDictionaries.Clear();
+                        AddResourceDictionary("Resources/englishDict.xaml");
+                        break;
+                    case "Fr":
+                        this.Resources.MergedDictionaries.Clear();
+                        AddResourceDictionary("Resources/frenchDict.xaml");
+                        break;
+                    case "Ar":
+                        this.Resources.MergedDictionaries.Clear();
+                        AddResourceDictionary("Resources/arabDict.xaml");
+                        break;
+                    default:
+                        this.Resources.MergedDictionaries.Clear();
+                        AddResourceDictionary("Resources/englishDict.xaml");
+                        break;
+                }
 
                 switch (theme)
                 {
