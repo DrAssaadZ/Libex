@@ -33,10 +33,33 @@ namespace Libex
         //confirm button click event
         private void confirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            confirmSnack.IsActive = true;
-            DispatcherTimerConfirmSnack();
-            Sell obj = new Sell(bookNameBox.Text,ISBNBox.Text,genreBox.Text,float.Parse(finalPriceBox.Text),agePeriod.Text);
-            obj.SellABook();
+            if (sBookComboBox.Text.Length < 2 || agePeriod.Text.Length < 2)
+            {
+                if (sBookComboBox.Text.Length < 2)
+                {
+                    hint1.Text = "Select a Book";
+                }
+                else
+                {
+                    hint1.Text = "";
+                }
+                if (agePeriod.Text.Length < 2)
+                {
+                    hint2.Text = "Select age period";
+                }
+                else
+                {
+                    hint2.Text = "";
+                }
+            }
+            else
+            {
+                confirmSnack.IsActive = true;
+                DispatcherTimerConfirmSnack();
+                Sell obj = new Sell(bookNameBox.Text,ISBNBox.Text,genreBox.Text,float.Parse(finalPriceBox.Text),agePeriod.Text);
+                obj.SellABook();
+            }
+
         }
 
         private void DispatcherTimerConfirmSnack()

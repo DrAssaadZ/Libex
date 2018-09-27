@@ -165,9 +165,6 @@
       <DependentUpon>globalSettingUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Project Classes\GlobalVariables.cs" />
-    <Compile Include="Tabs userControls\incomesAnalyticsUserControl.xaml.cs">
-      <DependentUpon>incomesAnalyticsUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Tabs userControls\listOrdersUserControl.xaml.cs">
       <DependentUpon>listOrdersUserControl.xaml</DependentUpon>
     </Compile>
@@ -316,10 +313,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tabs userControls\globalSettingUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Tabs userControls\incomesAnalyticsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
