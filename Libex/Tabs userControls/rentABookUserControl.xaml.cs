@@ -33,10 +33,45 @@ namespace Libex
 
         private void confirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            confirmSnack.IsActive = true;
-            DispatcherTimerConfirmSnack();
-            Rent obj = new Rent(int.Parse(bookIDBox.Text),int.Parse(clientIDBox.Text),float.Parse(finalPriceBox.Text),"Rent",DateTime.Parse(FutureDatePicker.Text));
-            obj.RentAbook();
+            if (rBookComboBox.Text.Length < 2 || clientBox.Text.Length < 2 || FutureDatePicker.Text.Length < 2)
+            {
+                if (rBookComboBox.Text.Length < 2)
+                {
+                    hint1.Text = "select a book";
+                }
+                else
+                {
+                    hint1.Text = "";
+                }
+                if (clientBox.Text.Length < 2)
+                {
+                    hint2.Text = "Select a clienty";
+                }
+                else
+                {
+                    hint2.Text = "";
+                }
+                if (FutureDatePicker.Text.Length < 2)
+                {
+                    hint3.Text = "Enter date";
+                }
+                else if (DateTime.Compare(DateTime.Parse(FutureDatePicker.Text), DateTime.Today) < 0)
+                {
+                    hint3.Text = "Select a future date";
+                }
+                else
+                {
+                    hint3.Text = "";
+                }
+            }
+            else
+            {
+                confirmSnack.IsActive = true;
+                DispatcherTimerConfirmSnack();
+                Rent obj = new Rent(int.Parse(bookIDBox.Text),int.Parse(clientIDBox.Text),float.Parse(finalPriceBox.Text),"Rent",DateTime.Parse(FutureDatePicker.Text));
+                obj.RentAbook();
+            }
+
         }
         private void DispatcherTimerConfirmSnack()
         {

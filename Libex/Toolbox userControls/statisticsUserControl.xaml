@@ -20,12 +20,7 @@
                 </Button>
             <TextBlock Foreground="white" Text="Books Analytics" TextAlignment="Center"></TextBlock>
         </StackPanel>
-        <StackPanel Margin="20 0 0 0" HorizontalAlignment="Center" Orientation="Vertical">
-            <Button x:Name="IncomesBtn" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0 0 0 0" Height="50" Width="50" Click="IncomesBtn_Click">
-                <materialDesign:PackIcon Kind="ChartLine" Height="50" Width="50"></materialDesign:PackIcon>
-            </Button>
-            <TextBlock Foreground="white" Text="Incomes Analytics" TextAlignment="Center"></TextBlock>
-        </StackPanel>
+        
     </StackPanel>
     </materialDesign:TransitioningContent>
 </UserControl>

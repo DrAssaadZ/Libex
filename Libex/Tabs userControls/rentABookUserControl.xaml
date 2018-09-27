@@ -22,10 +22,12 @@
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Width="150" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <ComboBox Margin="0 0 0 20" DropDownClosed="rBookComboBox_DropDownClosed" x:Name="rBookComboBox" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <ComboBox Margin="0 0 0 20" x:Name="clientComboBox" DropDownClosed="clientComboBox_DropDownClosed" materialDesign:HintAssist.Hint="Client" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <DatePicker Margin="0 0 0 20" x:Name="FutureDatePicker" materialDesign:HintAssist.Hint="Return Date">
-                </DatePicker>
+                <ComboBox DropDownClosed="rBookComboBox_DropDownClosed" x:Name="rBookComboBox" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                <TextBlock x:Name="hint1" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
+                <ComboBox x:Name="clientComboBox" DropDownClosed="clientComboBox_DropDownClosed" materialDesign:HintAssist.Hint="Client" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                <TextBlock x:Name="hint2" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
+                <DatePicker  x:Name="FutureDatePicker" materialDesign:HintAssist.Hint="Return Date"/>
+                <TextBlock  x:Name="hint3" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
                 <StackPanel>
                     <CheckBox x:Name="reductionCheckBox" Checked="reductionCheckBox_Checked" Unchecked="reductionCheckBox_Unchecked" IsChecked="False" Margin="0,0,0,8">Reduction</CheckBox>
                     <TextBox x:Name="reductionValue" TextChanged="reductionValue_TextChanged" FontSize="18" Style="{StaticResource MaterialDesignTextFieldBoxTextBox}" VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" Width="150" materialDesign:HintAssist.Hint="Reduction %" IsEnabled="{Binding Path=IsChecked, ElementName=reductionCheckBox}" />

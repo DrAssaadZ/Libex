@@ -72,15 +72,6 @@ namespace Libex
                 cmd3.ExecuteNonQuery();
                 databaseConnection.Close();
             }
-            
-
-            
-
-        }
-
-
-   
-
-        
+        }    
     }
 }

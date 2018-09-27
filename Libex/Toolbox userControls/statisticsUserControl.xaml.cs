@@ -58,24 +58,6 @@ namespace Libex
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
 
-        }
-
-        private void IncomesBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Grid tabGrid = new Grid();
-
-            TabItem newTabItem = new TabItem
-            {
-                Header = "Incomes Analytics",
-            };
-
-            GlobalVariables.tbControl.Items.Add(newTabItem);
-            newTabItem.Content = tabGrid;
-            tabGrid.Children.Clear();
-            incomesAnalyticsUserControl UC1 = new incomesAnalyticsUserControl();
-            tabGrid.Children.Add(UC1);
-            newTabItem.IsSelected = true;
-
-        }
+        }       
     }
 }

@@ -22,7 +22,8 @@
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Width="150" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <ComboBox DropDownClosed="sBookComboBox_DropDownClosed" Margin="0 0 0 20" x:Name="sBookComboBox" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                <ComboBox DropDownClosed="sBookComboBox_DropDownClosed"  x:Name="sBookComboBox" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                <TextBlock x:Name="hint1" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
                 <ComboBox Margin="0 0 0 20" x:Name="agePeriod" materialDesign:HintAssist.Hint="Client Age" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                     <ComboBoxItem>Kid</ComboBoxItem>
                     <ComboBoxItem>Teenager</ComboBoxItem>
@@ -30,8 +31,8 @@
                     <ComboBoxItem>Adult</ComboBoxItem>
                     <ComboBoxItem>Mid aged</ComboBoxItem>
                     <ComboBoxItem>Elderly</ComboBoxItem>
-                    
                 </ComboBox>
+                <TextBlock x:Name="hint2" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
                 <StackPanel>
                     <CheckBox x:Name="reductionCheckBox" Unchecked="reductionCheckBox_Unchecked" Checked="reductionCheckBox_Checked" IsChecked="False" Margin="0,0,0,8">Reduction</CheckBox>
                     <TextBox TextChanged="reductionValue_TextChanged" x:Name="reductionValue" FontSize="18" Style="{StaticResource MaterialDesignTextFieldBoxTextBox}" VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" Width="150" materialDesign:HintAssist.Hint="Reduction %" IsEnabled="{Binding Path=IsChecked, ElementName=reductionCheckBox}" />
