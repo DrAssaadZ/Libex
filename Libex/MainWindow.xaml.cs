@@ -26,8 +26,10 @@ namespace Libex
     {
         //creating the icon tray object
         System.Windows.Forms.NotifyIcon IconNotify; 
+        
         //dispatcher timer variable for the slideshow 
         DispatcherTimer dispatcher = new DispatcherTimer();
+        
         //image number for the slide show 
         private int imageNumber = 1;
 
@@ -66,6 +68,7 @@ namespace Libex
             maxAppBtn.Visibility = Visibility.Collapsed;
             restoreAppBtn.Visibility = Visibility.Visible;
         }
+        
         //show the restore down button on top of the window when it is maximized without the max button
         private void Window_StateChanged(object sender, EventArgs e)
         {
@@ -267,7 +270,7 @@ namespace Libex
             {
                 imageNumber = 1;
             }
-            string temp = string.Format(@"Resources\{0}.jpg", imageNumber);
+            string temp = string.Format(@"Resources\{0}.PNG", imageNumber);
             BitmapImage img = new BitmapImage(new Uri(temp, UriKind.Relative));
 
             img.UriSource = new Uri(temp, UriKind.Relative);
@@ -278,7 +281,8 @@ namespace Libex
         //get started button event in the WELCOME expander
         private void getStartedBtn_Click(object sender, RoutedEventArgs e)
         {
-            openMenuBtn.Command.Execute(openMenuBtn.Command);           
+            openMenuBtn.Command.Execute(openMenuBtn.Command);
+            closeMenuBtn.IsChecked = true;
         }
 
         private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
