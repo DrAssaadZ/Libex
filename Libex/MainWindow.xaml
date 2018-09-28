@@ -209,7 +209,7 @@ Summer 2018.
                                                 </StackPanel>
                                                 <!--slideshow-->
                                                 <Border BorderThickness="2" BorderBrush="White" Grid.Column="1" Margin="20 0 0 0">
-                                                    <Image x:Name="SlideShowImageContainer"  Source="Resources/library.jpg" Stretch="Fill" Height="Auto" Width="Auto"   />
+                                                    <Image x:Name="SlideShowImageContainer"  Source="Resources/3.PNG" Stretch="Fill" Height="Auto" Width="Auto"   />
                                                 </Border>
                                             </Grid>
                                         </Expander>
@@ -242,7 +242,7 @@ Summer 2018.
                                                                 In addition to the main functionnalities that Libex has there are more advanced onces
                                                             </TextBlock>
                                                             <Rectangle Fill="White" Grid.Column="1" Opacity="0.1"/>
-                                                            <Image Source="Resources/1.jpg" Grid.Column="2" Stretch="UniformToFill" Margin="20 0 0 0"/>
+                                                            <Image Source="Resources/an1.PNG" Grid.Column="2" Stretch="UniformToFill" Margin="20 0 0 0"/>
                                                         </Grid>
                                                     </materialDesign:TransitionerSlide>
                                                     <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
@@ -254,9 +254,6 @@ Summer 2018.
                                                                 <ColumnDefinition Width="*"/>
                                                                 <ColumnDefinition Width="45"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Button Grid.Column="3" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Padding="0 0 0 0"  Foreground="White" BorderBrush="{x:Null}" Background="{DynamicResource SecondaryAccentBrush}" ToolTip="Next" Command="{x:Static materialDesign:Transitioner.MoveNextCommand}">
-                                                                <materialDesign:PackIcon Kind="ArrowRightThick" Height="25" Width="25"/>
-                                                            </Button>
                                                             <Button Grid.Column="0" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Padding="0 0 0 0"  Foreground="White" BorderBrush="{x:Null}" Background="{DynamicResource SecondaryAccentBrush}" ToolTip="Previous" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}">
                                                                 <materialDesign:PackIcon Kind="ArrowLeftThick" Height="25" Width="25"/>
                                                             </Button>
@@ -264,30 +261,10 @@ Summer 2018.
                                                                 In addition to the main functionnalities that Libex has there are more advanced onces
                                                             </TextBlock>
                                                             <Rectangle Fill="White" Grid.Column="1" Opacity="0.1"/>
-                                                            <Image Source="Resources/2.jpg" Grid.Column="2" Stretch="UniformToFill" Margin="20 0 0 0"/>
+                                                            <Image Source="Resources/an2.PNG" Grid.Column="2" Stretch="UniformToFill" Margin="20 0 0 0"/>
                                                         </Grid>
                                                     </materialDesign:TransitionerSlide>
                                                     <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
-                                                        <!--third page-->
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="45"/>
-                                                                <ColumnDefinition Width="2*"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="45"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Button  Grid.Column="3" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Padding="0 0 0 0"  Foreground="White" BorderBrush="{x:Null}" Background="{DynamicResource SecondaryAccentBrush}" ToolTip="Next" Command="{x:Static materialDesign:Transitioner.MoveNextCommand}">
-                                                                <materialDesign:PackIcon Kind="ArrowRightThick" Height="25" Width="25"/>
-                                                            </Button>
-                                                            <Button Grid.Column="0" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Padding="0 0 0 0"  Foreground="White" BorderBrush="{x:Null}" Background="{DynamicResource SecondaryAccentBrush}" ToolTip="Previous" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}">
-                                                                <materialDesign:PackIcon Kind="ArrowLeftThick" Height="25" Width="25"/>
-                                                            </Button>
-                                                            <TextBlock Grid.Column="1" Foreground="White" Margin="5" TextWrapping="Wrap" TextAlignment="Center" FontSize="23">
-                                                                In addition to the main functionnalities that Libex has there are more advanced onces
-                                                            </TextBlock>
-                                                            <Rectangle Fill="White" Grid.Column="1" Opacity="0.1"/>
-                                                            <Image Source="Resources/3.jpg" Grid.Column="2" Stretch="UniformToFill" Margin="20 0 0 0"/>
-                                                        </Grid>
                                                     </materialDesign:TransitionerSlide>
                                                 </materialDesign:Transitioner>
                                                 <Button x:Name="statisticsBtnInWelcomeTab" Click="statisticsBtnInWelcomeTab_Click" Width="100" Content="Statistics" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{x:Null}" Margin="0 10 0 0"/>

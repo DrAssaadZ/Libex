@@ -439,11 +439,6 @@
     <Resource Include="Resources\fantasy.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\1.jpg" />
-    <Resource Include="Resources\2.jpg" />
-    <Resource Include="Resources\3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\glow.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -451,6 +446,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\book_Cover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\3.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\an1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\an2.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
