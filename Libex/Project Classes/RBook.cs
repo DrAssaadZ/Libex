@@ -11,8 +11,7 @@ using System.Windows.Media.Imaging;
 namespace Libex
 {
     class RBook
-    {
-        int RBookId;
+    {        
         string RBookName;
         string RBookISBN;
         int RBookEdition;

@@ -9,7 +9,6 @@ namespace Libex
 {
     class Client
     {
-        int CId;
         string CName;
         string CFName;
         string CGender;

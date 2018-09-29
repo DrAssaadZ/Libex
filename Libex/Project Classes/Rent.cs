@@ -15,7 +15,6 @@ namespace Libex
         int CId;
         string status;
         float RBPrice;
-        DateTime RentDay;
         DateTime ReturnDAy;        
 
         public Rent(int bookID, int ClientID,float price, string status, DateTime returnDay)
