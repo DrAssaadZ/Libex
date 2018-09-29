@@ -113,7 +113,7 @@ namespace Libex
                     Thread.Sleep(200);
 
                     //Creating sells table
-                    query = " CREATE TABLE Sells(SellID int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), Genre nvarchar(10),Price real, [Sell Date] datetime, [Client Age] nvarchar(10))";
+                    query = " CREATE TABLE Sells(SellID int PRIMARY KEY IDENTITY(1,1) , [Book Name] nvarchar(50), [Book ISBN] nvarchar(20), Genre nvarchar(20),Price real, [Sell Date] datetime, [Client Age] nvarchar(10))";
                     SqlCeCommand cmd4 = new SqlCeCommand(query, dataBaseConnection);
                     dataBaseConnection.Open();
                     cmd4.ExecuteNonQuery();
