@@ -32,16 +32,15 @@
                         </StackPanel>
                     </materialDesign:ColorZone>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button x:Name="addOrderBtn" Click="addOrderBtn_Click" Width="100" Content="Add Order" Margin="0 0 10 0"></Button>
-                    <Button x:Name="printOrderBtn" Width="100" Content="Print Orders" Margin="10 0 0 0"></Button>
                 </StackPanel>
             </Grid>
         </materialDesign:ColorZone>
         <Button x:Name="refreshBtn" Click="refreshBtn_Click" Grid.Row="1" Height="35" Width="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Margin="0 0 10 0">
             <materialDesign:PackIcon Kind="Refresh" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="35" Height="35" />
         </Button>
-        <DataGrid Grid.Row="2" IsReadOnly="True" x:Name="ordersDataGrid" Background="White" AutoGenerateColumns="True" >
+        <DataGrid Grid.Row="2" IsReadOnly="True" x:Name="ordersDataGrid" Background="White" AutoGenerateColumns="True" MaxWidth="1200">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -50,8 +49,11 @@
                                 <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0 0 10 0" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Delete" x:Name="deleteBtn" Click="deleteBtn_Click">
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
                                 </Button>
-                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}"  BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="More Informations" x:Name="sellBtn"  Click="sellBtn_Click" >
-                                    <materialDesign:PackIcon Kind="CurrencyUsd" ></materialDesign:PackIcon>
+                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}" Margin="0 0 10 0" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Sell order" x:Name="SellOrderBtn" Click="SellOrderBtn_Click" >
+                                    <materialDesign:PackIcon Kind="Check" ></materialDesign:PackIcon>
+                                </Button>
+                                <Button Height="25" Background="{DynamicResource PrimaryHueDarkBrush}"  BorderBrush="{DynamicResource PrimaryHueDarkBrush}" ToolTip="Print order" x:Name="printBtn"  Click="printBtn_Click" >
+                                    <materialDesign:PackIcon Kind="Printer" ></materialDesign:PackIcon>
                                 </Button>
                             </StackPanel>
                         </DataTemplate>

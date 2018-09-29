@@ -31,7 +31,7 @@ namespace Libex.Tabs_userControls
         //add button click event
         private void addBookBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (bookNameBox.Text.Length < 1 || ISBNBox.Text.Length < 1 || quantityBox.Text.Length < 1 || editionYearBox.Text.Length < 4 || authorBox.Text.Length < 2 || nbrPagesBox.Text.Length < 1)
+            if (bookNameBox.Text.Length < 1 || ISBNBox.Text.Length < 1 || quantityBox.Text.Length < 1 || editionYearBox.Text.Length < 1 || authorBox.Text.Length < 2 || nbrPagesBox.Text.Length < 1)
             {
                 if (bookNameBox.Text.Length < 1)
                 {
@@ -115,12 +115,7 @@ namespace Libex.Tabs_userControls
                                         , genreBox.Text, float.Parse(priceBox.Text), languagebox.Text, illustratorBox.Text, int.Parse(quantityBox.Text), BasicRatingBar.Value, coverContainer.Source, aboutBox.Text);
                 obj.insertSaleBook();
             }
-            //confirmSnack.IsActive = true;
-            //DispatcherTimerConfirmSnack();
-           
-            //SBook obj = new SBook(bookNameBox.Text, ISBNBox.Text,int.Parse(editionYearBox.Text),int.Parse(nbrPagesBox.Text),authorBox.Text,audienceBox.Text,copyrightHolderBox.Text,editorBox.Text
-            //                        ,genreBox.Text, float.Parse( priceBox.Text),languagebox.Text,illustratorBox.Text,int.Parse(quantityBox.Text),BasicRatingBar.Value,coverContainer.Source,aboutBox.Text);
-            //obj.insertSaleBook();           
+                    
         }
 
         private void DispatcherTimerConfirmSnack()

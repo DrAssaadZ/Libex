@@ -21,11 +21,11 @@
                 <TextBlock Foreground="{DynamicResource SecondaryAccentBrush}" Text="Add an Order" FontSize="24" Margin="20 0 0 0"></TextBlock>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
-                        <TextBox x:Name="ClientIDBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Client ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <ComboBox x:Name="ClientIDBox"  materialDesign:HintAssist.Hint="Client ID" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
                         <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
-                        <ComboBox x:Name="BooksNameComboBox" />
+                        <TextBox x:Name="BooksNameComboBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">

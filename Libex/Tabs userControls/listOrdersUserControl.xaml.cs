@@ -31,6 +31,7 @@ namespace Libex
 
         }
 
+        //add order button click
         private void addOrderBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
@@ -48,10 +49,11 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        //fill order data grid
         public void ShowOrdersDataGrid()
         {
 
-            string query = "SELECT [Client ID],[Book Name],Author,Language,Price FROM commands";
+            string query = "SELECT [cmID],[Client ID],[Book Name],Author,Language,Price FROM commands";
             databaseConnection.Open();
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
@@ -62,14 +64,16 @@ namespace Libex
 
         }
 
+        //refresh button click event
         private void refreshBtn_Click(object sender, RoutedEventArgs e)
         {
             ShowOrdersDataGrid();
         }
 
+        //search button method 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string query = "SELECT [Client ID],[Book Name],Author,Language,Price FROM commands WHERE [Client ID] LIKE '%" + searchBar.Text + "%' OR [Book Name] LIKE '%" + searchBar.Text + "%'";
+            string query = "SELECT [cmID],[Client ID],[Book Name],Author,Language,Price FROM commands WHERE [Client ID] LIKE '%" + searchBar.Text + "%' OR [Book Name] LIKE '%" + searchBar.Text + "%'";
             databaseConnection.Open();
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
@@ -79,14 +83,53 @@ namespace Libex
             databaseConnection.Close();
         }
 
-        private void sellBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
+        //delete button click event
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            string query = "DELETE FROM commands where [cmid] = '" + GlobalVariables.dataRowView[0] + "'";
+            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
+            databaseConnection.Open();
+            cmd.ExecuteNonQuery();
+            databaseConnection.Close();
+            //refreshing the order data grid
+            ShowOrdersDataGrid();
+
+        }
+
+        //print button click event
+        private void printBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void SellOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;            
+            ////validating the command , moving it into the sells database
+            string query = "INSERT INTO Sells([Book Name],[Book ISBN],Genre,Price,[Sell Date],[Client Age])Values(@bookName,@isbn,@genre,@price,@sellDate,@clientAge)";
+            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
+            cmd.Parameters.AddWithValue("@bookName", GlobalVariables.dataRowView[2]);
+            cmd.Parameters.AddWithValue("@isbn", "0000");
+            cmd.Parameters.AddWithValue("@genre", "Unspecified");
+            cmd.Parameters.AddWithValue("@price",GlobalVariables.dataRowView[5]);
+            cmd.Parameters.AddWithValue("@sellDate", DateTime.Today);
+            cmd.Parameters.AddWithValue("@clientAge", "Undefined");
+            databaseConnection.Open();
+            cmd.ExecuteNonQuery();
+            databaseConnection.Close();
+
+            //deleting the command after validating it 
+            query = "DELETE FROM commands WHERE cmID = '" + GlobalVariables.dataRowView[0] + "'";
+            SqlCeCommand cmd2 = new SqlCeCommand(query, databaseConnection);
+            databaseConnection.Open();
+            cmd2.ExecuteNonQuery();
+            databaseConnection.Close();
+
+            //refreshing the grid after deleting
+            ShowOrdersDataGrid();
         }
     }
 }
