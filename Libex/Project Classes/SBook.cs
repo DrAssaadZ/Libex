@@ -13,7 +13,6 @@ namespace Libex
     class SBook
     {
         //vars
-        int SBookId;
         string SBookName;
         string SBookISBN;
         int SBookEdition;

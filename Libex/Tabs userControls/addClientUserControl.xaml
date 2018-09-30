@@ -21,6 +21,7 @@
         <TextBlock Grid.Row="0" Margin="20 10 0 0" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}">
             Add a Client
         </TextBlock>
+
         
         <!--main content grid-->
         <Viewbox Grid.Row="1">
@@ -31,6 +32,7 @@
                     <TextBox Width="250" x:Name="addClientNameBox" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBlock x:Name="hint1" Foreground="Red"/>
                     <!--last name part-->
+
                     <TextBox x:Name="addClientFnameBox" Width="250" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Family Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBlock x:Name="hint2" Foreground="Red"/>
                     <!--gender part-->
@@ -76,6 +78,5 @@
         <!--snack bars that shows when adding or printing a client-->
         <materialDesign:Snackbar Grid.Row="2" Message="Client Added" IsActive="False" x:Name="addSnackBar"/>
         <materialDesign:Snackbar Grid.Row="2" Message="Preparing To Print" IsActive="False" x:Name="printSnackBar"/>
-        
     </Grid>
 </UserControl>

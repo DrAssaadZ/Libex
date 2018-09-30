@@ -12,9 +12,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-
         <materialDesign:ColorZone Padding="0 10 0 10" Background="{DynamicResource SecondaryAccentBrush}">
-
             <StackPanel Orientation="Horizontal" Grid.Column="0">
                 <TextBlock Margin="35 0 0 0" Text="Search" FontSize="25" HorizontalAlignment="Left" Grid.Column="0" VerticalAlignment="Center" Foreground="White"/>
                 <materialDesign:ColorZone Margin="20 0 0 0" VerticalAlignment="Center" Grid.Column="0" >

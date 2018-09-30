@@ -12,7 +12,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-
         <materialDesign:ColorZone Grid.Row="0" Padding="0 10 0 10"  Background="{DynamicResource SecondaryAccentBrush}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -38,9 +37,6 @@
                 <Button x:Name="addSBookBtn" Click="addSBookBtn_Click" Content="Add a book" Grid.Column="2" Width="110" VerticalAlignment="Center" Margin="0 0 10 0"/>
             </Grid>
         </materialDesign:ColorZone>
-        
-        <Grid  Grid.Row="1" x:Name="saleBookUserControlMainGrid" Loaded="saleBookUserControlMainGrid_Loaded">
-
-        </Grid>
+        <Grid  Grid.Row="1" x:Name="saleBookUserControlMainGrid" Loaded="saleBookUserControlMainGrid_Loaded"/>
     </Grid>
 </UserControl>

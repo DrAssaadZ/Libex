@@ -127,7 +127,6 @@
                     </StackPanel>
                 </StackPanel>
             </Viewbox>
-
             <Viewbox Grid.Column="2" Margin="0 10 0 0">
                 <Border BorderThickness="2" BorderBrush="{DynamicResource PrimaryHueDarkBrush}">
                     <StackPanel  HorizontalAlignment="Center">
@@ -138,12 +137,10 @@
                     </StackPanel>
                 </Border>
             </Viewbox>
-
         </Grid>
-        <TextBox materialDesign:HintAssist.Hint="About the book" FontSize="16"  BorderThickness="2" BorderBrush="{DynamicResource PrimaryHueMidBrush}" VerticalContentAlignment="Top" TextWrapping="Wrap" x:Name="aboutBox" Grid.Row="1" Padding="2" Width="500" HorizontalAlignment="Left" Margin="30 15 0 0" /> 
+        <TextBox materialDesign:HintAssist.Hint="About the book" FontSize="16"  BorderThickness="2" BorderBrush="{DynamicResource PrimaryHueMidBrush}" VerticalContentAlignment="Top" TextWrapping="Wrap" x:Name="aboutBox" Grid.Row="1" Padding="2" Width="500" HorizontalAlignment="Left" Margin="30 15 0 0" />
         <Button x:Name="addBookBtn" Click="addBookBtn_Click" Grid.Row="2" VerticalAlignment="Top" Margin="0 20 0 0" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}" Width="130" Height="30" Content="Add Book"></Button>
         <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="confirmSnack"/>
         <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="errorSnack"/>
     </Grid>
-    
 </UserControl>

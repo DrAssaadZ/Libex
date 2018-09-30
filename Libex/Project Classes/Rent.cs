@@ -14,7 +14,6 @@ namespace Libex
         int CId;
         string status;
         float RBPrice;
-        DateTime RentDay;
         DateTime ReturnDAy;        
 
         //constructor
