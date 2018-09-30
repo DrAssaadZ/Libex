@@ -64,7 +64,6 @@
         </Grid>
         <Button x:Name="confirmBtn" Click="confirmBtn_Click" VerticalAlignment="Top" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}" Grid.Row="2" Height="25" Width="120" Content="Confirm"></Button>
         <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="confirmSnack"/>
-        <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="errorSnack"/>
     </Grid>
     
 </UserControl>

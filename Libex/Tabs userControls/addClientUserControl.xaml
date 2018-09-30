@@ -22,26 +22,23 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
-            
-                <StackPanel Grid.Column="0" Orientation="Vertical" >
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBox Width="250" x:Name="addClientNameBox" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <TextBlock x:Name="hint1" Foreground="Red"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <ComboBox x:Name="addClientGenderBox" Margin="0 20 0 0" Width="250" materialDesign:HintAssist.Hint="Gender" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                            <ComboBoxItem>
-                                Male
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                Female
-                            </ComboBoxItem>
-                        </ComboBox>
-                        <TextBlock x:Name="hint3" Foreground="Red"/>
-                    </StackPanel>
+            <StackPanel Grid.Column="0" Orientation="Vertical" >
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBox Width="250" x:Name="addClientNameBox" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBlock x:Name="hint1" Foreground="Red"/>
                 </StackPanel>
-            
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ComboBox x:Name="addClientGenderBox" Margin="0 20 0 0" Width="250" materialDesign:HintAssist.Hint="Gender" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBoxItem>
+                            Male
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Female
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock x:Name="hint3" Foreground="Red"/>
+                </StackPanel>
+            </StackPanel>
             <StackPanel Grid.Column="1">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <TextBox x:Name="addClientFnameBox" Width="250" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Family Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -78,6 +75,5 @@
         </StackPanel>
         <materialDesign:Snackbar Grid.Row="2" Message="Client Added" IsActive="False" x:Name="addSnackBar"/>
         <materialDesign:Snackbar Grid.Row="2" Message="Preparing To Print" IsActive="False" x:Name="printSnackBar"/>
-        
     </Grid>
 </UserControl>

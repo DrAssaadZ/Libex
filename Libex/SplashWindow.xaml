@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="SplashWindow" Width="700" WindowStyle="None" Visibility="Visible" Icon="Resources/appIcon.ico" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="400" Height="400">
+    <!--this window is designed using blend for visual studio-->
     <Window.Resources>
         <Storyboard x:Key="Animation">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="path" RepeatBehavior="Forever">

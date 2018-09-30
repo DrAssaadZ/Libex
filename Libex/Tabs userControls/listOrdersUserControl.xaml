@@ -8,14 +8,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
-            <Grid.RowDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="7*"/>
-            </Grid.RowDefinitions>
-
-            <materialDesign:ColorZone Padding="0 10 0 10" Background="{DynamicResource SecondaryAccentBrush}">
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Padding="0 10 0 10" Background="{DynamicResource SecondaryAccentBrush}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2.5*"></ColumnDefinition>
