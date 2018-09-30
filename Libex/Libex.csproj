@@ -105,6 +105,15 @@
     <Compile Include="printClientUserControl.xaml.cs">
       <DependentUpon>printClientUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="printOrderUserControl.xaml.cs">
+      <DependentUpon>printOrderUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="printRentBookUserControl.xaml.cs">
+      <DependentUpon>printRentBookUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="printSoldBookUserControl.xaml.cs">
+      <DependentUpon>printSoldBookUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Project Classes\Command.cs" />
     <Compile Include="Tabs userControls\addClientUserControl.xaml.cs">
       <DependentUpon>addClientUserControl.xaml</DependentUpon>
@@ -225,6 +234,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="printClientUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="printOrderUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="printRentBookUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="printSoldBookUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

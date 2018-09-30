@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Libex.printClientUserControl"
+﻿<UserControl x:Class="Libex.printSoldBookUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Height="300" Width="400"  BorderBrush="Black" BorderThickness="1.5">
     <!--grid to be printed-->
-    <Grid Margin="10"  Height="290" Width="390" x:Name="windowToPrint" HorizontalAlignment="Left" VerticalAlignment="Top"> 
+    <Grid Margin="10"  Height="290" Width="390" x:Name="windowToPrint" HorizontalAlignment="Left" VerticalAlignment="Top">
         <!--app logo rectangle-->
         <Rectangle Height="50"  Width="50" Panel.ZIndex="1000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20 0 0">
             <Rectangle.Fill>
@@ -24,7 +24,7 @@
                         <RowDefinition Height="Auto"/>
                         <!--card title-->
                         <RowDefinition Height="0.4*"/>
-                        <!--client information row-->
+                        <!--sold book information row-->
                         <RowDefinition Height="1.2*"/>
                     </Grid.RowDefinitions>
                     <!--library information part-->
@@ -36,8 +36,8 @@
                         <Separator Background="Black" Width="200" Margin="0 5 0 0"/>
                     </StackPanel>
                     <!--card title-->
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Client card" Grid.Row="1" FontSize="15" FontFamily="Yu Gothic UI Semibold"/>
-                    <!--client information part-->
+                    <TextBlock Grid.Row="1" Text="Sold Book Receipt " VerticalAlignment="Center"  FontSize="15" HorizontalAlignment="Center" FontFamily="Yu Gothic UI Semibold"/>
+                    <!--sold book information part-->
                     <Grid Grid.Row="2" Margin="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -49,19 +49,19 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <!--client id row-->
-                        <!--client name row-->
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="ID :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="IDBox"  VerticalAlignment="Center"/>
-                        <!--client name row-->
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Name :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="NameBox"  VerticalAlignment="Center"/>
-                        <!--client last name row-->
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Last Name :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="LNamebox"  VerticalAlignment="Center"/>
-                        <!--client Gender row-->
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Gender :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="GenderBox"  VerticalAlignment="Center"/>
+                        
+                        <!--book name row-->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Book Name :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="bookNameBox"  VerticalAlignment="Center"/>
+                        <!--book author row-->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Author :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="authorBox"  VerticalAlignment="Center"/>
+                        <!--book genre row-->
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Book Genre :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="BookGenrebox"  VerticalAlignment="Center"/>
+                        <!--book price row-->
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Price :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="PriceBox"  VerticalAlignment="Center"/>
                     </Grid>
                 </Grid>
             </Border>

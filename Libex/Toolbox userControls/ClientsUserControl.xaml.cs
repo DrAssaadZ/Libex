@@ -25,6 +25,7 @@ namespace Libex
             InitializeComponent();
         }
 
+        //client list button click event
         private void clientListBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
@@ -42,6 +43,7 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        //add client button click event
         private void addClientBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();

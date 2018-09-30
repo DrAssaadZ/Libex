@@ -25,6 +25,7 @@ namespace Libex
             InitializeComponent();
         }
 
+        //yes button click event
         private void yesBtn_Click(object sender, RoutedEventArgs e)
         {
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
@@ -34,6 +35,7 @@ namespace Libex
             int numberOfRents = (int) cmd.ExecuteScalar();
             databaseConnection.Close();
 
+            //deleting the client if he is not currently renting a book
             if (numberOfRents == 0)
             {
                 query = "DELETE FROM Clients WHERE [CLient ID] = '" + GlobalVariables.dataRowView[0] + "'";
@@ -51,6 +53,7 @@ namespace Libex
             }
         }
 
+        //no button click event
         private void noBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -31,7 +31,7 @@ namespace Libex.Tabs_userControls
         //add button click event
         private void addBookBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (bookNameBox.Text.Length < 1 || ISBNBox.Text.Length < 1 || quantityBox.Text.Length < 1 || editionYearBox.Text.Length < 1 || authorBox.Text.Length < 2 || nbrPagesBox.Text.Length < 1)
+            if (bookNameBox.Text.Length < 1 || ISBNBox.Text.Length < 1 || quantityBox.Text.Length < 1 || editionYearBox.Text.Length < 1 || authorBox.Text.Length < 2 || nbrPagesBox.Text.Length < 1 || !int.TryParse(ISBNBox.Text, out int x5) || !int.TryParse(nbrPagesBox.Text, out int x6) || !int.TryParse(editionYearBox.Text, out int x7) || !float.TryParse(priceBox.Text, out float x8) || !int.TryParse(quantityBox.Text, out int x9))
             {
                 if (bookNameBox.Text.Length < 1)
                 {
@@ -73,7 +73,7 @@ namespace Libex.Tabs_userControls
                 {
                     hint4.Text = "Year of edition  is empty or too short";
                 }
-                else if (!int.TryParse(ISBNBox.Text, out int x))
+                else if (!int.TryParse(editionYearBox.Text, out int x))
                 {
                     hint4.Text = "year should be a number";
                 }
@@ -85,7 +85,7 @@ namespace Libex.Tabs_userControls
                 {
                     hint5.Text = "price is empty or too short";
                 }
-                else if (!float.TryParse(ISBNBox.Text, out float x))
+                else if (!float.TryParse(priceBox.Text, out float x))
                 {
                     hint5.Text = "price should be a number";
                 }
@@ -93,11 +93,11 @@ namespace Libex.Tabs_userControls
                 {
                     hint5.Text = "Enter quantity";
                 }
-                else if (!float.TryParse(quantityBox.Text, out float x2))
+                else if (!int.TryParse(quantityBox.Text, out int x2))
                 {
                     hint5.Text = "quantity should be a NUMBER";
                 }
-                else if (float.Parse(quantityBox.Text) <= 1)
+                else if (int.Parse(quantityBox.Text) <= 1)
                 {
                     hint5.Text = "quantity should be >= 1";
                 }
@@ -108,9 +108,11 @@ namespace Libex.Tabs_userControls
             }
             else
             {
+                //success message
                 confirmSnack.IsActive = true;
                 DispatcherTimerConfirmSnack();
 
+                //inserting in the database 
                 SBook obj = new SBook(bookNameBox.Text, ISBNBox.Text, int.Parse(editionYearBox.Text), int.Parse(nbrPagesBox.Text), authorBox.Text, audienceBox.Text, copyrightHolderBox.Text, editorBox.Text
                                         , genreBox.Text, float.Parse(priceBox.Text), languagebox.Text, illustratorBox.Text, int.Parse(quantityBox.Text), BasicRatingBar.Value, coverContainer.Source, aboutBox.Text);
                 obj.insertSaleBook();
@@ -118,6 +120,7 @@ namespace Libex.Tabs_userControls
                     
         }
 
+        #region snackbar dispactcher methods
         private void DispatcherTimerConfirmSnack()
         {
             dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -129,7 +132,8 @@ namespace Libex.Tabs_userControls
         {
             confirmSnack.IsActive = false;
             dispatcher.Stop();
-        }
+        } 
+        #endregion
 
         //cover button click event
         private void coverBtn_Click(object sender, RoutedEventArgs e)

@@ -22,20 +22,24 @@ namespace Libex
     /// </summary>
     public partial class addClientUserControl : UserControl
     {
+
+        #region variables
         SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
         //dispatcher vars
         System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
-        System.Windows.Threading.DispatcherTimer dispatcher2 = new System.Windows.Threading.DispatcherTimer();
+        System.Windows.Threading.DispatcherTimer dispatcher2 = new System.Windows.Threading.DispatcherTimer(); 
+        #endregion
 
         public addClientUserControl()
         {
             InitializeComponent();
         }
 
+        #region add and print button methods
         //add client button event
         private void addClientBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (addClientNameBox.Text.Any(char.IsDigit) || addClientFnameBox.Text.Any(char.IsDigit) ||  addClientNameBox.Text.Length < 2 || addClientFnameBox.Text.Length < 2 || addClientGenderBox.Text.Length == 0 || addClientAgeBox.Text.Length == 0 )
+            if (addClientNameBox.Text.Any(char.IsDigit) || addClientFnameBox.Text.Any(char.IsDigit) || addClientNameBox.Text.Length < 2 || addClientFnameBox.Text.Length < 2 || addClientGenderBox.Text.Length == 0 || addClientAgeBox.Text.Length == 0)
             {
                 if (addClientNameBox.Text.Length < 2)
                 {
@@ -49,7 +53,7 @@ namespace Libex
                 {
                     hint1.Text = "";
                 }
-                
+
                 if (addClientFnameBox.Text.Length < 2)
                 {
                     hint2.Text = "Family name is empty or too short";
@@ -93,32 +97,34 @@ namespace Libex
                 obj.insertClient();
                 printBtn.IsEnabled = true;
             }
-           
+
         }
 
         //print button event
         private void printBtn_Click(object sender, RoutedEventArgs e)
         {
             // print only if the boxes arent empty
-            if (addClientNameBox.Text.Length > 0 && addClientFnameBox.Text.Length > 0 && addClientAgeBox.Text.Length > 0 && addClientGenderBox.Text.Length > 0 )
+            if (addClientNameBox.Text.Length > 0 && addClientFnameBox.Text.Length > 0 && addClientAgeBox.Text.Length > 0 && addClientGenderBox.Text.Length > 0)
             {
-                string query = "SELECT [Client ID], [Name], [Last Name], Gender FROM Clients WHERE [Name] ='" + addClientNameBox.Text + "' AND [Last Name] ='" + addClientFnameBox.Text + "'" ;
+                string query = "SELECT [Client ID], [Name], [Last Name], Gender FROM Clients WHERE [Name] ='" + addClientNameBox.Text + "' AND [Last Name] ='" + addClientFnameBox.Text + "'";
                 SqlCeDataAdapter adapt = new SqlCeDataAdapter(query, databaseConnection);
                 DataTable data = new DataTable();
                 databaseConnection.Open();
                 adapt.Fill(data);
                 databaseConnection.Close();
                 //opening the print dialog and printing 
-                printClientUserControl instance = new printClientUserControl(int.Parse(data.Rows[0]["Client ID"].ToString()),data.Rows[0]["Name"].ToString(),data.Rows[0]["Last Name"].ToString(),data.Rows[0]["Gender"].ToString());
+                printClientUserControl instance = new printClientUserControl(int.Parse(data.Rows[0]["Client ID"].ToString()), data.Rows[0]["Name"].ToString(), data.Rows[0]["Last Name"].ToString(), data.Rows[0]["Gender"].ToString());
                 instance.print();
                 //dispatcher
                 printSnackBar.IsActive = true;
                 DispatcherTimerprintSnack();
-                
-            }
-            
-        }
 
+            }
+
+        } 
+        #endregion
+
+        #region snackbar dispatcher methods
         //timer that closes the addsnackbar
         private void DispatcherTimerAddClientAddSnack()
         {
@@ -145,6 +151,7 @@ namespace Libex
         {
             printSnackBar.IsActive = false;
             dispatcher2.Stop();
-        }
+        } 
+        #endregion
     }
 }

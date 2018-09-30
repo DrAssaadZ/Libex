@@ -31,9 +31,10 @@ namespace Libex
         }
 
 
+        #region toggle button methods
         //showing the grid view of the books when the tab is created as default view
         private void rentBookUserControlMainGrid_Loaded(object sender, RoutedEventArgs e)
-        {           
+        {
             rentBookUserControlMainGrid.Children.Clear();
             rentBookUserControlMainGrid.Children.Add(gridView);
         }
@@ -49,7 +50,8 @@ namespace Libex
         {
             rentBookUserControlMainGrid.Children.Clear();
             rentBookUserControlMainGrid.Children.Add(gridView);
-        }
+        } 
+        #endregion
 
         //rent a book button click event
         private void rentBookBtn_Click(object sender, RoutedEventArgs e)
@@ -68,7 +70,7 @@ namespace Libex
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
-
+        //search
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);

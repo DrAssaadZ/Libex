@@ -10,24 +10,32 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <!--title row--> 
             <RowDefinition Height="*"></RowDefinition>
+            <!--main content row--> 
             <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="2.5*"></RowDefinition>
+            <!--buttons row-->
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        <!--title-->
         <TextBlock Grid.Row="0" Margin="20 10 0 0" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}">
             Add a Client
         </TextBlock>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical" >
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+        
+        <!--main content grid-->
+        <Viewbox Grid.Row="1">
+
+            <materialDesign:Card HorizontalAlignment="Center" Padding="20" VerticalAlignment="Stretch" Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                <StackPanel Orientation="Vertical">
+                    <!--first name part-->
                     <TextBox Width="250" x:Name="addClientNameBox" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBlock x:Name="hint1" Foreground="Red"/>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!--last name part-->
+
+                    <TextBox x:Name="addClientFnameBox" Width="250" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Family Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBlock x:Name="hint2" Foreground="Red"/>
+                    <!--gender part-->
                     <ComboBox x:Name="addClientGenderBox" Margin="0 20 0 0" Width="250" materialDesign:HintAssist.Hint="Gender" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                         <ComboBoxItem>
                             Male
@@ -37,14 +45,7 @@
                         </ComboBoxItem>
                     </ComboBox>
                     <TextBlock x:Name="hint3" Foreground="Red"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <TextBox x:Name="addClientFnameBox" Width="250" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Family Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBlock x:Name="hint2" Foreground="Red"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Left">
+                    <!--client age part-->
                     <ComboBox x:Name="addClientAgeBox" Margin="0 20 0 0" Width="250" materialDesign:HintAssist.Hint="Age Period" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                         <ComboBoxItem>
                             Kid
@@ -67,12 +68,14 @@
                     </ComboBox>
                     <TextBlock x:Name="hint4" Foreground="Red"/>
                 </StackPanel>
-            </StackPanel>
-        </Grid>
-        <StackPanel Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button x:Name="addClientBtn" Click="addClientBtn_Click" Width="100" Content="Add Client" Margin="0 0 10 0" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}"/>
-            <Button x:Name="printBtn" Click="printBtn_Click" Width="100" Content="Print" Margin="10 0 0 0" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}"/>
+            </materialDesign:Card>
+        </Viewbox>
+        <!--buttons stack panel-->
+        <StackPanel Grid.Row="2" Margin="0 10 0 0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button materialDesign:ShadowAssist.ShadowDepth="Depth2" x:Name="addClientBtn" Click="addClientBtn_Click" Width="110" Content="Add Client" Margin="0 0 10 0" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}"/>
+            <Button materialDesign:ShadowAssist.ShadowDepth="Depth2" x:Name="printBtn" Click="printBtn_Click" Width="110" Content="Print" Margin="10 0 0 0" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}"/>
         </StackPanel>
+        <!--snack bars that shows when adding or printing a client-->
         <materialDesign:Snackbar Grid.Row="2" Message="Client Added" IsActive="False" x:Name="addSnackBar"/>
         <materialDesign:Snackbar Grid.Row="2" Message="Preparing To Print" IsActive="False" x:Name="printSnackBar"/>
     </Grid>

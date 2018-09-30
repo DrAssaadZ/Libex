@@ -27,9 +27,10 @@ namespace Libex.Tabs_userControls
             InitializeComponent();
         }
 
+        //add rent book click event
         private void addBookBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (bookNameBox.Text.Length < 1 || ISBNBox.Text.Length < 1 || editionYearBox.Text.Length < 4 || authorBox.Text.Length < 2 || nbrPagesBox.Text.Length < 1)
+            if (bookNameBox.Text.Length < 1 || ISBNBox.Text.Length < 1 || editionYearBox.Text.Length < 4 || authorBox.Text.Length < 2 || nbrPagesBox.Text.Length < 1 || !int.TryParse(ISBNBox.Text, out int x5) || !int.TryParse(nbrPagesBox.Text, out int x6) || !int.TryParse(editionYearBox.Text, out int x7) || !float.TryParse(priceBox.Text, out float x8))
             {
                 if (bookNameBox.Text.Length < 1)
                 {
@@ -71,7 +72,7 @@ namespace Libex.Tabs_userControls
                 {
                     hint4.Text = "Year of edition  is empty or too short";
                 }
-                else if (!int.TryParse(ISBNBox.Text, out int x))
+                else if (!int.TryParse(editionYearBox.Text, out int x))
                 {
                     hint4.Text = "year should be a number";
                 }
@@ -83,7 +84,7 @@ namespace Libex.Tabs_userControls
                 {
                     hint5.Text = "price is empty or too short";
                 }
-                else if (!float.TryParse(ISBNBox.Text, out float x))
+                else if (!float.TryParse(priceBox.Text, out float x))
                 {
                     hint5.Text = "price should be a number";
                 }            
@@ -103,6 +104,7 @@ namespace Libex.Tabs_userControls
             }
 
         }
+        #region snackbar dispatcher methods
         private void DispatcherTimerConfirmSnack()
         {
             dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -114,7 +116,8 @@ namespace Libex.Tabs_userControls
         {
             confirmSnack.IsActive = false;
             dispatcher.Stop();
-        }
+        } 
+        #endregion
 
         //add cover button click event
         private void AddCoverBtn_Click(object sender, RoutedEventArgs e)

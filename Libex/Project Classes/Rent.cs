@@ -10,13 +10,13 @@ namespace Libex
     class Rent
     {
         SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-
         int RBookId;
         int CId;
         string status;
         float RBPrice;
         DateTime ReturnDAy;        
 
+        //constructor
         public Rent(int bookID, int ClientID,float price, string status, DateTime returnDay)
         {
             this.RBookId = bookID;
@@ -48,8 +48,6 @@ namespace Libex
             databaseConnection.Open();
             cmd2.ExecuteNonQuery();
             databaseConnection.Close();
-
-
         }
     }
 }

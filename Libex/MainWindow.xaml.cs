@@ -24,15 +24,18 @@ namespace Libex
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region variables
         //creating the icon tray object
-        System.Windows.Forms.NotifyIcon IconNotify; 
-        
+        System.Windows.Forms.NotifyIcon IconNotify;
+
         //dispatcher timer variable for the slideshow 
         DispatcherTimer dispatcher = new DispatcherTimer();
-        
-        //image number for the slide show 
-        private int imageNumber = 1;
 
+        //image number for the slide show 
+        private int imageNumber = 1; 
+        #endregion
+
+        //main window
         public MainWindow()
         {
             LoadMainWindowSetting();
@@ -40,19 +43,7 @@ namespace Libex
             tabControlDragable.Width = this.Width;
         }
 
-
-        // open menu click event
-        private void openMenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            closeMenuBtn.IsChecked = true;
-        }
-
-        //close menu click event
-        private void closeMenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            openMenuBtn.IsChecked = false;
-        }
-
+        #region Window State button event methods
         //exit application button click
         private void exitAppBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +59,7 @@ namespace Libex
             maxAppBtn.Visibility = Visibility.Collapsed;
             restoreAppBtn.Visibility = Visibility.Visible;
         }
-        
+
         //show the restore down button on top of the window when it is maximized without the max button
         private void Window_StateChanged(object sender, EventArgs e)
         {
@@ -79,7 +70,6 @@ namespace Libex
             }
         }
 
-
         //restore minimize window
         private void restoreAppBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -89,10 +79,10 @@ namespace Libex
             tabControlDragable.Width = this.Width;
         }
 
-        //turns the open menu button unchecked 
-        private void DrawerHost_MouseDown(object sender, MouseButtonEventArgs e)
+        //minimize button click event
+        private void minAppBtn_Click(object sender, RoutedEventArgs e)
         {
-            openMenuBtn.IsChecked = false;
+            this.WindowState = WindowState.Minimized;
         }
 
         //left mouse clicked on the top color zone event
@@ -101,12 +91,14 @@ namespace Libex
             DragMove();
         }
 
-        //minimize button click event
-        private void minAppBtn_Click(object sender, RoutedEventArgs e)
+        //window size event , it changes the size of the tab control based on the window size 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            tabControlDragable.Width = this.Width;
         }
+        #endregion
 
+        #region theme button event methods 
         //appling green theme on button click 
         private void tealAmberBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -115,15 +107,15 @@ namespace Libex
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
             XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
-            ThemeNode.InnerText = "Green";            
+            ThemeNode.InnerText = "Green";
             doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
 
         //appling blue grey them on button click
         private void blueGreyBtn_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Resources.MergedDictionaries.Clear();            
-            AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");            
+            Application.Current.Resources.MergedDictionaries.Clear();
+            AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
             XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
@@ -149,8 +141,29 @@ namespace Libex
             ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
             Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
         }
+        #endregion
 
-      
+        #region open and close menu look adjust
+        // open menu click event
+        private void openMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            closeMenuBtn.IsChecked = true;
+        }
+
+        //close menu click event
+        private void closeMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            openMenuBtn.IsChecked = false;
+        }
+
+        //turns the open menu button unchecked 
+        private void DrawerHost_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            openMenuBtn.IsChecked = false;
+        }
+        #endregion
+
+        #region Menu Methods
         //method that shows which menu item is selected
         private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -228,17 +241,13 @@ namespace Libex
             //transitioningContentSlide.OnApplyTemplate();
             MenuCursor.Margin = new Thickness(0, (117.5 + (50 * listItemSelectedIndex)), 0, 0);
         }
+        #endregion
 
-        //window size event , it changes the size of the tab control based on the window size 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            tabControlDragable.Width = this.Width;           
-        }
-
+        #region slideShow Methods
         //dispatcher time of the image slide show initializing 
         private void DispatcherTimerSlideShow()
         {
-            
+
             dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcher.Interval = new TimeSpan(0, 0, 2);
             dispatcher.Start();
@@ -248,19 +257,19 @@ namespace Libex
         //changing images in every tick of the dispatcher timer 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            loadNextImage();           
+            loadNextImage();
         }
 
         //activatin the slideshow when the expander is expended 
         private void Expander_Expanded(object sender, RoutedEventArgs e)
-        {          
-            DispatcherTimerSlideShow();           
+        {
+            DispatcherTimerSlideShow();
         }
 
         //stopping the slideshow when the expander is collapsed
         private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
-            dispatcher.Stop();          
+            dispatcher.Stop();
         }
 
         //loading the next image
@@ -277,17 +286,14 @@ namespace Libex
             SlideShowImageContainer.Source = new BitmapImage(new Uri(temp, UriKind.Relative));
             imageNumber++;
         }
+        #endregion
 
+        #region welcome part button events
         //get started button event in the WELCOME expander
         private void getStartedBtn_Click(object sender, RoutedEventArgs e)
         {
             openMenuBtn.Command.Execute(openMenuBtn.Command);
             closeMenuBtn.IsChecked = true;
-        }
-
-        private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
-        {
-            GlobalVariables.tbControl = (sender as TabControl);
         }
 
         //settings button click event in the welcome tab 
@@ -303,7 +309,17 @@ namespace Libex
             gridMenu.Children.Clear();
             gridMenu.Children.Add(new statisticsUserControl());
         }
+        #endregion
 
+        #region tab control init
+        //tab control init
+        private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.tbControl = (sender as TabControl);
+        }
+        #endregion
+
+        #region application default setting
         //loading setting to the main window
         public void LoadMainWindowSetting()
         {
@@ -337,48 +353,50 @@ namespace Libex
             {
                 case "Blue":
                     this.Resources.MergedDictionaries.Clear();
-                    
+
                     AddResourceDictionary("Resources/BlueAmberTheme.xaml");
                     break;
                 case "Green":
                     this.Resources.MergedDictionaries.Clear();
-                    
+
                     AddResourceDictionary("Resources/TealAmberTheme.xaml");
                     break;
                 case "Gray":
                     this.Resources.MergedDictionaries.Clear();
-                    
+
                     AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
                     break;
 
                 default:
                     this.Resources.MergedDictionaries.Clear();
-                    
+
                     AddResourceDictionary("Resources/BlueAmberTheme.xaml");
                     break;
             }
-        }
+        } 
+        #endregion
 
+        #region tray methods
         //minimize to tray button click event
         private void minimizeToTray_Click(object sender, RoutedEventArgs e)
         {
             //creating the tray icon 
             IconNotify = new System.Windows.Forms.NotifyIcon();
             IconNotify.Icon = new System.Drawing.Icon("../../Resources/appIcon.ico");
-            IconNotify.Visible = true;            
+            IconNotify.Visible = true;
             IconNotify.MouseClick += new System.Windows.Forms.MouseEventHandler(icon_click);
-            IconNotify.ShowBalloonTip(500,"Minimized","Libex has been minimized to tray",System.Windows.Forms.ToolTipIcon.Info);
+            IconNotify.ShowBalloonTip(500, "Minimized", "Libex has been minimized to tray", System.Windows.Forms.ToolTipIcon.Info);
             //creating the tray icon contextual menu 
             System.Windows.Forms.ContextMenu trayMenu = new System.Windows.Forms.ContextMenu();
             trayMenu.MenuItems.Add("Settings", new EventHandler(Setting));
-            trayMenu.MenuItems.Add("Exit App", new EventHandler(ExitApp));            
+            trayMenu.MenuItems.Add("Exit App", new EventHandler(ExitApp));
             IconNotify.ContextMenu = trayMenu;
 
             //minimizing the app when minimize to tray button is clicked 
             this.WindowState = WindowState.Minimized;
             this.ShowInTaskbar = false;
         }
-       
+
 
         //setting app tray item clicked
         private void Setting(object sender, EventArgs e)
@@ -410,11 +428,13 @@ namespace Libex
             {
                 //restoring window state after left mouse click on the tray icon
                 this.WindowState = WindowState.Normal;
-                this.ShowInTaskbar = true; 
+                this.ShowInTaskbar = true;
                 //focus the app after being restored from the tray
                 this.Activate();
                 IconNotify.Dispose();
             }
-        }
+        } 
+        #endregion
+
     }
 }

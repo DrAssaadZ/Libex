@@ -56,10 +56,6 @@ namespace Libex.Tabs_userControls
             //update dataGrid after deletion            
             ShowRBooksDataGrid();
         }
-
-        private void rentBookDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
     }
 }

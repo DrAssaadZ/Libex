@@ -17,6 +17,7 @@ namespace Libex
         float SBookPrice;
         string CAgePeriod;
 
+        //constructor
         public Sell(string bookName, string bookISBN, string bookGenre, float bookPrice,string agePeriod)
         {
             this.SBookName = bookName;
@@ -28,8 +29,7 @@ namespace Libex
 
         //method that adds a book to the sale book table 
         public void SellABook()
-        {
-            
+        {            
             string query = "INSERT INTO Sells([Book Name],[Book ISBN],Genre,Price,[Client Age],[Sell Date]) VALUES(@bookName,@isbn,@genre,@price,@clientAge,@sellDate)";
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             cmd.Parameters.AddWithValue("@bookName", this.SBookName);

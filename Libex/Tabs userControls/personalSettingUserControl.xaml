@@ -19,23 +19,23 @@
                         <TextBlock Foreground="{DynamicResource SecondaryAccentBrush}" Text="Personal Settings" FontSize="24" Margin="15 0 0 0"></TextBlock>
                         <StackPanel Margin="20 10 0 0" Orientation="Vertical">
                             <TextBox x:Name="NameBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Library Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                            <TextBlock x:Name="hint1" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                            <TextBlock x:Name="hint1"  Foreground="Red" FontSize="8"></TextBlock>
                         </StackPanel>
                         <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                             <TextBox x:Name="AddressBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Adress" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                            <TextBlock x:Name="hint2" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                            <TextBlock x:Name="hint2"  Foreground="Red" FontSize="8"></TextBlock>
                         </StackPanel>
                         <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                             <TextBox x:Name="OwnerBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Owner" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                            <TextBlock x:Name="hint3" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                            <TextBlock x:Name="hint3"  Foreground="Red" FontSize="8"></TextBlock>
                         </StackPanel>
                         <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                             <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="E-mail" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                            <TextBlock x:Name="hint4" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                            <TextBlock x:Name="hint4"  Foreground="Red" FontSize="8"></TextBlock>
                         </StackPanel>
                         <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                             <TextBox x:Name="NumberBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Phone" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                            <TextBlock x:Name="hint5" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                            <TextBlock x:Name="hint5"  Foreground="Red" FontSize="8"></TextBlock>
                         </StackPanel>
                     </StackPanel>
                 </Viewbox>

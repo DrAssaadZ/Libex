@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Libex.printRentBookUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Libex"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Height="300" Width="400"  BorderBrush="Black" BorderThickness="1.5">
+    <!--grid to be printed-->
+    <Grid Margin="10"  Height="290" Width="390" x:Name="windowToPrint" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <!--app logo rectangle-->
+        <Rectangle Height="50"  Width="50" Panel.ZIndex="1000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20 0 0">
+            <Rectangle.Fill>
+                <ImageBrush x:Name="libraryLogo"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <!--border surrounding all-->
+        <Border BorderThickness="1.5" BorderBrush="Black" Margin="40">
+            <Border BorderThickness="1.5" BorderBrush="Black" Margin="3">
+                <!--grid containing the client infos-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!--library information row-->
+                        <RowDefinition Height="Auto"/>
+                        <!--card title-->
+                        <RowDefinition Height="0.3*"/>
+                        <!--Rent book information row-->
+                        <RowDefinition Height="1.2*"/>
+                    </Grid.RowDefinitions>
+                    <!--library information part-->
+                    <StackPanel Grid.Row="0" Orientation="Vertical">
+                        <TextBlock Text="Library Name" x:Name="libraryName" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+                        <TextBlock Text="library phone" x:Name="libraryPhone" FontSize="12" HorizontalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" x:Name="libraryEmail" FontSize="12" Text="library email"/>
+                        <TextBlock HorizontalAlignment="Center" x:Name="libraryAddress" FontSize="12" Text="library Address"/>
+                        <Separator Background="Black" Width="200" Margin="0 5 0 0"/>
+                    </StackPanel>
+                    <!--card title-->
+                    <TextBlock Grid.Row="1" Text="Rent Book Receipt " VerticalAlignment="Center"  FontSize="15" HorizontalAlignment="Center" FontFamily="Yu Gothic UI Semibold"/>
+                    <!--Rent book information part-->
+                    <Grid Grid.Row="2" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        
+                        <!--book name row-->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Book Name :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="bookNameBox"  VerticalAlignment="Center"/>
+                        <!--book id row-->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Book ID :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="bookIDBox"  VerticalAlignment="Center"/>
+                        <!--author row-->
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Author :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="authorBox"  VerticalAlignment="Center"/>
+                        <!--client ID row-->
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Client ID :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="ClientIDbox"  VerticalAlignment="Center"/>
+                        <!--book price row-->
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Price :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" x:Name="PriceBox"  VerticalAlignment="Center"/>
+                        <!--rent and return dates-->
+                        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <!--start date-->
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Rent Day"/>
+                                <TextBlock Margin="5 0 0 0" x:Name="rentDayBox" Width="45"/>
+                            </StackPanel>
+                            <!--end date-->
+                            <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                                <TextBlock Text="Return Day"/>
+                                <TextBlock Margin="5 0 0 0" x:Name="returnDayBox"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

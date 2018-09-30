@@ -51,6 +51,7 @@ namespace Libex
         //confirm button click event
         private void confirmBtn_Click(object sender, RoutedEventArgs e)
         {
+
             if (File.Exists(GlobalVariables.logoPath + @"\logo.png"))
             {
                 File.Delete(GlobalVariables.logoPath + @"\logo.png");

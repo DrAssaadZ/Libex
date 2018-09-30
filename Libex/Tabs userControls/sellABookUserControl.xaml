@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:Libex"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <!--grid that rules them all-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -21,48 +22,57 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Width="150" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <ComboBox DropDownClosed="sBookComboBox_DropDownClosed"  x:Name="sBookComboBox" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
-                <TextBlock x:Name="hint1" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
-                <ComboBox Margin="0 0 0 20" x:Name="agePeriod" materialDesign:HintAssist.Hint="Client Age" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                    <ComboBoxItem>Kid</ComboBoxItem>
-                    <ComboBoxItem>Teenager</ComboBoxItem>
-                    <ComboBoxItem>Young adult</ComboBoxItem>
-                    <ComboBoxItem>Adult</ComboBoxItem>
-                    <ComboBoxItem>Mid aged</ComboBoxItem>
-                    <ComboBoxItem>Elderly</ComboBoxItem>
-                </ComboBox>
-                <TextBlock x:Name="hint2" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
-                <StackPanel>
-                    <CheckBox x:Name="reductionCheckBox" Unchecked="reductionCheckBox_Unchecked" Checked="reductionCheckBox_Checked" IsChecked="False" Margin="0,0,0,8">Reduction</CheckBox>
-                    <TextBox TextChanged="reductionValue_TextChanged" x:Name="reductionValue" FontSize="18" Style="{StaticResource MaterialDesignTextFieldBoxTextBox}" VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" Width="150" materialDesign:HintAssist.Hint="Reduction %" IsEnabled="{Binding Path=IsChecked, ElementName=reductionCheckBox}" />
-                </StackPanel>
-            </StackPanel>
-            <materialDesign:Card Grid.Column="1" Height="250" Width="400" Margin=" 0 25 0 25">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Book's Name</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Author</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">ISBN</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Genre</TextBlock>
-                        <TextBlock  FontSize="13" Margin="10 0 0 0" Width="80">Price</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Audience</TextBlock>
-                        <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Final Price</TextBlock> 
+            <!--left card-->
+            <Viewbox Grid.Column="0" Margin="40">
+                <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" Padding="20">
+                    <StackPanel Orientation="Vertical">
+                        <ComboBox DropDownClosed="sBookComboBox_DropDownClosed"  x:Name="sBookComboBox" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
+                        <TextBlock x:Name="hint1" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
+                        <ComboBox Margin="0 0 0 20" x:Name="agePeriod" materialDesign:HintAssist.Hint="Client Age" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBoxItem>Kid</ComboBoxItem>
+                            <ComboBoxItem>Teenager</ComboBoxItem>
+                            <ComboBoxItem>Young adult</ComboBoxItem>
+                            <ComboBoxItem>Adult</ComboBoxItem>
+                            <ComboBoxItem>Mid aged</ComboBoxItem>
+                            <ComboBoxItem>Elderly</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock x:Name="hint2" Text="" Foreground="Red" Margin="0 0 0 20" FontSize="8"></TextBlock>
+                        <StackPanel>
+                            <CheckBox x:Name="reductionCheckBox" Unchecked="reductionCheckBox_Unchecked" Checked="reductionCheckBox_Checked" IsChecked="False" Margin="0,0,0,8">Reduction</CheckBox>
+                            <TextBox TextChanged="reductionValue_TextChanged" x:Name="reductionValue" FontSize="18" Style="{StaticResource MaterialDesignTextFieldBoxTextBox}" VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap" Width="150" materialDesign:HintAssist.Hint="Reduction %" IsEnabled="{Binding Path=IsChecked, ElementName=reductionCheckBox}" />
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <TextBlock x:Name="bookNameBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock x:Name="authorBox"  FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock x:Name="ISBNBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock x:Name="genreBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock x:Name="priceBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock x:Name="audienceBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
-                        <TextBlock x:Name="finalPriceBox" FontSize="18" Margin="10 0 0 0" Foreground="Green" Width="100"></TextBlock>
+                </materialDesign:Card>
+            </Viewbox>
+            <!--right card-->
+            <Viewbox Grid.Column="1">
+                <materialDesign:Card  Height="250" Width="400" Margin=" 0 25 0 25">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Book's Name</TextBlock>
+                            <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Author</TextBlock>
+                            <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">ISBN</TextBlock>
+                            <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Genre</TextBlock>
+                            <TextBlock  FontSize="13" Margin="10 0 0 0" Width="80">Price</TextBlock>
+                            <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Audience</TextBlock>
+                            <TextBlock FontSize="13" Margin="10 0 0 0" Width="80">Final Price</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock x:Name="bookNameBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
+                            <TextBlock x:Name="authorBox"  FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
+                            <TextBlock x:Name="ISBNBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
+                            <TextBlock x:Name="genreBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
+                            <TextBlock x:Name="priceBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
+                            <TextBlock x:Name="audienceBox" FontSize="13" Margin="10 0 0 0" Width="100"></TextBlock>
+                            <TextBlock x:Name="finalPriceBox" FontSize="18" Margin="10 0 0 0" Foreground="Green" Width="100"></TextBlock>
+                        </StackPanel>
+                        <Image Height="150" Width="100" Stretch="Fill" Margin="55 0 0 0" x:Name="bookCoverImg"></Image>
                     </StackPanel>
-                    <Image Height="150" Width="100" Stretch="Fill" Margin="55 0 0 0" x:Name="bookCoverImg"></Image>
-                </StackPanel>
-            </materialDesign:Card>
+                </materialDesign:Card>
+            </Viewbox>
+
         </Grid>
-        <Button x:Name="confirmBtn" Click="confirmBtn_Click" VerticalAlignment="Top" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}" Grid.Row="2" Height="25" Width="120" Content="Confirm"></Button>
+        <Button x:Name="confirmBtn" Click="confirmBtn_Click" VerticalAlignment="Top" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{DynamicResource SecondaryAccentBrush}" Grid.Row="2" Height="30" Width="130" Content="Confirm"></Button>
         <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="confirmSnack"/>
     </Grid>
     

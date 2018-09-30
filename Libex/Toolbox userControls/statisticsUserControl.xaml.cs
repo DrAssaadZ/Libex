@@ -25,6 +25,7 @@ namespace Libex
             InitializeComponent();
         }
 
+        //client analytics button click event
         private void clientAnalBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
@@ -41,7 +42,7 @@ namespace Libex
 
         }
 
-
+        //books analytics button click event
         private void bookAnalBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();

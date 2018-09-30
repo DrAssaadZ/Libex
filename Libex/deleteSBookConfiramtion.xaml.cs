@@ -26,21 +26,22 @@ namespace Libex
             InitializeComponent();
         }
 
+        //yes button click event
         private void yesBtn_Click(object sender, RoutedEventArgs e)
         {
+            //deleting the book from the sbook database
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
             string query = "DELETE FROM SBooks WHERE [SBook ID] = '" + GlobalVariables.dataRowView[0] + "'";
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             databaseConnection.Open();
             cmd.ExecuteNonQuery();
             databaseConnection.Close();
-
-
+            //deleting book cover and closing the dialog after
             File.Delete(GlobalVariables.coverPath + @"\" + GlobalVariables.dataRowView[1] +".png");
-
             this.Close();
         }
 
+        //no button click event
         private void noBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
