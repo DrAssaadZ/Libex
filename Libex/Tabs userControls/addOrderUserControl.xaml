@@ -7,47 +7,53 @@
              xmlns:local="clr-namespace:Libex.Tabs_userControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <!--grid that rules them all-->
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <!--title part-->
+            <RowDefinition Height="*"/>
+            <!--main content part-->
+            <RowDefinition Height="4*"/>
+            <!--button part-->
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2.5*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical">
-                <TextBlock Foreground="{DynamicResource SecondaryAccentBrush}" Text="Add an Order" FontSize="24" Margin="20 0 0 0"></TextBlock>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+           <!--title-->
+        <TextBlock Grid.Row="0" Style="{StaticResource MaterialDesignDisplay2TextBlock}" Foreground="{DynamicResource SecondaryAccentBrush}" Text="Add an Order"  Margin="20 0 0 0"></TextBlock>
+              <!--main content part-->
+        <Viewbox Grid.Row="1">
+            <materialDesign:Card HorizontalAlignment="Center" Padding="20"  VerticalAlignment="Stretch" Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                <StackPanel Orientation="Vertical">
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                         <ComboBox x:Name="ClientIDBox"  materialDesign:HintAssist.Hint="Client ID" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
-                        <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        <TextBlock x:Name="hint1" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                         <TextBox x:Name="BooksNameComboBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Book Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        <TextBlock x:Name="hint2" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                         <TextBox x:Name="bookAuthorBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Author" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        <TextBlock x:Name="hint3" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                         <TextBox x:Name="bookEditionBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Year of Edition" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        <TextBlock x:Name="hint4" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                         <TextBox x:Name="bookLanguage" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Language" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        <TextBlock x:Name="hint5" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                         <TextBox x:Name="bookPrice" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Price" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                        <TextBlock Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
+                        <TextBlock x:Name="hint6" Foreground="Red" FontSize="8"></TextBlock>
                     </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </Grid>
-        <Button x:Name="addOrderBtn" Click="addOrderBtn_Click" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="25" Content="Add Book"></Button>
+            </materialDesign:Card>
+        </Viewbox>
+
+
+        <Button Grid.Row="2" x:Name="addOrderBtn" Click="addOrderBtn_Click" VerticalAlignment="Top" Width="120" Height="25" Content="Add Order"></Button>
+        <!--snackbars that show when pressing the button pass or fail-->
         <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="confirmSnack"/>
         <materialDesign:Snackbar Grid.Row="2" Message="Operation Completed" IsActive="False" x:Name="errorSnack"/>
     </Grid>

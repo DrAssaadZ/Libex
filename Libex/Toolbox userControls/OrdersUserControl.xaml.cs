@@ -25,6 +25,7 @@ namespace Libex
             InitializeComponent();
         }
 
+        //order list button click event
         private void listOrders_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();

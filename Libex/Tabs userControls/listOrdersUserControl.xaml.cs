@@ -49,6 +49,7 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        #region fill and refresh data grid methods
         //fill order data grid
         public void ShowOrdersDataGrid()
         {
@@ -68,7 +69,8 @@ namespace Libex
         private void refreshBtn_Click(object sender, RoutedEventArgs e)
         {
             ShowOrdersDataGrid();
-        }
+        } 
+        #endregion
 
         //search button method 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
@@ -83,7 +85,8 @@ namespace Libex
             databaseConnection.Close();
         }
 
-        
+
+        #region grid buttons methods
         //delete button click event
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -102,19 +105,29 @@ namespace Libex
         //print button click event
         private void printBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            //query to get the order info on the selected row
+            string query = "SELECT cmID,[Book Name],[Client ID],Price FROM commands WHERE cmID ='" + GlobalVariables.dataRowView[0] + "'";
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(query, databaseConnection);
+            databaseConnection.Open();
+            DataTable orders = new DataTable();
+            adapt.Fill(orders);
+            //instanciating an object from the print user control for the order  selected
+            printOrderUserControl obj = new printOrderUserControl(int.Parse(orders.Rows[0]["cmID"].ToString()), int.Parse(orders.Rows[0]["Client ID"].ToString()), orders.Rows[0]["Book Name"].ToString(), float.Parse(orders.Rows[0]["Price"].ToString()));
+            obj.print();
         }
 
+        //sell order button click event
         private void SellOrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;            
+            GlobalVariables.dataRowView = (DataRowView)((Button)e.Source).DataContext;
             ////validating the command , moving it into the sells database
             string query = "INSERT INTO Sells([Book Name],[Book ISBN],Genre,Price,[Sell Date],[Client Age])Values(@bookName,@isbn,@genre,@price,@sellDate,@clientAge)";
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             cmd.Parameters.AddWithValue("@bookName", GlobalVariables.dataRowView[2]);
             cmd.Parameters.AddWithValue("@isbn", "0000");
             cmd.Parameters.AddWithValue("@genre", "Unspecified");
-            cmd.Parameters.AddWithValue("@price",GlobalVariables.dataRowView[5]);
+            cmd.Parameters.AddWithValue("@price", GlobalVariables.dataRowView[5]);
             cmd.Parameters.AddWithValue("@sellDate", DateTime.Today);
             cmd.Parameters.AddWithValue("@clientAge", "Undefined");
             databaseConnection.Open();
@@ -130,6 +143,7 @@ namespace Libex
 
             //refreshing the grid after deleting
             ShowOrdersDataGrid();
-        }
+        } 
+        #endregion
     }
 }

@@ -33,24 +33,23 @@ namespace Libex
             startWWinState();
         }
 
-       
-
+        #region change theme methods
         //adding a resource dictionnary 
         public void AddResourceDictionary(string source)
         {
             ResourceDictionary resourceDictionary = Application.LoadComponent(new Uri(source, UriKind.Relative)) as ResourceDictionary;
-            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);            
+            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
         }
-     
+
         // blue amber button click event
         private void blueBtn_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             AddResourceDictionary("Resources/BlueAmberTheme.xaml");
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
             XmlNode ThemeNode = doc.SelectSingleNode("//Theme");
             ThemeNode.InnerText = "Blue";
-            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");            
+            doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
 
         //teal amber button click event
@@ -66,7 +65,7 @@ namespace Libex
 
         //blue grey amber button click event
         private void blueGBtn_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             AddResourceDictionary("Resources/BlueGreyAmberTheme.xaml");
             XmlDocument doc = new XmlDocument();
             doc.Load(SplashWindow.settingDirectoryPath + @"\Settings.xml");
@@ -74,7 +73,11 @@ namespace Libex
             ThemeNode.InnerText = "Gray";
             doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
         }
+        #endregion
 
+
+        #region start with windows methods
+        //start with windows toggle button checked
         private void startWWinBtn_Checked(object sender, RoutedEventArgs e)
         {
             XmlDocument doc = new XmlDocument();
@@ -118,7 +121,9 @@ namespace Libex
                 startWWinBtn.IsChecked = true;
             }
         }
+        #endregion
 
+        #region backup methods
         private void seletDirBtn_Click(object sender, RoutedEventArgs e)
         {
             using (var fbd = new System.Windows.Forms.FolderBrowserDialog())
@@ -128,24 +133,27 @@ namespace Libex
             }
         }
 
+        //create backup button click event
         private void createBkupBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (directoryBox.Text !="")
+            if (directoryBox.Text != "")
             {
                 using (var zip = new Ionic.Zip.ZipFile())
                 {
                     //select the path to zip
                     zip.AddDirectory(GlobalVariables.appDirectoryPath);
                     //save the ziped file
-                    zip.Save(directoryBox.Text + @"\BackUp.zip");                    
+                    zip.Save(directoryBox.Text + @"\BackUp.zip");
                 }
             }
             else
             {
                 MessageBox.Show("Select a directory first");
             }
-        }
+        } 
+        #endregion
 
+        #region change language methods
         private void EnBtn_Click(object sender, RoutedEventArgs e)
         {
             AddResourceDictionary("Resources/englishDict.xaml");
@@ -174,6 +182,7 @@ namespace Libex
             XmlNode ThemeNode = doc.SelectSingleNode("//Language");
             ThemeNode.InnerText = "Ar";
             doc.Save(SplashWindow.settingDirectoryPath + @"\Settings.xml");
-        }
+        } 
+        #endregion
     }
 }

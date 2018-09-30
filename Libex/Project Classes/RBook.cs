@@ -53,6 +53,7 @@ namespace Libex
             this.RBookCover = coverImage;
         }
 
+        //method that insert a book into the rent book database
         public void insertRentBook()
         {
             if (RBookCover == null)
@@ -77,12 +78,10 @@ namespace Libex
                 cmd.Parameters.AddWithValue("@language", this.RBookLanguage);
                 cmd.Parameters.AddWithValue("@illustrator", this.RBookIllustrator);
                 cmd.Parameters.AddWithValue("@about", this.AboutBook);
-                cmd.Parameters.AddWithValue("@status", "Available");
-                
+                cmd.Parameters.AddWithValue("@status", "Available");                
                 databaseConnection.Open();
                 cmd.ExecuteNonQuery();
-                databaseConnection.Close();
-                
+                databaseConnection.Close();                
             }
             else
             {
@@ -118,6 +117,5 @@ namespace Libex
                     encoder.Save(stream);
             }
         }
-
     }
 }

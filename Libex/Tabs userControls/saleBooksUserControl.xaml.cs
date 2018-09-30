@@ -29,10 +29,11 @@ namespace Libex
             InitializeComponent();
         }
 
+        #region toggle button methods
         //grid view  toggle button checked event
         private void saleBookViewBtn_Checked(object sender, RoutedEventArgs e)
         {
-            saleBookUserControlMainGrid.Children.Clear();            
+            saleBookUserControlMainGrid.Children.Clear();
             saleBookUserControlMainGrid.Children.Add(new saleBookLargeViewUserControl());
 
         }
@@ -40,7 +41,7 @@ namespace Libex
         //large view toggle button unchecked event
         private void saleBookViewBtn_Unchecked(object sender, RoutedEventArgs e)
         {
-            saleBookUserControlMainGrid.Children.Clear();            
+            saleBookUserControlMainGrid.Children.Clear();
             saleBookUserControlMainGrid.Children.Add(gridView);
 
         }
@@ -50,7 +51,8 @@ namespace Libex
         {
             saleBookUserControlMainGrid.Children.Clear();
             saleBookUserControlMainGrid.Children.Add(gridView);
-        }
+        } 
+        #endregion
 
         //add new book button click event
         private void addSBookBtn_Click(object sender, RoutedEventArgs e)

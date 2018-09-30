@@ -22,8 +22,11 @@ namespace Libex
     /// </summary>
     public partial class rentABookUserControl : UserControl
     {
+        #region Variables
         SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-        System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();       
+        System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();   
+        #endregion
+
         public rentABookUserControl()
         {
             InitializeComponent();
@@ -31,9 +34,10 @@ namespace Libex
             fillClientComboBox();
         }
 
+        //confirmation button click event
         private void confirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (rBookComboBox.Text.Length < 2 || clientBox.Text.Length < 2 || FutureDatePicker.Text.Length < 2)
+            if (rBookComboBox.Text.Length < 2 || clientBox.Text.Length < 2 || FutureDatePicker.Text.Length < 2 || DateTime.Compare(DateTime.Parse(FutureDatePicker.Text), DateTime.Today) < 0)
             {
                 if (rBookComboBox.Text.Length < 2)
                 {
@@ -70,9 +74,14 @@ namespace Libex
                 DispatcherTimerConfirmSnack();
                 Rent obj = new Rent(int.Parse(bookIDBox.Text),int.Parse(clientIDBox.Text),float.Parse(finalPriceBox.Text),"Rent",DateTime.Parse(FutureDatePicker.Text));
                 obj.RentAbook();
+                //printing the rent receipt
+                printRentBookUserControl obj2 = new printRentBookUserControl(bookNameBox.Text,int.Parse(bookIDBox.Text),authorBox.Text,int.Parse(clientIDBox.Text),float.Parse(finalPriceBox.Text),DateTime.Today.ToString(),FutureDatePicker.Text.ToString());
+                obj2.print();
             }
 
         }
+
+        #region snackbar dispatcher methods
         private void DispatcherTimerConfirmSnack()
         {
             dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -85,7 +94,9 @@ namespace Libex
             confirmSnack.IsActive = false;
             dispatcher.Stop();
         }
+        #endregion
 
+        #region comboBoxes methods
         //function that fills the book combo box from the Rbooks table
         public void fillBookComboBox()
         {
@@ -105,7 +116,7 @@ namespace Libex
         //function that fills the client combo box from the clients table 
         public void fillClientComboBox()
         {
-            string query = "SELECT [Client ID], Name, [Last Name] FROM Clients" ;
+            string query = "SELECT [Client ID], Name, [Last Name] FROM Clients";
             SqlCeDataAdapter adapter = new SqlCeDataAdapter(query, databaseConnection);
             DataTable clients = new DataTable();
             adapter.Fill(clients);
@@ -113,8 +124,25 @@ namespace Libex
             {
                 string fullName = clients.Rows[i]["Name"].ToString() + ". " + clients.Rows[i]["Last Name"].ToString();
                 clientComboBox.Items.Add((object)fullName);
-              
+
             }
+        }
+
+        // showing the client infos in the right panel 
+        private void clientComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+
+            if (clientComboBox.Text != "")
+            {
+                string query = "SELECT [Client ID],Name,[Last Name] FROM Clients WHERE [Client ID] = '" + (clientComboBox.SelectedIndex + 1).ToString() + "'";
+                SqlCeDataAdapter adapt = new SqlCeDataAdapter(query, databaseConnection);
+                DataTable client = new DataTable();
+                adapt.Fill(client);
+                clientIDBox.Text = client.Rows[0]["Client ID"].ToString();
+                clientBox.Text = client.Rows[0]["Name"].ToString() + client.Rows[0]["Last Name"].ToString();
+            }
+
+
         }
 
         //showing the book info in the right panel
@@ -136,10 +164,12 @@ namespace Libex
                 audienceBox.Text = books.Rows[0]["Audience"].ToString();
                 bookCoverImg.Source = new BitmapImage(new Uri(books.Rows[0]["Cover"].ToString()));
                 databaseConnection.Close();
-                }
+            }
             finalPriceBox.Text = priceBox.Text;
         }
+        #endregion
 
+        #region calculating reduction methods
         //method that calculates the reduction value
         public void calculateReduction()
         {
@@ -167,7 +197,7 @@ namespace Libex
             if (rBookComboBox.Text != "")
             {
 
-            calculateReduction();
+                calculateReduction();
             }
 
         }
@@ -176,23 +206,8 @@ namespace Libex
         private void reductionCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             finalPriceBox.Text = priceBox.Text;
-        }
+        } 
+        #endregion
 
-        // showing the client infos in the right panel 
-        private void clientComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-
-            if (clientComboBox.Text != "")
-            {
-            string query = "SELECT [Client ID],Name,[Last Name] FROM Clients WHERE [Client ID] = '" + (clientComboBox.SelectedIndex + 1).ToString() +"'";
-            SqlCeDataAdapter adapt = new SqlCeDataAdapter(query, databaseConnection);
-            DataTable client = new DataTable();
-            adapt.Fill(client);
-            clientIDBox.Text = client.Rows[0]["Client ID"].ToString();
-            clientBox.Text = client.Rows[0]["Name"].ToString() + client.Rows[0]["Last Name"].ToString();
-            }
-
-            
-        }
     }
 }

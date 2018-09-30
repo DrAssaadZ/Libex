@@ -25,6 +25,7 @@ namespace Libex
             InitializeComponent();
         }
 
+        //global setting button click event
         private void gSettingBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
@@ -42,6 +43,7 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        //personal setting button click event
         private void pSettingBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();

@@ -25,6 +25,7 @@ namespace Libex
             InitializeComponent();
         }
 
+        //books returning today button click event
         private void bkReturnTdyBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
@@ -42,6 +43,7 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        //delayed books button click event
         private void delayedBkBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();

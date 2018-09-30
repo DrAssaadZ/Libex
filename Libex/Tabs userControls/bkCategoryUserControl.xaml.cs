@@ -22,14 +22,17 @@ namespace Libex
     /// </summary>
     public partial class bkCategoryUserControl : UserControl
     {
+        #region variables
         string Type = "SBooks";
-        SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
+        SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath); 
+        #endregion
+
         public bkCategoryUserControl()
         {
             InitializeComponent();
         }
 
-
+        #region toggleButton methods
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             Type = "RBooks";
@@ -40,14 +43,30 @@ namespace Libex
         {
             Type = "SBooks";
             searchBook();
-        }
-       
+        } 
+        #endregion
+
+        #region search methods
         //search method when text changed in the search bar
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            searchBook();            
+            searchBook();
         }
-       
+
+        //search method 
+        public void searchBook()
+        {
+            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Price],[Language] FROM " + Type + " WHERE Genre ='" + categoryComboxBox.Text + "' AND [Book Name] LIKE '%" + searchBox.Text + "%'";
+            databaseConnection.Open();
+            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
+            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            categoryBookDataGrid.ItemsSource = data.DefaultView;
+            databaseConnection.Close();
+        } 
+        #endregion
+              
         //category drop down closed
         private void categoryComboxBox_DropDownClosed(object sender, EventArgs e)
         {
@@ -62,17 +81,5 @@ namespace Libex
             databaseConnection.Close();
         }
 
-        //search method 
-        public void searchBook()
-        {
-            string query = "SELECT [Book Name], [Book ISBN],[Book Edition],[Author],[Price],[Language] FROM " + Type + " WHERE Genre ='" + categoryComboxBox.Text + "' AND [Book Name] LIKE '%" + searchBox.Text + "%'";
-            databaseConnection.Open();
-            SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
-            SqlCeDataAdapter adapt = new SqlCeDataAdapter(cmd);
-            DataTable data = new DataTable();
-            adapt.Fill(data);
-            categoryBookDataGrid.ItemsSource = data.DefaultView;
-            databaseConnection.Close();
-        }
     }
 }

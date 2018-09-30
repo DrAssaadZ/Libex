@@ -15,6 +15,7 @@ namespace Libex
         string CGender;
         string CAgePeriod;
 
+        //constructor
         public Client(string name, string lname, string gender, string age)
         {
             this.CName = name;
@@ -23,6 +24,7 @@ namespace Libex
             this.CAgePeriod = age;
         }
 
+        //method that inserts a client in the client database
         public  void insertClient()
         {
             SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
@@ -35,8 +37,6 @@ namespace Libex
             databaseConnection.Open();
             cmd.ExecuteNonQuery();
             databaseConnection.Close();
-        }
-
-        
+        }        
     }   
 }

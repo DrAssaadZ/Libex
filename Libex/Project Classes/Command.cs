@@ -35,8 +35,7 @@ namespace Libex.Project_Classes
             SqlCeCommand cmd = new SqlCeCommand(query, databaseConnection);
             cmd.Parameters.AddWithValue("@bookName", this.bookTitle);
             cmd.Parameters.AddWithValue("@clientID", this.clientId);
-            cmd.Parameters.AddWithValue("@edition", this.bookYearEdition);
-            
+            cmd.Parameters.AddWithValue("@edition", this.bookYearEdition);            
             cmd.Parameters.AddWithValue("@language", this.bookLang);
             cmd.Parameters.AddWithValue("@author", this.bookAuthor);
             cmd.Parameters.AddWithValue("@price", this.price);
@@ -44,8 +43,5 @@ namespace Libex.Project_Classes
             cmd.ExecuteNonQuery();
             databaseConnection.Close();
         }
-
-    }
-
-   
+    }   
 }

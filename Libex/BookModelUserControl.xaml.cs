@@ -21,6 +21,7 @@ namespace Libex
     /// </summary>
     public partial class BookModelUserControl : UserControl
     {
+        //constructor
         public BookModelUserControl(string Bname, string AuthName , string ImgCov,string ISBN,int Edition,string Editor,string Genre,float Price, string About)
         {
             InitializeComponent();

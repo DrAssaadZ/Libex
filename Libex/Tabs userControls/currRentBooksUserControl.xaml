@@ -26,7 +26,7 @@
             </StackPanel>
         </materialDesign:ColorZone>
         <Grid Grid.Row="1" x:Name="currRentBookUserControlMainGrid" >
-            <DataGrid Grid.Row="1" Background="White" IsReadOnly="True" x:Name="currRentBookDataGrid"  AutoGenerateColumns="True"></DataGrid>
+            <DataGrid Grid.Row="1" Background="White" IsReadOnly="True" MaxWidth="1200" x:Name="currRentBookDataGrid"  AutoGenerateColumns="True"></DataGrid>
         </Grid>
     </Grid>
 </UserControl>

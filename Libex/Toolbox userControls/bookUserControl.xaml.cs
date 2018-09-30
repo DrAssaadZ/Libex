@@ -25,8 +25,10 @@ namespace Libex
             InitializeComponent();
         }
 
+        //books for sale button click event 
         private void forSaleBtn_Click(object sender, RoutedEventArgs e)
         {
+            //creating a new tab item with the sale books user control as its content
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
@@ -41,9 +43,10 @@ namespace Libex
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
-
+        //books for rent button click event 
         private void forRentBtn_Click(object sender, RoutedEventArgs e)
         {
+            //creating a new tab item with the rent books user control as its content
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
@@ -61,8 +64,10 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        //currently rent books button click event
         private void currentlyRentBtn_Click(object sender, RoutedEventArgs e)
         {
+            //creating a new tab item with currently rent books user control as its content
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
@@ -78,8 +83,10 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        //sold books button click event
         private void soldBooksBtn_Click(object sender, RoutedEventArgs e)
         {
+            //creating a new tab item with soldbooksusercontrol as its content
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
@@ -95,8 +102,10 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        //book category button click event
         private void bkCategoryBtn_Click(object sender, RoutedEventArgs e)
         {
+            //creating a new tab item with bkcategoryusercontrol as its content 
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem

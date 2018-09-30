@@ -58,10 +58,14 @@ namespace Libex
                 DispatcherTimerConfirmSnack();
                 Sell obj = new Sell(bookNameBox.Text,ISBNBox.Text,genreBox.Text,float.Parse(finalPriceBox.Text),agePeriod.Text);
                 obj.SellABook();
+                //printing the receipt
+                printSoldBookUserControl obj2 = new printSoldBookUserControl(bookNameBox.Text,authorBox.Text,genreBox.Text,float.Parse(finalPriceBox.Text));
+                obj2.print();
             }
 
         }
 
+        #region snackbar dispatcher methods
         private void DispatcherTimerConfirmSnack()
         {
             dispatcher.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -74,11 +78,13 @@ namespace Libex
             confirmSnack.IsActive = false;
             dispatcher.Stop();
         }
+        #endregion
 
+        #region combobox methods
         //method that fill the books combo box from the sale books
         public void fillBookComboBox()
         {
-            
+
             string query = "SELECT [Book Name] FROM SBooks";
             SqlCeDataAdapter cmd = new SqlCeDataAdapter(query, databaseConnection);
             DataTable books = new DataTable();
@@ -96,32 +102,34 @@ namespace Libex
         {
             if (sBookComboBox.Text != "")
             {
-            string query = "SELECT [Book Name],Author,[Book ISBN],Genre,Price,Audience, Cover FROM SBooks WHERE [Book Name] ='" + sBookComboBox.Text + "'";
-            SqlCeDataAdapter cmd = new SqlCeDataAdapter(query,databaseConnection);
-            DataTable book = new DataTable();
-            databaseConnection.Open();
-            cmd.Fill(book);           
-            bookNameBox.Text = book.Rows[0]["Book Name"].ToString();
-            authorBox.Text = book.Rows[0]["Author"].ToString();
-            ISBNBox.Text = book.Rows[0]["Book ISBN"].ToString();
-            genreBox.Text = book.Rows[0]["Genre"].ToString();
-            priceBox.Text = book.Rows[0]["Price"].ToString();
-            audienceBox.Text = book.Rows[0]["Audience"].ToString();
-            bookCoverImg.Source = new BitmapImage(new Uri(book.Rows[0]["Cover"].ToString()));
-            databaseConnection.Close();
+                string query = "SELECT [Book Name],Author,[Book ISBN],Genre,Price,Audience, Cover FROM SBooks WHERE [Book Name] ='" + sBookComboBox.Text + "'";
+                SqlCeDataAdapter cmd = new SqlCeDataAdapter(query, databaseConnection);
+                DataTable book = new DataTable();
+                databaseConnection.Open();
+                cmd.Fill(book);
+                bookNameBox.Text = book.Rows[0]["Book Name"].ToString();
+                authorBox.Text = book.Rows[0]["Author"].ToString();
+                ISBNBox.Text = book.Rows[0]["Book ISBN"].ToString();
+                genreBox.Text = book.Rows[0]["Genre"].ToString();
+                priceBox.Text = book.Rows[0]["Price"].ToString();
+                audienceBox.Text = book.Rows[0]["Audience"].ToString();
+                bookCoverImg.Source = new BitmapImage(new Uri(book.Rows[0]["Cover"].ToString()));
+                databaseConnection.Close();
             }
             finalPriceBox.Text = priceBox.Text;
-        }
+        } 
+        #endregion
 
+        #region reduction value methods
         //reduction box is checked
         private void reductionCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (sBookComboBox.Text != "")
             {
 
-            calculateReduction();
+                calculateReduction();
             }
-            
+
         }
 
         //calculating the final price based on the reduction value 
@@ -140,16 +148,17 @@ namespace Libex
         public void calculateReduction()
         {
             if (reductionValue.Text != "")
-            {                
-                float reduction = (float.Parse(priceBox.Text)* float.Parse(reductionValue.Text)) / 100;                
-                float newValue = float.Parse(priceBox.Text) - reduction;               
+            {
+                float reduction = (float.Parse(priceBox.Text) * float.Parse(reductionValue.Text)) / 100;
+                float newValue = float.Parse(priceBox.Text) - reduction;
                 finalPriceBox.Text = String.Format("{0:0.00}", newValue);
             }
             else
             {
                 finalPriceBox.Text = priceBox.Text;
             }
-        }
+        } 
+        #endregion
     }
 
 }

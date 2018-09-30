@@ -24,7 +24,7 @@ namespace Libex
         {
             InitializeComponent();
         }
-
+        //rent button click event
         private void rentBkBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
@@ -42,6 +42,7 @@ namespace Libex
             newTabItem.IsSelected = true;
         }
 
+        //sell button click event
         private void sellBkBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
