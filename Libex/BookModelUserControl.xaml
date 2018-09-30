@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"                        
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Width="220" Height="300" Margin="10">
-
+    <!--user control used to show data in the large view-->
     <Border BorderThickness="2" BorderBrush="{DynamicResource PrimaryHueLightBrush}" Padding="3">
         <Grid >
             <materialDesign:Flipper >

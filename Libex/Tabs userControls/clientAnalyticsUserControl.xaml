@@ -8,6 +8,7 @@
              xmlns:local="clr-namespace:Libex"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <!--charts designed using liceCahrts guide to use it is in their official website-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -32,7 +33,6 @@
                     </lvc:PieChart.Series>
                 </lvc:PieChart>
                 <TextBlock Grid.Row="1" Text="Subscribed Clients classified by gender" TextAlignment="Center"></TextBlock>
-                
             </Grid>
         </materialDesign:Card>
         <materialDesign:Card Grid.Column="1" Grid.Row="0" VerticalAlignment="Stretch" Margin="5">
@@ -50,7 +50,6 @@
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
                 <TextBlock Grid.Row="1" Text="Subscribed Clients classified by Age" TextAlignment="Center"></TextBlock>
-
             </Grid>
         </materialDesign:Card>
         <materialDesign:Card Grid.Column="0" Grid.Row="1" VerticalAlignment="Stretch" Margin="5">
@@ -68,7 +67,6 @@
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
                 <TextBlock Grid.Row="1" Text="Book sells classified by age category" TextAlignment="Center"></TextBlock>
-
             </Grid>
         </materialDesign:Card>
     </Grid>

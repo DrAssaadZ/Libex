@@ -14,13 +14,12 @@
             </Button>
             <TextBlock Foreground="white" Text="Clients Analytics" TextAlignment="Center"></TextBlock>
         </StackPanel>
-        <StackPanel Margin="20 0 0 0" HorizontalAlignment="Center" Orientation="Vertical">
-            <Button x:Name="bookAnalBtn" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0 0 0 0" Height="50" Width="50" Click="bookAnalBtn_Click">
+            <StackPanel Margin="20 0 0 0" HorizontalAlignment="Center" Orientation="Vertical">
+                <Button x:Name="bookAnalBtn" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0 0 0 0" Height="50" Width="50" Click="bookAnalBtn_Click">
                     <materialDesign:PackIcon Kind="GoogleAnalytics" Height="50" Width="50"></materialDesign:PackIcon>
                 </Button>
-            <TextBlock Foreground="white" Text="Books Analytics" TextAlignment="Center"></TextBlock>
+                <TextBlock Foreground="white" Text="Books Analytics" TextAlignment="Center"></TextBlock>
+            </StackPanel>
         </StackPanel>
-        
-    </StackPanel>
     </materialDesign:TransitioningContent>
 </UserControl>

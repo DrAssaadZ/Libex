@@ -9,6 +9,7 @@
 
     <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
         <StackPanel Margin="20 0 0 0" HorizontalAlignment="Center" Orientation="Vertical">
+            <!--button that opens a dialog-->
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Padding="0 0 0 0" Height="50" Width="50" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
                 <materialDesign:PackIcon Kind="Information" Height="50" Width="50"></materialDesign:PackIcon>
             </Button>

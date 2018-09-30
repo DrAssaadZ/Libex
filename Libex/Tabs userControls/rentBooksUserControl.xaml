@@ -3,14 +3,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-               
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                
              xmlns:local="clr-namespace:Libex"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-
             <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
@@ -40,10 +38,6 @@
                 <Button  x:Name="rentBookBtn" Click="rentBookBtn_Click" Content="Add a book" Grid.Column="2" Width="110" Margin="0 0 10 0"/>
             </Grid>
         </materialDesign:ColorZone>
-        <Grid Grid.Row="1" x:Name="rentBookUserControlMainGrid" Loaded="rentBookUserControlMainGrid_Loaded">
-            
-
-        </Grid>
-
+        <Grid Grid.Row="1" x:Name="rentBookUserControlMainGrid" Loaded="rentBookUserControlMainGrid_Loaded"/>
     </Grid>
 </UserControl>

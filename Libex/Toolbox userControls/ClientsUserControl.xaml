@@ -21,8 +21,6 @@
                 </Button>
                 <TextBlock Foreground="white" Text="Add Client" TextAlignment="Center"></TextBlock>
             </StackPanel>
-            
-            
         </StackPanel>
     </materialDesign:TransitioningContent>
 </UserControl>

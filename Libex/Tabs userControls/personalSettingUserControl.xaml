@@ -13,7 +13,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid>
-            
             <StackPanel Orientation ="Horizontal">
                 <Viewbox>
                     <StackPanel Orientation="Vertical">
@@ -38,7 +37,6 @@
                             <TextBox x:Name="NumberBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Phone" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                             <TextBlock x:Name="hint5" Text="hello world" Foreground="Red" FontSize="8"></TextBlock>
                         </StackPanel>
-
                     </StackPanel>
                 </Viewbox>
                 <Viewbox  Margin="300 10 0 0">
@@ -54,8 +52,6 @@
             </StackPanel>
         </Grid>
         <Button Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="370 20 0 0" Width="120" Height="29" Name="confirmBtn" Click="confirmBtn_Click" Content="Update">
-            
         </Button>
-            
     </Grid>
 </UserControl>

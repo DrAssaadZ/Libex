@@ -12,7 +12,6 @@
             <RowDefinition Height="2.5*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="65"/>
-            
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -82,7 +81,6 @@
                                 </StackPanel>
                                 <TextBlock x:Name="hint5" Text="" Foreground="Red" FontSize="8"></TextBlock>
                             </StackPanel>
-
                             <StackPanel Margin="20 0 0 0" Orientation="Vertical">
                                 <TextBox x:Name="languageBox" HorizontalAlignment="Left" Width="180" materialDesign:HintAssist.Hint="Language" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                 <TextBlock Text="" Foreground="Red" FontSize="8"></TextBlock>

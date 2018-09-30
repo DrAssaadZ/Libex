@@ -8,12 +8,7 @@
         mc:Ignorable="d"
         Icon="Resources/appIcon.ico"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"           
-
         Title="Libex" Height="700"  Width="1000" SizeChanged="Window_SizeChanged" MinWidth="1000"  MinHeight="700" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" >
-
-
-
-
 
     <!--removing the border on the window when resizing-->
     <WindowChrome.WindowChrome>
@@ -83,6 +78,7 @@
         </materialDesign:DrawerHost.LeftDrawerContent>
 
         <!--about window-->
+        <!--dialog should be contained in a dialog host which surounds the whole window-->
         <materialDesign:DialogHost >
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Width="300" Height="170" Orientation="Vertical">
@@ -196,7 +192,6 @@ Summer 2018.
                                                     <ColumnDefinition Width="2*"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-
                                                 <Rectangle Fill="White" Grid.Column="0" Opacity="0.1"/>
                                                 <StackPanel Orientation="Vertical" Grid.Column="0" Margin="0 20 0 0">
                                                     <TextBlock Grid.Row="0"  Foreground="White" TextWrapping="Wrap" TextAlignment="Center" FontSize="23">
@@ -223,7 +218,6 @@ Summer 2018.
                                                 <ImageBrush ImageSource="Resources/book.jpg" Stretch="UniformToFill"/>
                                             </Expander.Background>
                                             <StackPanel Orientation="Vertical"  Margin="24,8,24,16">
-
                                                 <!--transitions-->
                                                 <materialDesign:Transitioner SelectedIndex="0" AutoApplyTransitionOrigins="True">
                                                     <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
@@ -268,7 +262,6 @@ Summer 2018.
                                                     </materialDesign:TransitionerSlide>
                                                 </materialDesign:Transitioner>
                                                 <Button x:Name="statisticsBtnInWelcomeTab" Click="statisticsBtnInWelcomeTab_Click" Width="100" Content="Statistics" Background="{DynamicResource SecondaryAccentBrush}" BorderBrush="{x:Null}" Margin="0 10 0 0"/>
-
                                             </StackPanel>
                                         </Expander>
                                         <Border Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True"/>
