@@ -11,13 +11,11 @@ namespace Libex
     class Sell
     {
         SqlCeConnection databaseConnection = new SqlCeConnection(GlobalVariables.databasePath);
-        int SBookId;
         string SBookName;
         string SBookISBN;
         string SbookGenre;
         float SBookPrice;
         string CAgePeriod;
-        DateTime SBookDateSell;
 
         public Sell(string bookName, string bookISBN, string bookGenre, float bookPrice,string agePeriod)
         {
